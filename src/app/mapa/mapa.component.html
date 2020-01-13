@@ -152,19 +152,18 @@
     </div>
 
 
-    <div class="container text-center collapse" id="fila">
+    <div class="container mt-3 collapse" id="fila">
         <!-- <button type="button" class="close" style="position: relative; z-index:2100;"
                     data-toggle="collapse" data-target="#fila">
                     <span>×</span>
         </button> -->
-        <div class="row bg-white" style="position: relative; z-index: 2000;">
-            <!-- <div class="col-12 col-md-4 col-sm-5" style="z-index: 2000;"> -->
-            <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4" style="z-index: 2000;">
+        <div class="row " style="position: relative; z-index: 2000;">
+            <div class="col-12 col-md-6 col-lg-5 col-xl-4" >
                 <app-usa-api (eventoMarcador)="ponerMarcador($event)"></app-usa-api>
             </div>
         </div>
-        <div class="row bg-white" style="position: relative; z-index: 2000;">
-            <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4" style="z-index: 2000;">
+        <div class="row " style="position: relative; z-index: 2000;">
+            <div class="col-12 col-md-6 col-lg-5 col-xl-4" >
                 <app-usa-api-location-iq (eventoMarcador)="ponerMarcador($event)"></app-usa-api-location-iq>
             </div>
         </div>

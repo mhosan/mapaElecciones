@@ -1,28 +1,27 @@
 <div class="container">
   <div class="row">
-    <div class="col">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
-        &nbsp;
-        <span class="badge badge-pill badge-info">{{contador}}</span>
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="#" *ngFor="let busqueda of vectorBusquedas; let i = index;"
-          (click)="busquedasGuardadas($event)" style="font-size: small;">{{i}} - {{busqueda}}</a>
+
+    <div class="col d-flex justify-content-end">
+      <div class="dropdown">
+        <button class="btn btn-info btn-sm dropdown-toggle mb-1" type="button" id="navbarDropdown" data-toggle="dropdown">
+          <i class="fa fa-undo"></i><span class="badge badge-pill badge-info">{{contador}}</span>
+        </button>
+        <div class="dropdown-menu mt-5" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#" *ngFor="let busqueda of vectorBusquedas; let i = index;"
+            (click)="busquedasGuardadas($event)" style="font-size: small;">{{i}} - {{busqueda}}</a>
+        </div>
       </div>
     </div>
+
     <div class="col">
-      <input class="form-control form-control-sm" #direbuscar type="text" placeholder="S.Modern."
+      <input class="form-control form-control-sm mb-1" #direbuscar type="text" placeholder="S.Modern."
         [(ngModel)]="valorTexto" aria-label="Search" (keydown)="keyDownFunction($event)"
-        style="font-size:small; max-height: 2rem; max-width: 9rem; border-color: #0dc6df; left: 1px;"
+        style="font-size:small; max-height: 2rem; border-color: #0dc6df; left: 1px;"
         data-toggle="tooltip" data-placement="top" title={{infoBuscar}} />
     </div>
+
   </div>
 </div>
-
-
-
-
 <!-- <button class="btn btn-sm btn-outline-info ml-2 my-sm-0" type="submit" (click)="buscaLugar(direbuscar.value)"
     data-toggle="tooltip" data-placement="top" title={{infoBuscar}}>Buscar
   </button> -->

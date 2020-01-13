@@ -1,3 +1,4 @@
 * {
-    z-index: 2000;
+  position:relative;  
+  z-index: 2000;
   }

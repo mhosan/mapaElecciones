@@ -1,0 +1,655 @@
+<div id="map" class="container-fluid">
+    <!-- este boton colapsador colapsa al div con id=fila (mas abajo)-->
+    <div class="row">
+        <div class="col-1">
+            <div class="dropdown">
+                <!-- el boton para ver el menú ---------------------------------------------------------------- -->
+                <button class="btn btn-info" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"
+                    style="position: relative; z-index: 2000; top:0.7rem; left: -0.3rem; width: 3.0rem; height: 3.0rem;">
+                    <i class="fa fa-list"></i>
+                </button>
+                <!-- el boton para ver el menú ---------------------------------------------------------------- -->
+
+                <!-- ---------------Menu---------------  -->
+                <div class="dropdown-menu menu">
+
+                    <div class="row">
+                        <div class="col-10">
+                            <button class="dropdown-item" data-toggle="collapse" data-target="#fila">
+                                Geolocalizar
+                            </button>
+                        </div>
+                        <div class="col-2">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-divider"></div>
+
+                    <div class="row">
+                        <div class="col-10">
+                            <button class="dropdown-item" type="button" (click)="elecciones2019Paso()">
+                                Elecc. Paso 2019
+                            </button>
+                        </div>
+                        <div class="col-2">
+                            <i class="fa fa-eye-slash"></i>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-10">
+                            <button class="dropdown-item flip" type="button" data-toggle="collapse"
+                                data-target="#resumenPaso">
+                                Resumén Paso 2019
+                            </button>
+                        </div>
+                        <div class="col-2">
+                            <i class="fa fa-eye-slash"></i>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-10">
+                            <button class="dropdown-item" type="button" (click)="elecciones2019Generales()">Elecc.
+                                Grales.2019</button>
+                        </div>
+                        <div class="col-2">
+                            <i class="fa fa-eye-slash"></i>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-divider"></div>
+
+                    <div class="row">
+                        <div class="col-10">
+                            <button class="dropdown-item" type="button" (click)="leerCircuitos()">
+                                Circ. electorales (todos)
+                            </button>
+                        </div>
+                        <div class="col-2">
+                            <i class="fa fa-eye" *ngIf="capaCircuitos"></i>
+                            <i class="fa fa-eye-slash" *ngIf="!capaCircuitos"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-10">
+                            <button class="dropdown-item" type="button" data-toggle="collapse"
+                                data-target="#buscaCircuito" (click)="buscarPartido();">
+                                <!-- buscarPartido() llena el vector para el combo-->
+                                Circ. electorales (buscar)
+                            </button>
+                        </div>
+                        <div class="col-2">
+                            <i class="fa fa-eye" *ngIf="capaCircuitos"></i>
+                            <i class="fa fa-eye-slash" *ngIf="!capaCircuitos"></i>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-divider"></div>
+
+                    <div class="row">
+                        <div class="col-10">
+                            <button class="dropdown-item" type="button" (click)="leerPartidos()">
+                                Part.Pcia. Bs. As. (todos)
+                            </button>
+                        </div>
+                        <div class="col-2">
+                            <i class="fa fa-eye-slash"></i>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-10">
+                            <button class="dropdown-item" type="button" data-toggle="collapse"
+                                data-target="#buscaPartido" (click)="buscarPartido();">
+                                <!-- buscarPartido() llena el vector para el combo-->
+                                Part.Pcia. Bs. As. (buscar)
+                            </button>
+                        </div>
+                        <div class="col-2">
+                            <i class="fa fa-search"></i><!-- respuesta.features[0].properties.nam -->
+                        </div>
+                    </div>
+
+                    <div class="dropdown-divider"></div>
+
+                    <div class="row">
+                        <div class="col-10">
+                            <button class="dropdown-item" type="button" data-toggle="collapse"
+                                data-target="#buscaEscuela" (click)="buscarPartido();">
+                                <!-- buscarPartido() llena el vector para el combo-->
+                                Escuelas (buscar)
+                            </button>
+                        </div>
+                        <div class="col-2">
+                            <i class="fa fa-search"></i><!-- respuesta.features[0].properties.nam -->
+                        </div>
+                    </div>
+
+                    <div class="dropdown-divider"></div>
+
+                    <div class="row">
+                        <div class="col-10">
+                            <button class="dropdown-item" type="button" data-toggle="collapse" data-target="#capaWFS">
+                                Capa WFS
+                            </button>
+                        </div>
+                        <div class="col-2">
+                            <i class="fa fa-tags"></i>
+                        </div>
+                    </div>
+
+                </div><!-- menu, dropdown-menu -->
+            </div> <!-- dropdown -->
+        </div><!-- col -->
+
+        <div class="col-2 col-sm-4 col-md-4 col-lg-4 col-xl-4 ml-5"
+            style="z-index: 2000; position:relative; top: 0.7rem; background-color:rgba(225, 228, 228, 0.7); ">
+            <h3 class="text-center" style="padding-bottom: 3px; padding-top: 4.5px;"> Mapa electoral</h3>
+        </div>
+    </div>
+
+
+    <div class="container text-center collapse" id="fila">
+        <!-- <button type="button" class="close" style="position: relative; z-index:2100;"
+                    data-toggle="collapse" data-target="#fila">
+                    <span>×</span>
+        </button> -->
+        <div class="row bg-white" style="position: relative; z-index: 2000;">
+            <!-- <div class="col-12 col-md-4 col-sm-5" style="z-index: 2000;"> -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4" style="z-index: 2000;">
+                <app-usa-api (eventoMarcador)="ponerMarcador($event)"></app-usa-api>
+            </div>
+        </div>
+        <div class="row bg-white" style="position: relative; z-index: 2000;">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4" style="z-index: 2000;">
+                <app-usa-api-location-iq (eventoMarcador)="ponerMarcador($event)"></app-usa-api-location-iq>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row" style="position:relative; top: 100px;">
+        <div class="col">
+            <div class="row collapse" id="pepe" style="position: relative; left:0.1rem; top: 1rem;">
+                <!--  geolocalizar con la api de la secretaria de modernización de la nación: https://datosgobar.github.io/georef-ar-api
+            https://datosgobar.github.io/georef-ar-api/quick-start/  en este último link estan los ejemplos de uso -->
+                <div class="float-left" style="z-index: 2100;">
+                    <app-usa-api (eventoMarcador)="ponerMarcador($event)"></app-usa-api>
+                </div>
+                <!--  geolocalizar con la api locationIq (http://locationiq.com)-->
+                <div class="float-left" style="z-index: 2100; position: absolute; left: 31.5rem;">
+                    <app-usa-api-location-iq (eventoMarcador)="ponerMarcador($event)"></app-usa-api-location-iq>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================================================ -->
+    <!-- =================================Partidos====================================================-->
+    <!-- ============================================================================================ -->
+    <div class="card collapse" style="position: relative; z-index:2000; width: 18rem;" id="buscaPartido">
+        <div class="card-body">
+            <button type="button" class="close" data-toggle="collapse" data-target="#buscaPartido">
+                <span>×</span>
+            </button>
+            <h5 class="card-title">Buscar partidos</h5>
+            <div class="form-group">
+                <label for="selectPartido">Desplegar para seleccionar</label>
+                <select class="form-control" id="selectPartido" [(ngModel)]="partidoSeleccionado"
+                    (change)="partidoElegido()">
+                    <option>Seleccionar un partido</option>
+                    <option *ngFor="let item of listadoPartidos; let i = index;">{{item}}</option>
+                </select>
+            </div>
+            <!-- <p class="card-text">{{partidoSeleccionado}}</p> -->
+        </div>
+    </div>
+
+    <!-- ============================================================================================ -->
+    <!-- =================================Circuito electoral==========================================-->
+    <!-- ============================================================================================ -->
+    <div class="card collapse" style="position: relative; z-index:2000; width: 18rem;" id="buscaCircuito">
+        <div class="card-body">
+            <button type="button" class="close" data-toggle="collapse" data-target="#buscaCircuito">
+                <span>×</span>
+            </button>
+            <h5 class="card-title">Buscar circuito electoral</h5>
+            <div class="form-group">
+                <label for="selectCircuito">Desplegar para selecc.</label>
+                <select class="form-control" id="selectCircuito" [(ngModel)]="partidoSeleccionadoParaCircuito"
+                    (change)="circuito()">
+                    <option>Seleccionar un partido</option>
+                    <option *ngFor="let item of listadoPartidos; let i = index;">{{item}}</option>
+                </select>
+            </div>
+            <!-- <p class="card-text">{{partidoSeleccionado}}</p> -->
+        </div>
+    </div>
+
+    <!-- ============================================================================================ -->
+    <!-- =================================Escuelas ===================================================-->
+    <!-- ============================================================================================ -->
+    <div class="card collapse" style="position: relative; z-index:2000; width: 18rem;" id="buscaEscuela">
+        <div class="card-body">
+            <button type="button" class="close" data-toggle="collapse" data-target="#buscaEscuela">
+                <span>×</span>
+            </button>
+            <h5 class="card-title">Buscar escuelas por partido</h5>
+            <div class="form-group">
+                <label for="selectEscuela">Desplegar para selecc.</label>
+                <select class="form-control" id="selectEscuela" [(ngModel)]="partidoSeleccionadoParaEscuela"
+                    (change)="escuelas()">
+                    <option>Seleccionar un partido</option>
+                    <option *ngFor="let item of listadoPartidos; let i = index;">{{item}}</option>
+                </select>
+            </div>
+            <!-- <p class="card-text">{{partidoSeleccionado}}</p> -->
+        </div>
+    </div>
+
+    <!-- ============================================================================================ -->
+    <!-- =================================Capa WFS ==================================================-->
+    <!-- ============================================================================================ -->
+    <div class="card collapse" style="position: relative; z-index:2000; width: 18rem;" id="capaWFS">
+        <div class="card-body">
+            <button type="button" class="close" data-toggle="collapse" data-target="#capaWFS">
+                <span>×</span>
+            </button>
+            <h5 class="card-title">Capa WFS del IGN (Partidos)</h5>
+            <div class="form-group">
+                <button class="btn btn-info" (click)="capaWFS();">Cargar</button>
+            </div>
+            <!-- <p class="card-text">{{partidoSeleccionado}}</p> -->
+        </div>
+    </div>
+
+
+
+    <div class="footer container">
+        <!-- Referencias paso 2019 -->
+        <div class="row fila">
+            <div class="col">
+                <p style="background-color: rgba(0,102,255,0.7)">Frente de todos {{fpv}}</p>
+            </div>
+            <div class="col">
+                <p style="background-color: rgba(255,255,102,0.7)">Juntos por el cambio {{pro}}</p>
+            </div>
+            <div class="col">
+                <p style="background-color: rgba(51,204,51,0.7)">Consenso Federal {{cf}}</p>
+            </div>
+            <div class="col">
+                <p style="background-color: rgba(161, 159, 159, 0.7)">Otros {{otro}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footerGenerales centradoras">
+        <!-- Referencias Elecciones Generales 2019 -->
+        <div class="row">
+            <div class="col text-center">
+                <h6 class="mt-2">Datos NO reales, provisorios a modo ilustrativo.</h6>
+            </div>
+        </div>
+    </div>
+
+    <!-- Este es el cuadrito de resumen de las paso. También se utiliza como referencia de los grafismos del mapa-->
+    <div class="row">
+
+        <div class="col-8 col-md-3 ml-5" [hidden]="!resumenPaso2019">
+            <div class="card text-center mx-1" style="z-index: 999;">
+                <div class="card-body">
+                    <table class="table table-striped table-borderless table-sm">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col" class="pb-1">
+                                    <h6>Espacio político</h6>
+                                </th>
+                                <th scope="col" class="pb-1">
+                                    <h6>Municipios</h6>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-left" style="background-color: rgba(0,102,255,0.5)">Frente de todos</td>
+                                <td class="text-right">{{fpv}}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left" style="background-color: rgba(255,255,102,0.5)">Juntos por el
+                                    cambio</td>
+                                <td class="text-right">{{pro}}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left" style="background-color: rgba(51,204,51,0.5)">Consenso Federal
+                                </td>
+                                <td class="text-right">{{cf}}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left" style="background-color: rgba(161, 159, 159, 0.5)">Otros</td>
+                                <td class="text-right">{{otro}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Este es el cuadrito de resumen de las paso. También se utiliza como referencia de los grafismos del mapa-->
+
+
+    <div class="collapse row mx-4 my-4" id="resumenPaso">
+
+        <div class="col-xs-3 col-md-3">
+            <button type="button" class="close" style="position:relative; z-index:2000; left:-20px;"
+                data-toggle="collapse" data-target="#resumenPaso">
+                <span>×</span>
+            </button>
+            <div class="card text-center mx-1" style="z-index: 999;">
+                <div class="card-body">
+                    <!-- <h5 class="card-title">Resumen</h5> -->
+                    <table class="table table-striped table-borderless table-sm">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col" class="pb-4">Espacio político</th>
+                                <th scope="col" class="pb-3">Cantidad de votos</th>
+                                <th scope="col">% de votos válidos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-left" style="background-color: rgba(0,102,255,0.5)">Frente de todos</td>
+                                <td class="text-right">11.622.085</td>
+                                <td class="text-right">47,65</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left" style="background-color: rgba(255,255,102,0.5)">Juntos por el
+                                    cambio</td>
+                                <td class="text-right">7.824.961</td>
+                                <td class="text-right">32,08</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left" style="background-color: rgba(51,204,51,0.5)">Consenso Federal
+                                </td>
+                                <td class="text-right">2.006.964</td>
+                                <td class="text-right">8,22</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Izquierda (Del Caño)</td>
+                                <td class="text-right">697.745</td>
+                                <td class="text-right">2,86</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Frente NOS (Gómez Centurión)</td>
+                                <td class="text-right">642.650</td>
+                                <td class="text-right">2,63</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Unite (José L. Espert)</td>
+                                <td class="text-right">533.079</td>
+                                <td class="text-right">2,18</td>
+                            </tr>
+                            <tr>
+                                <td class="table-primary"></td>
+                                <td class="table-primary"></td>
+                                <td class="table-primary"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Votos afirmativos</td>
+                                <td class="text-right">23.628.526</td>
+                                <td class="text-right">96.88</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Votos en blanco</td>
+                                <td class="text-right">758.944</td>
+                                <td class="text-right">3.12</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Votos válidos</td>
+                                <td class="text-right">24.387.470</td>
+                                <td class="text-right">98.78</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Participación</td>
+                                <td class="text-right">24.687.487</td>
+                                <td class="text-right">75.78</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Abstenciones</td>
+                                <td class="text-right">7.898.275</td>
+                                <td class="text-right">24.15</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Electores registrados</td>
+                                <td class="text-right">32.621.468</td>
+                                <td class="text-right">100.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- --------------------------FORMULARIO ---------------------------------------->
+    <div id="formularioPaso" class="modal fade">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <!-- modal-sm-->
+            <div class="modal-content">
+                <!-- style="max-height: 200px;"-->
+                <div class="modal-header">
+                    <h5 class="modal-title">Elecciones 2019</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form class="form-inline" (submit)="submit()" #formularioPaso="ngForm" id="formularioPaso">
+                        <div class="alert alert-primary" role="alert" style="width: 100%">
+                            <h5 class="text-center"><i>Municipio: </i> <i id="elmuniNombre"></i> <i>, Id Pcial.:</i> <i
+                                    id="elmuni"></i></h5>
+                        </div>
+                        <input type="hidden" class="form-control" id="nombreOculto" name="nombreOculto">
+                        <input type="hidden" class="form-control" id="elmuniid" name="elmuniid">
+                        <input type="hidden" class="form-control" id="idOculto" name="idOculto">
+
+                        <div class="form-row">
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text form-control-sm">Primero</div>
+                                    </div>
+                                    <input type="text" class="form-control form-control-sm" id="candidatoPrimero"
+                                        name="candidatoPrimero" #candidatoPrimero="ngModel"
+                                        [(ngModel)]="modeloPaso2019.paso2019candidatoPrimero">
+                                    <!-- <div *ngIf="candidatoPrimero.invalid && (candidatoPrimero.dirty || candidatoPrimero.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="candidatoPrimero.errors.required">
+                          Se requiere el nombre del candidato primero
+                        </div>
+                      </div> -->
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text form-control-sm">Segundo</div>
+                                    </div>
+                                    <input type="text" class="form-control form-control-sm" id="candidatoSegundo"
+                                        name="candidatoSegundo" #candidatoSegundo="ngModel"
+                                        [(ngModel)]="modeloPaso2019.paso2019candidatoSegundo">
+                                    <!-- <div *ngIf="candidatoSegundo.invalid && (candidatoSegundo.dirty || candidatoSegundo.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="candidatoSegundo.errors.required">
+                          Se requiere el nombre del candidato segundo
+                        </div>
+                      </div> -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row my-1"></div>
+
+                        <div class="form-row">
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text form-control-sm">Esp.Pol. 1</div>
+                                    </div>
+                                    <select class="form-control form-control-sm" id="espacioPrimero"
+                                        name="espacioPrimero" [(ngModel)]="modeloPaso2019.paso2019espacioPrimero">
+                                        <option *ngFor="let espacio of espacios" [value]="espacio.value">
+                                            {{espacio.text}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text form-control-sm">Esp.Pol. 2</div>
+                                    </div>
+                                    <select class="form-control form-control-sm" id="espacioSegundo"
+                                        name="espacioSegundo" [(ngModel)]="modeloPaso2019.paso2019espacioSegundo">
+                                        <option *ngFor="let espacio of espacios" [value]="espacio.value">
+                                            {{espacio.text}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row my-1"></div>
+
+                        <div class="form-row">
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text form-control-sm">Porc. primero</div>
+                                    </div>
+                                    <input type="number" class="form-control form-control-sm text-right"
+                                        id="porcentajePrimero" name="porcentajePrimero"
+                                        [(ngModel)]="modeloPaso2019.paso2019porcPrimero">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text form-control-sm">Porc. segundo</div>
+                                    </div>
+                                    <input type="number" class="form-control form-control-sm text-right"
+                                        id="porcentajeSegundo" name="porcentajeSegundo"
+                                        [(ngModel)]="modeloPaso2019.paso2019porcSegundo">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row my-1"></div>
+
+                        <div class="form-row">
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text form-control-sm">Votos en blanco</div>
+                                    </div>
+                                    <input type="number" class="form-control form-control-sm text-right"
+                                        id="votosEnBlanco" name="votosEnBlanco"
+                                        [(ngModel)]="modeloPaso2019.paso2019votosEnBlanco">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text form-control-sm">Votos positivos</div>
+                                    </div>
+                                    <input type="number" class="form-control form-control-sm text-right"
+                                        id="votosPositivos" name="votosPositivos"
+                                        [(ngModel)]="modeloPaso2019.paso2019votosPositivos">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row my-1"></div>
+
+                        <div class="form-row">
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text form-control-sm">% Votos en blanco</div>
+                                    </div>
+                                    <input type="number" class="form-control form-control-sm text-right"
+                                        id="votosEnBlancoPorcentaje" name="votosEnBlancoPorcentaje"
+                                        [(ngModel)]="modeloPaso2019.paso2019porcVotosEnBlanco">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text form-control-sm">% Votos positivos</div>
+                                    </div>
+                                    <input type="number" class="form-control form-control-sm text-right"
+                                        id="votosPositivosPorcentaje" name="votosPositivosPorcentaje"
+                                        [(ngModel)]="modeloPaso2019.paso2019porcVotosPositivos">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row my-1"></div>
+
+                        <div class="form-row">
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <label for="obs">Observaciones</label>
+                                    <textarea class="form-control form-control-sm rounded-4" id="obs" rows="2"
+                                        style="width: 14.5rem;"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <input type="checkbox" class="form-check-input mt-4 ml-4" id="recuperado"
+                                        name="recuperado" [(ngModel)]="modeloPaso2019.paso2019recuperado">
+                                    <label class="ml-5 mt-4" for="recuperado">
+                                        <h6>Recuperado</h6>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row my-4"></div>
+
+                        <div class="form-row ml-2">
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-secondary form-control-sm"
+                                        data-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group" style="display: block;">
+                                    <button type="submit" class="btn btn-primary form-control-sm"
+                                        [disabled]="!formularioPaso.form.valid">Guardar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <div class="card mt-5 ml-5" id="cardGrafico" style="z-index: 500;" [hidden]="!verGrafico">
+    <div class="card-body">
+      <h5 class="card-title">Gráfico</h5> -->
+    <!-- <div id="chart" style="width: 10rem;"></div> -->
+    <!-- </div> -->
+    <!-- </div> -->
+    <!-- <div id="chart" style="z-index: 2000; width: 30rem;" [hidden]="!verGrafico"></div> -->
+
+</div>

@@ -1,0 +1,12 @@
+app.module.ts
+app.component
+
+    componente: barra-navegacion    componente: mapa            interface: buscador.interface.ts    servicio: buscador.service.ts
+    acepta input por teclado y      escucha evento emitido      Estructura los datos que utiliza    Cosume el servicio buscador
+    dispara por cada input el       por barra-navegacion        la aplicacion                       con el criterio de busqueda
+    servicio buscador.service.ts,   y toma el wkt. Lo pasa                                          ingresado en la barra-navegacion
+    del json resultante de la       a geoJson y lo muestra
+    busqueda obtiene el wkt y       en el mapa
+    emite evento: "miEvento"
+    con el wkt como parametro       
+                                    

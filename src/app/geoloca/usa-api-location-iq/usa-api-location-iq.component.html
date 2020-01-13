@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        &nbsp;
+        <span class="badge badge-pill badge-success">{{contador}}</span>
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#" *ngFor="let busqueda of vectorBusquedas; let i = index;"
+          (click)="busquedasGuardadas($event)" style="font-size: small;">{{i}} - {{busqueda}}</a>
+      </div>
+    </div>
+    <div class="col">
+      <input class="form-control form-control-sm" #direbuscar type="text" placeholder="LocationIq"
+        [(ngModel)]="valorTexto" aria-label="Search" (keydown)="keyDownFunction($event)"
+        style="font-size:small; max-height: 2rem; max-width: 9rem; border-color: #00b300; left: 1px;"
+        data-toggle="tooltip" data-placement="top" title={{infoBuscar}} />
+    </div>
+  </div>
+</div>
+<!-- <button class="btn btn-sm btn-outline-success ml-2 my-sm-0" type="submit" (click)="buscaLugar(direbuscar.value)"
+    data-toggle="tooltip" data-placement="top" title={{infoBuscar}}>Buscar</button> -->
+<div class="row">
+  <ul class="list-group">
+    <button type="button" class="list-group-item list-group-item-action" (click)="atajar($event)"
+      *ngFor="let item of listado; let i = index;">{{i}} - {{item}}</button>
+  </ul>
+</div>

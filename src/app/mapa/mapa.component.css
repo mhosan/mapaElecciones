@@ -1,0 +1,55 @@
+#map {
+    position: absolute;
+    height: 100%; /*30rem;*/
+    width: 100%;
+    left: 0px;
+    /* top: 29% */
+}
+
+.footer {
+    position: relative;
+    z-index: 2000;
+    top: 85%;
+    /*height: 1.8rem;*/
+    background-color: white;
+    text-align: center;
+    display: none;
+ }
+ .footerGenerales {
+    position: relative;
+    z-index: 2000;
+    top: 85%;
+    /*height: 1.8rem;*/
+    background-color: white;
+    /*text-align: center;*/
+    display: none;
+ }
+
+ .fila {
+     position: absolute;
+     width: 100%;
+     height: 0px;;
+ }
+
+ .centradora {
+     /*visibility: hidden;*/
+     /*display: flex;*/
+     justify-content: center;
+     align-items: center;
+ }
+ .menu {
+    z-index: 2000;
+    position: relative; 
+    /*background-color: rgba(171, 187, 171, 0.5);*/
+    background-color: rgba(225, 228, 228, 0.7);
+    width: 15em;
+    top: 2rem;
+ }
+ .menu i{
+    position: relative; 
+    right: 15px;
+ }
+ .dropdown-divider {
+    border-top: 1px solid #173c61;
+    margin: 15px;
+ }

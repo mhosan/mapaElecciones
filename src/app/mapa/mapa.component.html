@@ -158,12 +158,12 @@
                     <span>×</span>
         </button> -->
         <div class="row " style="position: relative; z-index: 2000;">
-            <div class="col-12 col-md-6 col-lg-5 col-xl-4" >
+            <div class="col-12 col-md-6 col-lg-5 col-xl-4">
                 <app-usa-api (eventoMarcador)="ponerMarcador($event)"></app-usa-api>
             </div>
         </div>
         <div class="row " style="position: relative; z-index: 2000;">
-            <div class="col-12 col-md-6 col-lg-5 col-xl-4" >
+            <div class="col-12 col-md-6 col-lg-5 col-xl-4">
                 <app-usa-api-location-iq (eventoMarcador)="ponerMarcador($event)"></app-usa-api-location-iq>
             </div>
         </div>
@@ -252,16 +252,30 @@
     <!-- ============================================================================================ -->
     <!-- =================================Capa WFS ==================================================-->
     <!-- ============================================================================================ -->
-    <div class="card collapse" style="position: relative; z-index:2000; width: 18rem;" id="capaWFS">
-        <div class="card-body">
+    <div class="card collapse ml-5" style="position: relative; z-index:2000; width: 15rem;" id="capaWFS">
+        <div class="card-header">
+            <span class="card-title h5">Capas WFS</span>
             <button type="button" class="close" data-toggle="collapse" data-target="#capaWFS">
                 <span>×</span>
             </button>
-            <h5 class="card-title">Capa WFS del IGN (Partidos)</h5>
-            <div class="form-group">
-                <button class="btn btn-info" (click)="capaWFS();">Cargar</button>
+        </div>
+        <div class="card-body">
+            <div class="form-group form-group-sm">
+                <div class="input-group input-group-sm">
+                    <div class="input-group-prepend input-group-prepend-sm">
+                        <span class="input-group-text ml-3" id="cargarWfsIgn">IGN, capa partidos</span>
+                    </div>
+                    <button class="btn btn-info btn-sm" (click)="capaWFS();" id="cargarWfsIgn"><i class="fa fa-check"></i></button>
+                </div>
             </div>
-            <!-- <p class="card-text">{{partidoSeleccionado}}</p> -->
+            <div class="form-group form-group-sm">
+                <div class="input-group input-group-sm">
+                    <div class="input-group-prepend input-group-prepend-sm">
+                        <span class="input-group-text ml-3" id="cargarWfsIgn">Indec, capa saraza</span>
+                    </div>
+                    <button class="btn btn-info btn-sm" id="cargarWfsIgn"><i class="fa fa-check"></i></button>
+                </div>
+            </div>
         </div>
     </div>
 

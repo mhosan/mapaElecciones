@@ -16,6 +16,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from './../environments/environment';
 import { PartidosFormComponent } from './mapa/partidos-form/partidos-form.component';
+import { BnavegaComponent } from './componentes/bnavega/bnavega.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PartidosFormComponent } from './mapa/partidos-form/partidos-form.compon
     UsaApiComponent,
     WebappComponent,
     UsaApiLocationIqComponent,
-    PartidosFormComponent
+    PartidosFormComponent,
+    BnavegaComponent
   ],
   imports: [
     BrowserModule,

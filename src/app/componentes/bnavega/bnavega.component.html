@@ -1,30 +1,62 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="position:relative; z-index:3000;">
   <a class="navbar-brand" href="#">Argengis</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      <!-- <li class="nav-item active">
+        <button class="dropdown-item mt-1" data-toggle="collapse" data-target="#fila">
+          Geolocalizar
+        </button>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
-      </li>
+      </li> -->
+      <!-- Ojo, estos iconos de fontawesome SI andan: <i class="fa fa-search"></i>  <i class="fa fa-eye"></i> <i class="fa fa-eye-slash"></i> -->
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Menú
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
+          <button class="dropdown-item mt-1" data-toggle="collapse" data-target="#fila">
+            Geolocalizar
+          </button>
+          <button class="dropdown-item" type="button" (click)="menuSeleccionado('paso2019')">
+            Elecc. Paso 2019
+          </button>
+          <button class="dropdown-item flip" type="button" data-toggle="collapse" data-target="#resumenPaso">
+            Resumén Paso 2019
+          </button>
+          <button class="dropdown-item" type="button" (click)="menuSeleccionado('generales2019')">Elecc.
+            Grales.2019
+          </button>
+          <button class="dropdown-item" type="button" (click)="menuSeleccionado('circuitos')">
+            Circ. electorales (todos)
+          </button>
+          <button class="dropdown-item" type="button" data-toggle="collapse" data-target="#buscaCircuito"
+            (click)="buscarPartido();">
+            <!-- buscarPartido() llena el vector para el combo-->
+            Circ. electorales (buscar)
+          </button>
+          <button class="dropdown-item" type="button" (click)="menuSeleccionado('leerPartidos')">
+            Part.Pcia. Bs. As. (todos)
+          </button>
+          <button class="dropdown-item" type="button" data-toggle="collapse" data-target="#buscaPartido"
+            (click)="buscarPartido();">
+            <!-- buscarPartido() llena el vector para el combo-->
+            Part.Pcia. Bs. As. (buscar)
+          </button>
+          <button class="dropdown-item" type="button" data-toggle="collapse" data-target="#buscaEscuela"
+            (click)="buscarPartido();">
+            <!-- buscarPartido() llena el vector para el combo-->
+            Escuelas (buscar)
+          </button>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -33,3 +65,58 @@
     </form>
   </div>
 </nav>
+
+<!-- =================================Circuito electoral==========================================-->
+<div class="card collapse" style="position: relative; z-index:2000; width: 18rem;" id="buscaCircuito">
+  <div class="card-body">
+    <button type="button" class="close" data-toggle="collapse" data-target="#buscaCircuito">
+      <span>×</span>
+    </button>
+    <h5 class="card-title">Buscar circuito electoral</h5>
+    <div class="form-group">
+      <label for="selectCircuito">Desplegar para selecc.</label>
+      <select class="form-control" id="selectCircuito" [(ngModel)]="partidoSeleccionadoParaCircuito"
+        (change)="menuSeleccionado('unPartido', partidoSeleccionadoParaCircuito)">
+        <option>Seleccionar un partido</option>
+        <option *ngFor="let item of listadoPartidos; let i = index;">{{item}}</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- =================================Partidos====================================================-->
+<div class="card collapse" style="position: relative; z-index:2000; width: 18rem;" id="buscaPartido">
+  <div class="card-body">
+    <button type="button" class="close" data-toggle="collapse" data-target="#buscaPartido">
+      <span>×</span>
+    </button>
+    <h5 class="card-title">Buscar partidos</h5>
+    <div class="form-group">
+      <label for="selectPartido">Desplegar para seleccionar</label>
+      <select class="form-control" id="selectPartido" [(ngModel)]="partidoSeleccionado"
+        (change)="menuSeleccionado('unPartidoPartido', partidoSeleccionado)">
+        <option>Seleccionar un partido</option>
+        <option *ngFor="let item of listadoPartidos; let i = index;">{{item}}</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- =================================Escuelas ===================================================-->
+<div class="card collapse" style="position: relative; z-index:2000; width: 18rem;" id="buscaEscuela">
+  <div class="card-body">
+    <button type="button" class="close" data-toggle="collapse" data-target="#buscaEscuela">
+      <span>×</span>
+    </button>
+    <h5 class="card-title">Buscar escuelas por partido</h5>
+    <div class="form-group">
+      <label for="selectEscuela">Desplegar para selecc.</label>
+      <select class="form-control" id="selectEscuela" [(ngModel)]="partidoSeleccionadoParaEscuela"
+        (change)="menuSeleccionado('unaEscuela',partidoSeleccionadoParaEscuela)">
+        <option>Seleccionar un partido</option>
+        <option *ngFor="let item of listadoPartidos; let i = index;">{{item}}</option>
+      </select>
+    </div>
+    <!-- <p class="card-text">{{partidoSeleccionado}}</p> -->
+  </div>
+</div>

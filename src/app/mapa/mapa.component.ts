@@ -112,6 +112,36 @@ export class MapaComponent implements OnInit {
   //document.getElementById("selectID").options.length = 0;
 
   //=====================================================================================
+  administrarNavBarMenu(seleccion:any){
+    //===================================================================================
+    switch(seleccion.seleccion){
+      case 'paso2019':
+        this.elecciones2019Paso();
+        break;
+      case 'generales2019':
+        this.elecciones2019Generales();
+        break;
+      case 'circuitos':
+        this.leerCircuitos();
+        break;
+      case 'unPartido':
+        //alert(seleccion.partido);
+        this.circuito(seleccion.partido);
+        break;
+      case 'leerPartidos':
+        this.leerPartidos();
+        break;
+      case 'unPartidoPartido':
+        this.partidoElegido(seleccion.partido)
+        break;
+      case 'unaEscuela':
+        this.escuelas(seleccion.partido);
+        break;
+
+    }
+  }
+
+  //=====================================================================================
   buscarPartido() {  //ARRAY con los partidos, para cargar el combo de la vista
     //===================================================================================
     if (this.listadoPartidos.length > 0) {
@@ -144,7 +174,7 @@ export class MapaComponent implements OnInit {
       });
   }
   //=====================================================================================
-  partidoElegido() {  //traer UN partido
+  partidoElegido(partidoSeleccionado:string) {  //traer UN partido
     //===================================================================================
     if (miMapa.hasLayer(this.elPartidoFiltrado)) {
       miMapa.removeLayer(this.elPartidoFiltrado);
@@ -154,7 +184,7 @@ export class MapaComponent implements OnInit {
     }
     this.servicioDatos.buscarGeoJsonPartidos()
       .subscribe(respuestaJson => {
-        this.elPartidoFiltrado = this.servicioCapasPartido.getPartidos(respuestaJson, this.partidoSeleccionado);
+        this.elPartidoFiltrado = this.servicioCapasPartido.getPartidos(respuestaJson, partidoSeleccionado);
         miMapa.addLayer(this.elPartidoFiltrado);
         miMapa.fitBounds(this.elPartidoFiltrado.getBounds());
       });
@@ -202,7 +232,7 @@ export class MapaComponent implements OnInit {
       });
   }
   //=====================================================================================
-  circuito() {  //circuito electoral filtrado
+  circuito(elPartido:string) {  //circuito electoral filtrado
     //===================================================================================
     if (miMapa.hasLayer(this.misCircuitos)) {
       miMapa.removeLayer(this.misCircuitos);
@@ -212,14 +242,14 @@ export class MapaComponent implements OnInit {
     }
     this.servicioDatos.getCircuitosElectorales()//<--- primero obtengo el json con los datos
       .subscribe(respuestaJson => {
-        this.elCircuitoFiltrado = this.servicioCircuitos.getCircuitosDepurado(respuestaJson, this.partidoSeleccionadoParaCircuito); //<--obtengo la capa armada
+        this.elCircuitoFiltrado = this.servicioCircuitos.getCircuitosDepurado(respuestaJson, elPartido); //<--obtengo la capa armada
         miMapa.addLayer(this.elCircuitoFiltrado);
         miMapa.fitBounds(this.elCircuitoFiltrado.getBounds());
       });
   }
 
   //=====================================================================================
-  escuelas() {  //leer un geoJson de escuelas que se encuentra en la carpeta assets
+  escuelas(elPartidoDeLaEscuela:string) {  //leer un geoJson de escuelas que se encuentra en la carpeta assets
     //===================================================================================
     if (miMapa.hasLayer(this.laEscuelaFiltrada)) {
       miMapa.removeLayer(this.laEscuelaFiltrada);
@@ -229,7 +259,7 @@ export class MapaComponent implements OnInit {
     }
     this.servicioDatos.getEscuelas()//<--- primero obtengo el json con los datos
       .subscribe(respuestaJson => {
-        this.laEscuelaFiltrada = this.servicioEscuelas.getEscuelas(respuestaJson, this.partidoSeleccionadoParaEscuela); //<--obtengo la capa armada
+        this.laEscuelaFiltrada = this.servicioEscuelas.getEscuelas(respuestaJson, elPartidoDeLaEscuela); //<--obtengo la capa armada
         miMapa.addLayer(this.laEscuelaFiltrada);
         miMapa.fitBounds(this.laEscuelaFiltrada.getBounds());
       });

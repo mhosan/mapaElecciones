@@ -1,10 +1,5 @@
-
 <div id="map" class="container-fluid">
-<<<<<<< HEAD
-    <span class="arriba">{{version}}</span>
-=======
-    <app-bnavega></app-bnavega>    
->>>>>>> babbc0b18958f4638ed57ff5251f4d092e9f4d35
+    <app-bnavega (seleccionMenuNavBar)="administrarNavBarMenu($event)"></app-bnavega>
     <!-- este boton colapsador colapsa al div con id=fila (mas abajo)-->
     <div class="row">
         <div class="col-1">
@@ -19,122 +14,6 @@
 
                 <!-- ---------------Menu---------------  -->
                 <div class="dropdown-menu menu">
-
-                    <div class="row">
-                        <div class="col-10">
-                            <button class="dropdown-item" data-toggle="collapse" data-target="#fila">
-                                Geolocalizar
-                            </button>
-                        </div>
-                        <div class="col-2">
-                            <i class="fa fa-search"></i>
-                        </div>
-                    </div>
-
-                    <div class="dropdown-divider"></div>
-
-                    <div class="row">
-                        <div class="col-10">
-                            <button class="dropdown-item" type="button" (click)="elecciones2019Paso()">
-                                Elecc. Paso 2019
-                            </button>
-                        </div>
-                        <div class="col-2">
-                            <i class="fa fa-eye-slash"></i>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-10">
-                            <button class="dropdown-item flip" type="button" data-toggle="collapse"
-                                data-target="#resumenPaso">
-                                Resumén Paso 2019
-                            </button>
-                        </div>
-                        <div class="col-2">
-                            <i class="fa fa-eye-slash"></i>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-10">
-                            <button class="dropdown-item" type="button" (click)="elecciones2019Generales()">Elecc.
-                                Grales.2019</button>
-                        </div>
-                        <div class="col-2">
-                            <i class="fa fa-eye-slash"></i>
-                        </div>
-                    </div>
-
-                    <div class="dropdown-divider"></div>
-
-                    <div class="row">
-                        <div class="col-10">
-                            <button class="dropdown-item" type="button" (click)="leerCircuitos()">
-                                Circ. electorales (todos)
-                            </button>
-                        </div>
-                        <div class="col-2">
-                            <i class="fa fa-eye" *ngIf="capaCircuitos"></i>
-                            <i class="fa fa-eye-slash" *ngIf="!capaCircuitos"></i>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-10">
-                            <button class="dropdown-item" type="button" data-toggle="collapse"
-                                data-target="#buscaCircuito" (click)="buscarPartido();">
-                                <!-- buscarPartido() llena el vector para el combo-->
-                                Circ. electorales (buscar)
-                            </button>
-                        </div>
-                        <div class="col-2">
-                            <i class="fa fa-eye" *ngIf="capaCircuitos"></i>
-                            <i class="fa fa-eye-slash" *ngIf="!capaCircuitos"></i>
-                        </div>
-                    </div>
-
-                    <div class="dropdown-divider"></div>
-
-                    <div class="row">
-                        <div class="col-10">
-                            <button class="dropdown-item" type="button" (click)="leerPartidos()">
-                                Part.Pcia. Bs. As. (todos)
-                            </button>
-                        </div>
-                        <div class="col-2">
-                            <i class="fa fa-eye-slash"></i>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-10">
-                            <button class="dropdown-item" type="button" data-toggle="collapse"
-                                data-target="#buscaPartido" (click)="buscarPartido();">
-                                <!-- buscarPartido() llena el vector para el combo-->
-                                Part.Pcia. Bs. As. (buscar)
-                            </button>
-                        </div>
-                        <div class="col-2">
-                            <i class="fa fa-search"></i><!-- respuesta.features[0].properties.nam -->
-                        </div>
-                    </div>
-
-                    <div class="dropdown-divider"></div>
-
-                    <div class="row">
-                        <div class="col-10">
-                            <button class="dropdown-item" type="button" data-toggle="collapse"
-                                data-target="#buscaEscuela" (click)="buscarPartido();">
-                                <!-- buscarPartido() llena el vector para el combo-->
-                                Escuelas (buscar)
-                            </button>
-                        </div>
-                        <div class="col-2">
-                            <i class="fa fa-search"></i><!-- respuesta.features[0].properties.nam -->
-                        </div>
-                    </div>
-
-                    <div class="dropdown-divider"></div>
 
                     <div class="row">
                         <div class="col-10">
@@ -192,68 +71,6 @@
         </div>
     </div>
 
-    <!-- ============================================================================================ -->
-    <!-- =================================Partidos====================================================-->
-    <!-- ============================================================================================ -->
-    <div class="card collapse" style="position: relative; z-index:2000; width: 18rem;" id="buscaPartido">
-        <div class="card-body">
-            <button type="button" class="close" data-toggle="collapse" data-target="#buscaPartido">
-                <span>×</span>
-            </button>
-            <h5 class="card-title">Buscar partidos</h5>
-            <div class="form-group">
-                <label for="selectPartido">Desplegar para seleccionar</label>
-                <select class="form-control" id="selectPartido" [(ngModel)]="partidoSeleccionado"
-                    (change)="partidoElegido()">
-                    <option>Seleccionar un partido</option>
-                    <option *ngFor="let item of listadoPartidos; let i = index;">{{item}}</option>
-                </select>
-            </div>
-            <!-- <p class="card-text">{{partidoSeleccionado}}</p> -->
-        </div>
-    </div>
-
-    <!-- ============================================================================================ -->
-    <!-- =================================Circuito electoral==========================================-->
-    <!-- ============================================================================================ -->
-    <div class="card collapse" style="position: relative; z-index:2000; width: 18rem;" id="buscaCircuito">
-        <div class="card-body">
-            <button type="button" class="close" data-toggle="collapse" data-target="#buscaCircuito">
-                <span>×</span>
-            </button>
-            <h5 class="card-title">Buscar circuito electoral</h5>
-            <div class="form-group">
-                <label for="selectCircuito">Desplegar para selecc.</label>
-                <select class="form-control" id="selectCircuito" [(ngModel)]="partidoSeleccionadoParaCircuito"
-                    (change)="circuito()">
-                    <option>Seleccionar un partido</option>
-                    <option *ngFor="let item of listadoPartidos; let i = index;">{{item}}</option>
-                </select>
-            </div>
-            <!-- <p class="card-text">{{partidoSeleccionado}}</p> -->
-        </div>
-    </div>
-
-    <!-- ============================================================================================ -->
-    <!-- =================================Escuelas ===================================================-->
-    <!-- ============================================================================================ -->
-    <div class="card collapse" style="position: relative; z-index:2000; width: 18rem;" id="buscaEscuela">
-        <div class="card-body">
-            <button type="button" class="close" data-toggle="collapse" data-target="#buscaEscuela">
-                <span>×</span>
-            </button>
-            <h5 class="card-title">Buscar escuelas por partido</h5>
-            <div class="form-group">
-                <label for="selectEscuela">Desplegar para selecc.</label>
-                <select class="form-control" id="selectEscuela" [(ngModel)]="partidoSeleccionadoParaEscuela"
-                    (change)="escuelas()">
-                    <option>Seleccionar un partido</option>
-                    <option *ngFor="let item of listadoPartidos; let i = index;">{{item}}</option>
-                </select>
-            </div>
-            <!-- <p class="card-text">{{partidoSeleccionado}}</p> -->
-        </div>
-    </div>
 
     <!-- ============================================================================================ -->
     <!-- =================================Capa WFS ==================================================-->
@@ -271,7 +88,8 @@
                     <div class="input-group-prepend input-group-prepend-sm">
                         <span class="input-group-text ml-3" id="cargarWfsIgn">IGN, capa partidos</span>
                     </div>
-                    <button class="btn btn-info btn-sm" (click)="capaWFS();" id="cargarWfsIgn"><i class="fa fa-check"></i></button>
+                    <button class="btn btn-info btn-sm" (click)="capaWFS();" id="cargarWfsIgn"><i
+                            class="fa fa-check"></i></button>
                 </div>
             </div>
             <div class="form-group form-group-sm">

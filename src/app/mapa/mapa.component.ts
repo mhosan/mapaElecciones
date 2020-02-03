@@ -58,6 +58,7 @@ export class MapaComponent implements OnInit {
   public partidoSeleccionado: string;
   public partidoSeleccionadoParaCircuito: string;
   public partidoSeleccionadoParaEscuela: string;
+  public version:string;
 
   constructor(
     private servicioDatos: DatosService,
@@ -71,6 +72,7 @@ export class MapaComponent implements OnInit {
   //====================================================================================
   ngOnInit() {
     //==================================================================================
+    this.version=L.version;
     this.armarTodo();
   }
   //================================================fin "ngOnInit=======================

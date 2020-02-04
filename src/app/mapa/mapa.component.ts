@@ -137,7 +137,9 @@ export class MapaComponent implements OnInit {
       case 'unaEscuela':
         this.escuelas(seleccion.partido);
         break;
-
+      case 'partidosIgn':
+        this.capaWFS();
+        break;
     }
   }
 

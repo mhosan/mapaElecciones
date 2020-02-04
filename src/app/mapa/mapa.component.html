@@ -1,47 +1,7 @@
 <div id="map" class="container-fluid">
     <app-bnavega (seleccionMenuNavBar)="administrarNavBarMenu($event)"></app-bnavega>
-    <!-- este boton colapsador colapsa al div con id=fila (mas abajo)-->
-    <div class="row">
-        <div class="col-1">
-            <div class="dropdown">
-                <!-- el boton para ver el menú ---------------------------------------------------------------- -->
-                <button class="btn btn-info" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false"
-                    style="position: relative; z-index: 2000; top:0.7rem; left: -0.3rem; width: 3.0rem; height: 3.0rem;">
-                    <i class="fa fa-list"></i>
-                </button>
-                <!-- el boton para ver el menú ---------------------------------------------------------------- -->
-
-                <!-- ---------------Menu---------------  -->
-                <div class="dropdown-menu menu">
-
-                    <div class="row">
-                        <div class="col-10">
-                            <button class="dropdown-item" type="button" data-toggle="collapse" data-target="#capaWFS">
-                                Capa WFS
-                            </button>
-                        </div>
-                        <div class="col-2">
-                            <i class="fa fa-tags"></i>
-                        </div>
-                    </div>
-
-                </div><!-- menu, dropdown-menu -->
-            </div> <!-- dropdown -->
-        </div><!-- col -->
-
-        <!-- <div class="col-2 col-sm-4 col-md-4 col-lg-4 col-xl-4 ml-5"
-            style="z-index: 2000; position:relative; top: 0.7rem; background-color:rgba(225, 228, 228, 0.7); ">
-            <h3 class="text-center" style="padding-bottom: 3px; padding-top: 4.5px;"> Mapa electoral</h3>
-        </div> -->
-    </div>
-
 
     <div class="container mt-3 collapse" id="fila">
-        <!-- <button type="button" class="close" style="position: relative; z-index:2100;"
-                    data-toggle="collapse" data-target="#fila">
-                    <span>×</span>
-        </button> -->
         <div class="row " style="position: relative; z-index: 2000;">
             <div class="col-12 col-md-6 col-lg-5 col-xl-4">
                 <app-usa-api (eventoMarcador)="ponerMarcador($event)"></app-usa-api>
@@ -53,57 +13,6 @@
             </div>
         </div>
     </div>
-
-
-    <div class="row" style="position:relative; top: 100px;">
-        <div class="col">
-            <div class="row collapse" id="pepe" style="position: relative; left:0.1rem; top: 1rem;">
-                <!--  geolocalizar con la api de la secretaria de modernización de la nación: https://datosgobar.github.io/georef-ar-api
-            https://datosgobar.github.io/georef-ar-api/quick-start/  en este último link estan los ejemplos de uso -->
-                <div class="float-left" style="z-index: 2100;">
-                    <app-usa-api (eventoMarcador)="ponerMarcador($event)"></app-usa-api>
-                </div>
-                <!--  geolocalizar con la api locationIq (http://locationiq.com)-->
-                <div class="float-left" style="z-index: 2100; position: absolute; left: 31.5rem;">
-                    <app-usa-api-location-iq (eventoMarcador)="ponerMarcador($event)"></app-usa-api-location-iq>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- ============================================================================================ -->
-    <!-- =================================Capa WFS ==================================================-->
-    <!-- ============================================================================================ -->
-    <div class="card collapse ml-5" style="position: relative; z-index:2000; width: 15rem;" id="capaWFS">
-        <div class="card-header">
-            <span class="card-title h5">Capas WFS</span>
-            <button type="button" class="close" data-toggle="collapse" data-target="#capaWFS">
-                <span>×</span>
-            </button>
-        </div>
-        <div class="card-body">
-            <div class="form-group form-group-sm">
-                <div class="input-group input-group-sm">
-                    <div class="input-group-prepend input-group-prepend-sm">
-                        <span class="input-group-text ml-3" id="cargarWfsIgn">IGN, capa partidos</span>
-                    </div>
-                    <button class="btn btn-info btn-sm" (click)="capaWFS();" id="cargarWfsIgn"><i
-                            class="fa fa-check"></i></button>
-                </div>
-            </div>
-            <div class="form-group form-group-sm">
-                <div class="input-group input-group-sm">
-                    <div class="input-group-prepend input-group-prepend-sm">
-                        <span class="input-group-text ml-3" id="cargarWfsIgn">Indec, capa saraza</span>
-                    </div>
-                    <button class="btn btn-info btn-sm" id="cargarWfsIgn"><i class="fa fa-check"></i></button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
 
     <div class="footer container">
         <!-- Referencias paso 2019 -->
@@ -479,14 +388,5 @@
             </div>
         </div>
     </div>
-
-
-    <!-- <div class="card mt-5 ml-5" id="cardGrafico" style="z-index: 500;" [hidden]="!verGrafico">
-    <div class="card-body">
-      <h5 class="card-title">Gráfico</h5> -->
-    <!-- <div id="chart" style="width: 10rem;"></div> -->
-    <!-- </div> -->
-    <!-- </div> -->
-    <!-- <div id="chart" style="z-index: 2000; width: 30rem;" [hidden]="!verGrafico"></div> -->
 
 </div>

@@ -16,7 +16,7 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
       </li> -->
-        <!-- Ojo, estos iconos de fontawesome SI andan: <i class="fa fa-search"></i>  <i class="fa fa-eye"></i> <i class="fa fa-eye-slash"></i> -->
+        <!-- Ojo, estos iconos de fontawesome SI andan: <i class="fa fa-search"></i>  <i class="fa fa-eye"></i> <i class="fa fa-eye-slash"></i> <i class="fa fa-tags"></i> -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
@@ -40,7 +40,6 @@
             </button>
             <button class="dropdown-item" type="button" data-toggle="collapse" data-target="#buscaCircuito"
               (click)="buscarPartido();">
-              <!-- buscarPartido() llena el vector para el combo-->
               Circ. electorales (buscar)
             </button>
             <button class="dropdown-item" type="button" (click)="menuSeleccionado('leerPartidos')">
@@ -48,22 +47,24 @@
             </button>
             <button class="dropdown-item" type="button" data-toggle="collapse" data-target="#buscaPartido"
               (click)="buscarPartido();">
-              <!-- buscarPartido() llena el vector para el combo-->
               Part.Pcia. Bs. As. (buscar)
             </button>
             <button class="dropdown-item" type="button" data-toggle="collapse" data-target="#buscaEscuela"
               (click)="buscarPartido();">
-              <!-- buscarPartido() llena el vector para el combo-->
               Escuelas (buscar)
+            </button>
+            <button class="dropdown-item" type="button" data-toggle="collapse" data-target="#capaWFS">
+              Capa WFS
             </button>
             <div class="dropdown-divider"></div>
           </div>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
+      <app-usuario></app-usuario>
+      <!-- <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      </form> -->
     </div>
   </nav>
 </div>
@@ -121,6 +122,33 @@
         <option *ngFor="let item of listadoPartidos; let i = index;">{{item}}</option>
       </select>
     </div>
-    <!-- <p class="card-text">{{partidoSeleccionado}}</p> -->
+  </div>
+</div>
+
+<!-- =================================Capa WFS ==================================================-->
+<div class="card collapse ml-5" style="position: relative; z-index:2000; width: 15rem;" id="capaWFS">
+  <div class="card-header">
+    <span class="card-title h5">Capas WFS</span>
+    <button type="button" class="close" data-toggle="collapse" data-target="#capaWFS">
+      <span>×</span>
+    </button>
+  </div>
+  <div class="card-body">
+    <div class="form-group form-group-sm">
+      <div class="input-group input-group-sm">
+        <div class="input-group-prepend input-group-prepend-sm">
+          <span class="input-group-text ml-3" id="cargarWfsIgn">IGN, capa partidos</span>
+        </div>
+        <button class="btn btn-info btn-sm" (click)="menuSeleccionado('partidosIgn');" id="cargarWfsIgn"><i class="fa fa-check"></i></button>
+      </div>
+    </div>
+    <!-- <div class="form-group form-group-sm">
+      <div class="input-group input-group-sm">
+        <div class="input-group-prepend input-group-prepend-sm">
+          <span class="input-group-text ml-3" id="cargarWfsIgn">Indec, capa saraza</span>
+        </div>
+        <button class="btn btn-info btn-sm" id="cargarWfsIgn"><i class="fa fa-check"></i></button>
+      </div>
+    </div> -->
   </div>
 </div>

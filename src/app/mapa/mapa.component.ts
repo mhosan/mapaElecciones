@@ -1166,8 +1166,8 @@ export class MapaComponent implements OnInit {
       //"Centros educativos Pcia. Bs.As.": layerJsonEdu
     };
 
-    controlLayers = L.control.layers(baseMaps, overlayMaps, {}).addTo(miMapa);
-
+    controlLayers = L.control.layers(baseMaps, overlayMaps, {position: 'topleft'}).addTo(miMapa);
+    
     sessionStorage.clear();
     this.leerDatos();
     //console.log(`SessionStorage despues de leer los datos: ${sessionStorage.getItem('municipios')}`);

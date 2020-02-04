@@ -1,13 +1,14 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="position:relative; z-index:3000;">
-  <a class="navbar-brand" href="#">Argengis</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light laNavBar">
+    <a class="navbar-brand" href="#">Argengis</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <!-- <li class="nav-item active">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <!-- <li class="nav-item active">
         <button class="dropdown-item mt-1" data-toggle="collapse" data-target="#fila">
           Geolocalizar
         </button>
@@ -15,56 +16,59 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
       </li> -->
-      <!-- Ojo, estos iconos de fontawesome SI andan: <i class="fa fa-search"></i>  <i class="fa fa-eye"></i> <i class="fa fa-eye-slash"></i> -->
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Menú
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <button class="dropdown-item mt-1" data-toggle="collapse" data-target="#fila">
-            Geolocalizar
-          </button>
-          <button class="dropdown-item" type="button" (click)="menuSeleccionado('paso2019')">
-            Elecc. Paso 2019
-          </button>
-          <button class="dropdown-item flip" type="button" data-toggle="collapse" data-target="#resumenPaso">
-            Resumén Paso 2019
-          </button>
-          <button class="dropdown-item" type="button" (click)="menuSeleccionado('generales2019')">Elecc.
-            Grales.2019
-          </button>
-          <button class="dropdown-item" type="button" (click)="menuSeleccionado('circuitos')">
-            Circ. electorales (todos)
-          </button>
-          <button class="dropdown-item" type="button" data-toggle="collapse" data-target="#buscaCircuito"
-            (click)="buscarPartido();">
-            <!-- buscarPartido() llena el vector para el combo-->
-            Circ. electorales (buscar)
-          </button>
-          <button class="dropdown-item" type="button" (click)="menuSeleccionado('leerPartidos')">
-            Part.Pcia. Bs. As. (todos)
-          </button>
-          <button class="dropdown-item" type="button" data-toggle="collapse" data-target="#buscaPartido"
-            (click)="buscarPartido();">
-            <!-- buscarPartido() llena el vector para el combo-->
-            Part.Pcia. Bs. As. (buscar)
-          </button>
-          <button class="dropdown-item" type="button" data-toggle="collapse" data-target="#buscaEscuela"
-            (click)="buscarPartido();">
-            <!-- buscarPartido() llena el vector para el combo-->
-            Escuelas (buscar)
-          </button>
-          <div class="dropdown-divider"></div>
-        </div>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
+        <!-- Ojo, estos iconos de fontawesome SI andan: <i class="fa fa-search"></i>  <i class="fa fa-eye"></i> <i class="fa fa-eye-slash"></i> -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Menú
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <button class="dropdown-item mt-1" data-toggle="collapse" data-target="#fila">
+              Geolocalizar
+            </button>
+            <button class="dropdown-item" type="button" (click)="menuSeleccionado('paso2019')">
+              Elecc. Paso 2019
+            </button>
+            <button class="dropdown-item flip" type="button" data-toggle="collapse" data-target="#resumenPaso">
+              Resumén Paso 2019
+            </button>
+            <button class="dropdown-item" type="button" (click)="menuSeleccionado('generales2019')">Elecc.
+              Grales.2019
+            </button>
+            <button class="dropdown-item" type="button" (click)="menuSeleccionado('circuitos')">
+              Circ. electorales (todos)
+            </button>
+            <button class="dropdown-item" type="button" data-toggle="collapse" data-target="#buscaCircuito"
+              (click)="buscarPartido();">
+              <!-- buscarPartido() llena el vector para el combo-->
+              Circ. electorales (buscar)
+            </button>
+            <button class="dropdown-item" type="button" (click)="menuSeleccionado('leerPartidos')">
+              Part.Pcia. Bs. As. (todos)
+            </button>
+            <button class="dropdown-item" type="button" data-toggle="collapse" data-target="#buscaPartido"
+              (click)="buscarPartido();">
+              <!-- buscarPartido() llena el vector para el combo-->
+              Part.Pcia. Bs. As. (buscar)
+            </button>
+            <button class="dropdown-item" type="button" data-toggle="collapse" data-target="#buscaEscuela"
+              (click)="buscarPartido();">
+              <!-- buscarPartido() llena el vector para el combo-->
+              Escuelas (buscar)
+            </button>
+            <div class="dropdown-divider"></div>
+          </div>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+</div>
+
+
 
 <!-- =================================Circuito electoral==========================================-->
 <div class="card collapse" style="position: relative; z-index:2000; width: 18rem;" id="buscaCircuito">

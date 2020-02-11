@@ -11,6 +11,9 @@ export class BnavegaComponent implements OnInit {
   seleccionMenuNavBar: EventEmitter< {seleccion:string, partido:string} >;
 
   public listadoPartidos: string[] = [];
+  public partidoSeleccionadoParaCircuito:any;
+  public partidoSeleccionado:any;
+  public partidoSeleccionadoParaEscuela: any;
 
   constructor(private servicioDatos: DatosService) { 
     this.seleccionMenuNavBar = new EventEmitter();

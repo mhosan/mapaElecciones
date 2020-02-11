@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { MapaComponent } from './mapa/mapa.component'
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
+//import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { UsaApiComponent } from './geoloca/usa-api-secr-modern/usa-api.component';
 import { WebappComponent } from './webapp/webapp.component';
 import { GeolocaApiSecrModernService } from './servicios/geoloca-api-secr-modern.service';
@@ -34,8 +34,8 @@ import { UsuarioComponent } from './componentes/usuario/usuario.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AngularFontAwesomeModule,
-    NgbModule,
+    //AngularFontAwesomeModule,
+    //NgbModule,
     AngularFireModule,
     AngularFireModule.initializeApp(environment.firebase, 'argengis-mh'), //el nombre de la aplicacion que va como 
                                                                           //segundo parámetro, es el nombre en firebase

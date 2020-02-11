@@ -4,7 +4,7 @@ import { LatitudLongitud } from '../modelos/latlon.interface';
 import { Paso2019edit } from '../modelos/paso2019edit';
 import { DatosService } from '../servicios/datos.service';
 import { EleccionesService } from '../servicios/elecciones.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+//import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CapaPartidosService } from '../servicios/capas/capa-partidos.service';
 import { CapaEscuelasService } from '../servicios/capas/capa-escuelas.service';
 import { CapaCircuitosService } from '../servicios/capas/capa-circuitos.service';
@@ -63,7 +63,7 @@ export class MapaComponent implements OnInit {
   constructor(
     private servicioDatos: DatosService,
     private servicioMunicipios: EleccionesService,
-    private modalService: NgbModal,
+    //private modalService: NgbModal,
     private servicioCapasPartido: CapaPartidosService,
     private servicioCircuitos: CapaCircuitosService,
     private servicioEscuelas: CapaEscuelasService,

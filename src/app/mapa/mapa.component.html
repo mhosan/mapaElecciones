@@ -1,7 +1,10 @@
 <div id="map" class="container-fluid">
+
+    <!-- barra de navegacion ---------------------------------------------------- -->
     <app-bnavega (seleccionMenuNavBar)="administrarNavBarMenu($event)"></app-bnavega>
 
-    <div class="container mt-3 collapse" id="fila">
+    <!-- geolocalizadores ------------------------------------------------------- -->
+    <div class="container collapse" id="fila">
         <div class="row " style="position: relative; z-index: 2000;">
             <div class="col-12 col-md-6 col-lg-5 col-xl-4">
                 <app-usa-api (eventoMarcador)="ponerMarcador($event)"></app-usa-api>
@@ -14,6 +17,7 @@
         </div>
     </div>
 
+    
     <div class="footer container">
         <!-- Referencias paso 2019 -->
         <div class="row fila">

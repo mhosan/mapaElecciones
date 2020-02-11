@@ -4,20 +4,29 @@
     <app-bnavega (seleccionMenuNavBar)="administrarNavBarMenu($event)"></app-bnavega>
 
     <!-- geolocalizadores ------------------------------------------------------- -->
-    <div class="container collapse" id="fila">
-        <div class="row " style="position: relative; z-index: 2000;">
-            <div class="col-12 col-md-6 col-lg-5 col-xl-4">
-                <app-usa-api (eventoMarcador)="ponerMarcador($event)"></app-usa-api>
-            </div>
+    <div class="card collapse" id="fila" style="position: relative; z-index: 450; width: 15rem;">
+        <div class="card-header text-center mt-2" style="padding: 0;">
+            <button type="button" class="close mr-3 mt-2" data-toggle="collapse" data-target="#fila">
+                <span>×</span>
+            </button>
+            <h6>Geolocalizar</h6>
         </div>
-        <div class="row " style="position: relative; z-index: 2000;">
-            <div class="col-12 col-md-6 col-lg-5 col-xl-4">
-                <app-usa-api-location-iq (eventoMarcador)="ponerMarcador($event)"></app-usa-api-location-iq>
+        <div class="card-body">
+            <div class="row ">
+                <div >
+                    <app-usa-api (eventoMarcador)="ponerMarcador($event)"></app-usa-api>
+                </div>
+            </div>
+
+            <div class="row ">
+                <div >
+                    <app-usa-api-location-iq (eventoMarcador)="ponerMarcador($event)"></app-usa-api-location-iq>
+                </div>
             </div>
         </div>
     </div>
 
-    
+
     <div class="footer container">
         <!-- Referencias paso 2019 -->
         <div class="row fila">

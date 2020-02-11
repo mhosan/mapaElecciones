@@ -11,16 +11,15 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^6.1.0",
-    "@angular/common": "^6.1.0",
-    "@angular/compiler": "^6.1.0",
-    "@angular/core": "^6.1.0",
+    "@angular/animations": "^8.2.14",
+    "@angular/common": "^8.2.14",
+    "@angular/compiler": "^8.2.14",
+    "@angular/core": "^8.2.14",
     "@angular/fire": "^5.2.3",
-    "@angular/forms": "^6.1.0",
-    "@angular/http": "^6.1.0",
-    "@angular/platform-browser": "^6.1.0",
-    "@angular/platform-browser-dynamic": "^6.1.0",
-    "@angular/router": "^6.1.0",
+    "@angular/forms": "^8.2.14",
+    "@angular/platform-browser": "^8.2.14",
+    "@angular/platform-browser-dynamic": "^8.2.14",
+    "@angular/router": "^8.2.14",
     "@mapbox/leaflet-omnivore": "^0.3.4",
     "@ng-bootstrap/ng-bootstrap": "^3.3.1",
     "@types/leaflet": "^1.4.0",
@@ -41,18 +40,18 @@
     "popper.js": "^1.15.0",
     "proj4": "^2.5.0",
     "rxjs-compat": "^6.2.1",
-    "web-animations-js": "^2.3.1",
-    "zone.js": "~0.8.26"
+    "web-animations-js": "^2.3.2",
+    "zone.js": "~0.9.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.8.0",
-    "@angular/cli": "^7.3.0",
-    "@angular/compiler-cli": "^6.1.0",
-    "@angular/language-service": "^6.1.0",
+    "@angular-devkit/build-angular": "~0.803.25",
+    "@angular/cli": "^8.3.25",
+    "@angular/compiler-cli": "^8.2.14",
+    "@angular/language-service": "^8.2.14",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
-    "codelyzer": "~4.3.0",
+    "codelyzer": "^5.0.1",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~3.0.0",
@@ -63,6 +62,6 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~2.9.2"
+    "typescript": "~3.5.3"
   }
 }

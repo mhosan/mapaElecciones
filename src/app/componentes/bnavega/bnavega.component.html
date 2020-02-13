@@ -56,11 +56,14 @@
             <button class="dropdown-item" type="button" data-toggle="collapse" data-target="#capaWFS">
               Capa WFS
             </button>
+            <button class="dropdown-item" type="button" (click)="menuSeleccionado('renabap')">
+              Renabap
+            </button>
             <div class="dropdown-divider"></div>
           </div>
         </li>
       </ul>
-      <app-usuario></app-usuario>
+      
       <!-- <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -72,7 +75,7 @@
 
 
 <!-- =================================Circuito electoral==========================================-->
-<div class="card collapse" style="position: relative; z-index:2000; width: 18rem;" id="buscaCircuito">
+<div class="card collapse" style="position: absolute; z-index:2000; width: 18rem;" id="buscaCircuito">
   <div class="card-body">
     <button type="button" class="close" data-toggle="collapse" data-target="#buscaCircuito">
       <span>×</span>
@@ -90,7 +93,7 @@
 </div>
 
 <!-- =================================Partidos====================================================-->
-<div class="card collapse" style="position: relative; z-index:2000; width: 18rem;" id="buscaPartido">
+<div class="card collapse" style="position: absolute; z-index:2000; width: 18rem;" id="buscaPartido">
   <div class="card-body">
     <button type="button" class="close" data-toggle="collapse" data-target="#buscaPartido">
       <span>×</span>
@@ -108,7 +111,7 @@
 </div>
 
 <!-- =================================Escuelas ===================================================-->
-<div class="card collapse" style="position: relative; z-index:2000; width: 18rem;" id="buscaEscuela">
+<div class="card collapse" style="position: absolute; z-index:2000; width: 18rem;" id="buscaEscuela">
   <div class="card-body">
     <button type="button" class="close" data-toggle="collapse" data-target="#buscaEscuela">
       <span>×</span>
@@ -126,7 +129,7 @@
 </div>
 
 <!-- =================================Capa WFS ==================================================-->
-<div class="card collapse ml-5" style="position: relative; z-index:2000; width: 15rem;" id="capaWFS">
+<div class="card collapse ml-5" style="position: absolute; z-index:2000; width: 15rem;" id="capaWFS">
   <div class="card-header">
     <span class="card-title h5">Capas WFS</span>
     <button type="button" class="close" data-toggle="collapse" data-target="#capaWFS">

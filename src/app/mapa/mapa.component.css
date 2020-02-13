@@ -68,4 +68,21 @@
    transform: translateY(-3px);
    /* transform: rotate(2deg); */
 }
+/*-----------grande ------------------*/
+@media (min-width: 576px) {
+   .usuario{
+      position:relative;
+      top:-3.5rem;
+      right: 1rem;
+   }
+}
+
+/*---------chico --------------------*/
+@media (max-width: 575.98px) {
+   .usuario{
+     clear:both;
+     left:-1rem;
+   }
+}
+
  

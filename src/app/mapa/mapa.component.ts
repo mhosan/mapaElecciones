@@ -9,6 +9,7 @@ import { CapaPartidosService } from '../servicios/capas/capa-partidos.service';
 import { CapaEscuelasService } from '../servicios/capas/capa-escuelas.service';
 import { CapaCircuitosService } from '../servicios/capas/capa-circuitos.service';
 import { CapaWfsIgnService } from '../servicios/capas/capa-wfs-ign.service';
+import { RenabapService } from '../servicios/capas/capa-renabap.service';
 import { EspaciosPoliticos } from '../modelos/espacios-politicos.enum';
 //import { NgForm } from '@angular/forms';
 //import * as c3 from 'c3';
@@ -43,6 +44,7 @@ export class MapaComponent implements OnInit {
   public miPcia2019: any;
   public misCircuitos: any;
   public laCapaDeLosPartidos: any;
+  public capaRenabap:any;
   public elPartidoFiltrado: any;
   public laEscuelaFiltrada: any;
   public elCircuitoFiltrado: any;
@@ -67,7 +69,8 @@ export class MapaComponent implements OnInit {
     private servicioCapasPartido: CapaPartidosService,
     private servicioCircuitos: CapaCircuitosService,
     private servicioEscuelas: CapaEscuelasService,
-    private servicioWfsIgn: CapaWfsIgnService) { }
+    private servicioWfsIgn: CapaWfsIgnService,
+    private servicioCapasRenabap: RenabapService) { }
 
   //====================================================================================
   ngOnInit() {
@@ -115,6 +118,9 @@ export class MapaComponent implements OnInit {
   administrarNavBarMenu(seleccion:any){
     //===================================================================================
     switch(seleccion.seleccion){
+      case 'renabap':
+        this.renabap();
+        break;
       case 'paso2019':
         this.elecciones2019Paso();
         break;
@@ -141,6 +147,20 @@ export class MapaComponent implements OnInit {
         this.capaWFS();
         break;
     }
+  }
+
+  //=====================================================================================
+  renabap() { //...
+    //===================================================================================
+    if (miMapa.hasLayer(this.capaRenabap)) {
+      miMapa.removeLayer(this.capaRenabap);
+    }
+    this.servicioDatos.getRenabap()
+      .subscribe(respuestaJson => {
+        this.capaRenabap = this.servicioCapasRenabap.getCapaRenabap(respuestaJson, '');
+        miMapa.addLayer(this.capaRenabap);
+        miMapa.fitBounds(this.capaRenabap.getBounds());
+      });
   }
 
   //=====================================================================================

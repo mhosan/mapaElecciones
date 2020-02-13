@@ -2,7 +2,13 @@
 
     <!-- barra de navegacion ---------------------------------------------------- -->
     <app-bnavega (seleccionMenuNavBar)="administrarNavBarMenu($event)"></app-bnavega>
-
+    <div class="container">
+        <div class="row">
+            <div class="col-12 usuario">
+                <app-usuario></app-usuario>
+            </div>
+        </div>
+    </div>
     <!-- geolocalizadores ------------------------------------------------------- -->
     <div class="card collapse" id="fila" style="position: relative; z-index: 450; width: 15rem;">
         <div class="card-header text-center mt-2" style="padding: 0;">
@@ -13,13 +19,12 @@
         </div>
         <div class="card-body">
             <div class="row ">
-                <div >
+                <div>
                     <app-usa-api (eventoMarcador)="ponerMarcador($event)"></app-usa-api>
                 </div>
             </div>
-
             <div class="row ">
-                <div >
+                <div>
                     <app-usa-api-location-iq (eventoMarcador)="ponerMarcador($event)"></app-usa-api-location-iq>
                 </div>
             </div>

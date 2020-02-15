@@ -4,11 +4,12 @@ import { LatitudLongitud } from '../modelos/latlon.interface';
 import { Paso2019edit } from '../modelos/paso2019edit';
 import { DatosService } from '../servicios/datos.service';
 import { EleccionesService } from '../servicios/elecciones.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+//import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CapaPartidosService } from '../servicios/capas/capa-partidos.service';
 import { CapaEscuelasService } from '../servicios/capas/capa-escuelas.service';
 import { CapaCircuitosService } from '../servicios/capas/capa-circuitos.service';
 import { CapaWfsIgnService } from '../servicios/capas/capa-wfs-ign.service';
+import { RenabapService } from '../servicios/capas/capa-renabap.service';
 import { EspaciosPoliticos } from '../modelos/espacios-politicos.enum';
 //import { NgForm } from '@angular/forms';
 //import * as c3 from 'c3';
@@ -43,6 +44,7 @@ export class MapaComponent implements OnInit {
   public miPcia2019: any;
   public misCircuitos: any;
   public laCapaDeLosPartidos: any;
+  public capaRenabap:any;
   public elPartidoFiltrado: any;
   public laEscuelaFiltrada: any;
   public elCircuitoFiltrado: any;
@@ -58,19 +60,22 @@ export class MapaComponent implements OnInit {
   public partidoSeleccionado: string;
   public partidoSeleccionadoParaCircuito: string;
   public partidoSeleccionadoParaEscuela: string;
+  public version:string;
 
   constructor(
     private servicioDatos: DatosService,
     private servicioMunicipios: EleccionesService,
-    private modalService: NgbModal,
+    //private modalService: NgbModal,
     private servicioCapasPartido: CapaPartidosService,
     private servicioCircuitos: CapaCircuitosService,
     private servicioEscuelas: CapaEscuelasService,
-    private servicioWfsIgn: CapaWfsIgnService) { }
+    private servicioWfsIgn: CapaWfsIgnService,
+    private servicioCapasRenabap: RenabapService) { }
 
   //====================================================================================
   ngOnInit() {
     //==================================================================================
+    this.version=L.version;
     this.armarTodo();
   }
   //================================================fin "ngOnInit=======================
@@ -110,6 +115,55 @@ export class MapaComponent implements OnInit {
   //document.getElementById("selectID").options.length = 0;
 
   //=====================================================================================
+  administrarNavBarMenu(seleccion:any){
+    //===================================================================================
+    switch(seleccion.seleccion){
+      case 'renabap':
+        this.renabap();
+        break;
+      case 'paso2019':
+        this.elecciones2019Paso();
+        break;
+      case 'generales2019':
+        this.elecciones2019Generales();
+        break;
+      case 'circuitos':
+        this.leerCircuitos();
+        break;
+      case 'unPartido':
+        //alert(seleccion.partido);
+        this.circuito(seleccion.partido);
+        break;
+      case 'leerPartidos':
+        this.leerPartidos();
+        break;
+      case 'unPartidoPartido':
+        this.partidoElegido(seleccion.partido)
+        break;
+      case 'unaEscuela':
+        this.escuelas(seleccion.partido);
+        break;
+      case 'partidosIgn':
+        this.capaWFS();
+        break;
+    }
+  }
+
+  //=====================================================================================
+  renabap() { //...
+    //===================================================================================
+    if (miMapa.hasLayer(this.capaRenabap)) {
+      miMapa.removeLayer(this.capaRenabap);
+    }
+    this.servicioDatos.getRenabap()
+      .subscribe(respuestaJson => {
+        this.capaRenabap = this.servicioCapasRenabap.getCapaRenabap(respuestaJson, '');
+        miMapa.addLayer(this.capaRenabap);
+        miMapa.fitBounds(this.capaRenabap.getBounds());
+      });
+  }
+
+  //=====================================================================================
   buscarPartido() {  //ARRAY con los partidos, para cargar el combo de la vista
     //===================================================================================
     if (this.listadoPartidos.length > 0) {
@@ -142,7 +196,7 @@ export class MapaComponent implements OnInit {
       });
   }
   //=====================================================================================
-  partidoElegido() {  //traer UN partido
+  partidoElegido(partidoSeleccionado:string) {  //traer UN partido
     //===================================================================================
     if (miMapa.hasLayer(this.elPartidoFiltrado)) {
       miMapa.removeLayer(this.elPartidoFiltrado);
@@ -152,7 +206,7 @@ export class MapaComponent implements OnInit {
     }
     this.servicioDatos.buscarGeoJsonPartidos()
       .subscribe(respuestaJson => {
-        this.elPartidoFiltrado = this.servicioCapasPartido.getPartidos(respuestaJson, this.partidoSeleccionado);
+        this.elPartidoFiltrado = this.servicioCapasPartido.getPartidos(respuestaJson, partidoSeleccionado);
         miMapa.addLayer(this.elPartidoFiltrado);
         miMapa.fitBounds(this.elPartidoFiltrado.getBounds());
       });
@@ -200,7 +254,7 @@ export class MapaComponent implements OnInit {
       });
   }
   //=====================================================================================
-  circuito() {  //circuito electoral filtrado
+  circuito(elPartido:string) {  //circuito electoral filtrado
     //===================================================================================
     if (miMapa.hasLayer(this.misCircuitos)) {
       miMapa.removeLayer(this.misCircuitos);
@@ -210,14 +264,14 @@ export class MapaComponent implements OnInit {
     }
     this.servicioDatos.getCircuitosElectorales()//<--- primero obtengo el json con los datos
       .subscribe(respuestaJson => {
-        this.elCircuitoFiltrado = this.servicioCircuitos.getCircuitosDepurado(respuestaJson, this.partidoSeleccionadoParaCircuito); //<--obtengo la capa armada
+        this.elCircuitoFiltrado = this.servicioCircuitos.getCircuitosDepurado(respuestaJson, elPartido); //<--obtengo la capa armada
         miMapa.addLayer(this.elCircuitoFiltrado);
         miMapa.fitBounds(this.elCircuitoFiltrado.getBounds());
       });
   }
 
   //=====================================================================================
-  escuelas() {  //leer un geoJson de escuelas que se encuentra en la carpeta assets
+  escuelas(elPartidoDeLaEscuela:string) {  //leer un geoJson de escuelas que se encuentra en la carpeta assets
     //===================================================================================
     if (miMapa.hasLayer(this.laEscuelaFiltrada)) {
       miMapa.removeLayer(this.laEscuelaFiltrada);
@@ -227,7 +281,7 @@ export class MapaComponent implements OnInit {
     }
     this.servicioDatos.getEscuelas()//<--- primero obtengo el json con los datos
       .subscribe(respuestaJson => {
-        this.laEscuelaFiltrada = this.servicioEscuelas.getEscuelas(respuestaJson, this.partidoSeleccionadoParaEscuela); //<--obtengo la capa armada
+        this.laEscuelaFiltrada = this.servicioEscuelas.getEscuelas(respuestaJson, elPartidoDeLaEscuela); //<--obtengo la capa armada
         miMapa.addLayer(this.laEscuelaFiltrada);
         miMapa.fitBounds(this.laEscuelaFiltrada.getBounds());
       });
@@ -1134,8 +1188,8 @@ export class MapaComponent implements OnInit {
       //"Centros educativos Pcia. Bs.As.": layerJsonEdu
     };
 
-    controlLayers = L.control.layers(baseMaps, overlayMaps, {}).addTo(miMapa);
-
+    controlLayers = L.control.layers(baseMaps, overlayMaps, {position: 'topleft'}).addTo(miMapa);
+    
     sessionStorage.clear();
     this.leerDatos();
     //console.log(`SessionStorage despues de leer los datos: ${sessionStorage.getItem('municipios')}`);

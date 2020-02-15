@@ -22,6 +22,11 @@ export class DatosService {
   elJsonDelIGN: any;
   constructor(private http: HttpClient) { }
 
+  getRenabap(): Observable<any> {
+    let renabap = this.http.get<any>("./assets/renabap.geojson"); //estoy trayendo el geoJson estático que se encuentra en assets
+    return renabap;
+  }
+
   getPartidos2015(): Observable<any> {
     let losPartidos = this.http.get<any>("./assets/partidos.geojson"); //estoy trayendo el geoJson estático que se encuentra en assets
     return losPartidos;

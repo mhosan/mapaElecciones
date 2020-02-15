@@ -53,3 +53,36 @@
     border-top: 1px solid #173c61;
     margin: 15px;
  }
+ .card-body {
+   background-color: white;
+   text-align: center;
+}
+.card {
+   position:relative;
+   z-index: 450;
+   box-shadow: 10px 10px 15px #888888;
+   transition: 0.2s;
+}
+.card:hover{
+   /* transform: scale(1.1); */
+   transform: translateY(-3px);
+   /* transform: rotate(2deg); */
+}
+/*-----------grande ------------------*/
+@media (min-width: 576px) {
+   .usuario{
+      position:relative;
+      top:-3.5rem;
+      right: 1rem;
+   }
+}
+
+/*---------chico --------------------*/
+@media (max-width: 575.98px) {
+   .usuario{
+     clear:both;
+     left:-1rem;
+   }
+}
+
+ 

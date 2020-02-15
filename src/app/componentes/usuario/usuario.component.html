@@ -1,0 +1,63 @@
+<button class="btn btn-secondary btn-sm botonMenu" data-toggle="collapse" data-target="#menuUsuario">
+  <i class="fa fa-user " style="color:white;" title="Menú usuario"></i>
+</button>
+
+<div class="collapse card" id="menuUsuario">
+  <div class="card-header text-center">
+    Usuario:{{usuario}}
+  </div>
+  <ul class="list-group list-group-flush">
+    <!--icono bajado de https://www.flaticon.com/-->
+    <li class="list-group-item">
+      <img src="assets/iconos/login3.png" alt="" width="20px;" class="mr-2" data-toggle="modal"
+        data-target="#exampleModal">
+      <span data-toggle="modal" data-target="#exampleModal">Login</span>
+    </li>
+    <li class="list-group-item">
+      <img src="assets/iconos/perfil2.png" alt="" width="20px;" class="mr-2">
+      <span>Perfil</span>
+    </li>
+    <li class="list-group-item">
+      <img src="assets/iconos/configuracion.png" alt="" width="20px;" class="mr-2">
+      <span>Configuración</span>
+    </li>
+    <li class="list-group-item">
+      <img src="assets/iconos/log.png" alt="" width="20px;" class="mr-2">
+      <span>Log de Actividad</span>
+    </li>
+  </ul>
+  <div class="card-footer text-muted">
+    <img src="assets/iconos/logout.png" alt="" width="20px;" class="mr-2">
+    <span>Logout</span>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal"  role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Conectarse</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (submit)="onSubmitLogin()">
+          <div class="form-group">
+            <label for="email">email</label>
+            <input type="email" name="email" #elCorreo id="email" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input type="password" name="password" #laClave id="password" class="form-control">
+          </div>
+          <input type="submit" value="Enviar" class="btn btn-primary btn-sm btn-block">
+        </form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>

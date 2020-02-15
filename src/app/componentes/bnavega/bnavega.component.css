@@ -1,0 +1,17 @@
+
+/*-----------grande ------------------*/
+@media (min-width: 576px) {
+    .laNavBar{
+        position:relative; 
+        z-index:450;
+    }
+}
+
+/*---------chico --------------------*/
+@media (max-width: 575.98px) {
+    .laNavBar{
+        position:relative; 
+        z-index:450;
+        margin-left: 30px;
+    }
+}

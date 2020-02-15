@@ -1,0 +1,51 @@
+img:hover {
+    cursor: pointer;
+}
+span {
+    cursor: pointer;
+}
+div span {
+    cursor: pointer;
+}
+ul li:hover {
+    background-color: rgba(226, 216, 216, 0.5);
+}
+.list-group-item, .card-header, .card-footer {
+    /* background-color: rgba(163, 154, 154, 0.5); */
+    background-color: white;
+}
+/*-----------grande ------------------*/
+@media (min-width: 576px) {
+   .botonMenu {
+    position: absolute; 
+    z-index: 450; 
+    right: 12px; 
+    top: 12px;
+   }
+
+   #menuUsuario{
+    position: absolute; 
+    z-index: 450; 
+    width: 10rem; 
+    right: 0px; 
+    top: 60px; 
+    background-color: white;
+   }
+  }
+  
+  /*---------chico --------------------*/
+  @media (max-width: 575.98px) {
+    .botonMenu {
+        position: relative; 
+        z-index: 450;
+        top: 2px; 
+       }
+    #menuUsuario{
+        position: absolute; 
+        z-index: 450; 
+        top: 110px;
+        width: 10rem; 
+        left: 45px; 
+        background-color: transparent;
+       }
+  }

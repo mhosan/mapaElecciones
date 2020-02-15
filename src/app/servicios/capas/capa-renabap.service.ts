@@ -22,20 +22,36 @@ export class RenabapService{
         let espesorBordeOriginal: number = 0;
         let colorRellenoOriginal: string = '';
         var popupContent = `
-        <table class="table table-striped table-borderless table-sm" style="font-family: 'Arial Narrow'">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col" class="text-center">Nombre Barrio</th>
-              <th scope="col" class="text-center">Cantidad de familias</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="text-center">${feature.properties.nombre_bar}</td>  
-              <td class="text-center">${feature.properties.cantidad_f}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div style="margin-top: 5px;">
+          <h5>Info</h5>
+          <ul class="list-group" style="height: 8rem; overflow:auto;">
+            <li class="list-group-item"><b>Provincia</b>: ${feature.properties.provincia}</li>
+            <li class="list-group-item"><b>Departamento</b>: ${feature.properties.departamen}</li>
+            <li class="list-group-item"><b>Localidad</b>: ${feature.properties.localidad}</li>
+            <li class="list-group-item"><b>Municipio</b>: ${feature.properties.municipio2018}</li>
+            <li class="list-group-item"><b>Nombre barrio</b>: ${feature.properties.nombre_bar}</li>
+            <li class="list-group-item"><b>Familias</b>: ${feature.properties.cantidad_f}</li>
+            <li class="list-group-item"><b>Creación</b>: ${feature.properties.creacionBarrio2018}</li>
+            <li class="list-group-item"><b>Superficie</b>: ${feature.properties.superficie_m2_2018} m2</li>
+            <li class="list-group-item"><b>Clasificación</b>: ${feature.properties.clasificacionBarrio2018} </li>
+            <li class="list-group-item text-justify"><b>Situación dominial</b>: ${feature.properties.situacionDominial2018} </li>
+            <li class="list-group-item text-justify"><b>Tipo tierra</b>: ${feature.properties.tipoTierra2018} </li>
+            <li class="list-group-item text-justify"><b>Electricidad</b>: ${feature.properties.electricidad2018} </li>
+            <li class="list-group-item text-justify"><b>Cloacas</b>: ${feature.properties.cloacas2018} </li>
+            <li class="list-group-item text-justify"><b>Agua</b>: ${feature.properties.agua2018} </li>
+            <li class="list-group-item text-justify"><b>Cocina</b>: ${feature.properties.cocina2018} </li>
+            <li class="list-group-item text-justify"><b>Calefacción</b>: ${feature.properties.calefaccion2018} </li>
+            <li class="list-group-item text-justify"><b>Precariedad</b>: ${feature.properties.precariedad2019} </li>
+          </ul>
+          <br>
+          <span class="text-justify" style="margin-top:5px; font-size:12px; font-style: italic;">
+          <b>Fuente:</b><br>
+            <ul> 
+              <li>ReNaBap (https://www.argentina.gob.ar/barriospopulares). Ultima actualización: 9 de nov. de 2018</li>
+              <li>TECHO (http://datos.techo.org/dataset)</li>
+            </ul>
+          </span>
+        </div>
       `;
         layer.bindPopup(popupContent);
 

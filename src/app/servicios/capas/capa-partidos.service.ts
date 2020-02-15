@@ -15,7 +15,7 @@ export class CapaPartidosService {
     this.capaPartidos = L.geoJson(elJson, {
       filter: elFiltradorDePartidos,
       style: (feature) => {
-        return { color: 'rgba(255, 255, 100, 1.0)', "weight": 1.5, "opacity": 1.40 };
+        return { color: 'rgba(230, 230, 0, 1.0)', "weight": 1.5, "opacity": 1.40 };
       },
       onEachFeature: (feature, layer) => {
         let colorBordeOriginal: string = '';

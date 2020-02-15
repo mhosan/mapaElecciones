@@ -229,17 +229,6 @@ export class MapaComponent implements OnInit {
   //=====================================================================================
   leerCircuitos() { //todos
     //===================================================================================
-    // if (miMapa.hasLayer(this.misCircuitos)) {
-    //   miMapa.removeLayer(this.misCircuitos);
-    //   this.capaCircuitos = false;  //booleano para saber que icono fontawesome poner en el menu
-    //   return;
-    // } else {
-    //   if (this.misCircuitos) {
-    //     miMapa.addLayer(this.misCircuitos)
-    //     this.capaCircuitos = true;
-    //     return
-    //   }
-    // }
     if (miMapa.hasLayer(this.elCircuitoFiltrado)) {
       miMapa.removeLayer(this.elCircuitoFiltrado);
     }
@@ -253,6 +242,7 @@ export class MapaComponent implements OnInit {
         miMapa.fitBounds(this.misCircuitos.getBounds());
       });
   }
+
   //=====================================================================================
   circuito(elPartido:string) {  //circuito electoral filtrado
     //===================================================================================

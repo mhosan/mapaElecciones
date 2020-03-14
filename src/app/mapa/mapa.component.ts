@@ -16,7 +16,7 @@ import { EspaciosPoliticos } from '../modelos/espacios-politicos.enum';
 
 declare let L;
 declare let $: any;
-let miMapa:any;
+let miMapa: any;
 let actualizando: boolean = false;
 let controlLayers;
 let estamosEnEdicion: boolean;
@@ -44,7 +44,7 @@ export class MapaComponent implements OnInit {
   public miPcia2019: any;
   public misCircuitos: any;
   public laCapaDeLosPartidos: any;
-  public capaRenabap:any;
+  public capaRenabap: any;
   public elPartidoFiltrado: any;
   public laEscuelaFiltrada: any;
   public elCircuitoFiltrado: any;
@@ -60,7 +60,7 @@ export class MapaComponent implements OnInit {
   public partidoSeleccionado: string;
   public partidoSeleccionadoParaCircuito: string;
   public partidoSeleccionadoParaEscuela: string;
-  public version:string;
+  public version: string;
 
   constructor(
     private servicioDatos: DatosService,
@@ -72,13 +72,15 @@ export class MapaComponent implements OnInit {
     private servicioWfsIgn: CapaWfsIgnService,
     private servicioCapasRenabap: RenabapService) { }
 
-  //====================================================================================
+  //===================================================================
+  //
+  //===================================================================
   ngOnInit() {
-    //==================================================================================
-    this.version=L.version;
+    this.version = L.version;
     this.armarTodo();
   }
-  //================================================fin "ngOnInit=======================
+  //===============================fin "ngOnInit=======================
+
   // armarGrafico():void {
   //   let chart = c3.generate({
   //     bindto: '#chart',
@@ -114,10 +116,11 @@ export class MapaComponent implements OnInit {
   //vaciar el select...
   //document.getElementById("selectID").options.length = 0;
 
-  //=====================================================================================
-  administrarNavBarMenu(seleccion:any){
-    //===================================================================================
-    switch(seleccion.seleccion){
+  //===================================================================
+  //
+  //===================================================================
+  administrarNavBarMenu(seleccion: any) {
+    switch (seleccion.seleccion) {
       case 'renabap':
         this.renabap();
         break;
@@ -149,9 +152,10 @@ export class MapaComponent implements OnInit {
     }
   }
 
-  //=====================================================================================
-  renabap() { //...
-    //===================================================================================
+  //===================================================================
+  //
+  //===================================================================
+  renabap() {
     if (miMapa.hasLayer(this.capaRenabap)) {
       miMapa.removeLayer(this.capaRenabap);
     }
@@ -163,9 +167,10 @@ export class MapaComponent implements OnInit {
       });
   }
 
-  //=====================================================================================
-  buscarPartido() {  //ARRAY con los partidos, para cargar el combo de la vista
-    //===================================================================================
+  //===================================================================
+  // ARRAY con los partidos, para cargar el combo de seleccion
+  //===================================================================
+  buscarPartido() {
     if (this.listadoPartidos.length > 0) {
       return;
     }
@@ -179,9 +184,11 @@ export class MapaComponent implements OnInit {
         })
       });
   }
-  //=====================================================================================
-  leerPartidos() { //traer todos los partidos
-    //===================================================================================
+
+  //===================================================================
+  // traer todos los partidos
+  //===================================================================
+  leerPartidos() {
     if (miMapa.hasLayer(this.laCapaDeLosPartidos)) {
       miMapa.removeLayer(this.laCapaDeLosPartidos);
     }
@@ -195,9 +202,11 @@ export class MapaComponent implements OnInit {
         miMapa.fitBounds(this.laCapaDeLosPartidos.getBounds());
       });
   }
-  //=====================================================================================
-  partidoElegido(partidoSeleccionado:string) {  //traer UN partido
-    //===================================================================================
+
+  //===================================================================
+  // traer un partido
+  //===================================================================
+  partidoElegido(partidoSeleccionado: string) {
     if (miMapa.hasLayer(this.elPartidoFiltrado)) {
       miMapa.removeLayer(this.elPartidoFiltrado);
     }
@@ -212,9 +221,10 @@ export class MapaComponent implements OnInit {
       });
   }
 
-  //========================================================
+  //===================================================================
+  // el wfs del ign
+  //===================================================================
   capaWFS() {
-    //======================================================
     if (miMapa.hasLayer(this.layerWFS)) {
       miMapa.removeLayer(this.layerWFS);
     }
@@ -225,61 +235,63 @@ export class MapaComponent implements OnInit {
         miMapa.fitBounds(this.layerWFS.getBounds());
       });
   }
-
-  //=====================================================================================
-  leerCircuitos() { //todos
-    //===================================================================================
+  //===================================================================
+  // traer todos los circuitos electorales
+  //===================================================================
+  leerCircuitos() {
     if (miMapa.hasLayer(this.elCircuitoFiltrado)) {
       miMapa.removeLayer(this.elCircuitoFiltrado);
     }
     if (miMapa.hasLayer(this.misCircuitos)) {
       miMapa.removeLayer(this.misCircuitos);
     }
-    this.servicioDatos.getCircuitosElectorales()//<--- primero obtengo el json con los datos
+    this.servicioDatos.getCircuitosElectorales()
       .subscribe(respuestaJson => {
-        this.misCircuitos = this.servicioCircuitos.getCircuitosDepurado(respuestaJson, ''); //<--obtengo la capa armada
+        this.misCircuitos = this.servicioCircuitos.getCircuitosDepurado(respuestaJson, '');
         miMapa.addLayer(this.misCircuitos);
         miMapa.fitBounds(this.misCircuitos.getBounds());
       });
   }
 
-  //=====================================================================================
-  circuito(elPartido:string) {  //circuito electoral filtrado
-    //===================================================================================
+  //===================================================================
+  // traer un solo circuito electoral
+  //===================================================================
+  circuito(elPartido: string) {
     if (miMapa.hasLayer(this.misCircuitos)) {
       miMapa.removeLayer(this.misCircuitos);
     }
     if (miMapa.hasLayer(this.elCircuitoFiltrado)) {
       miMapa.removeLayer(this.elCircuitoFiltrado);
     }
-    this.servicioDatos.getCircuitosElectorales()//<--- primero obtengo el json con los datos
+    this.servicioDatos.getCircuitosElectorales()
       .subscribe(respuestaJson => {
-        this.elCircuitoFiltrado = this.servicioCircuitos.getCircuitosDepurado(respuestaJson, elPartido); //<--obtengo la capa armada
+        this.elCircuitoFiltrado = this.servicioCircuitos.getCircuitosDepurado(respuestaJson, elPartido);
         miMapa.addLayer(this.elCircuitoFiltrado);
         miMapa.fitBounds(this.elCircuitoFiltrado.getBounds());
       });
   }
-
-  //=====================================================================================
-  escuelas(elPartidoDeLaEscuela:string) {  //leer un geoJson de escuelas que se encuentra en la carpeta assets
-    //===================================================================================
+  //===================================================================
+  //leer un geoJson de escuelas que se encuentra en la carpeta assets
+  //===================================================================
+  escuelas(elPartidoDeLaEscuela: string) {
     if (miMapa.hasLayer(this.laEscuelaFiltrada)) {
       miMapa.removeLayer(this.laEscuelaFiltrada);
     }
     if (miMapa.hasLayer(this.laEscuelaFiltrada)) {
       miMapa.removeLayer(this.laEscuelaFiltrada);
     }
-    this.servicioDatos.getEscuelas()//<--- primero obtengo el json con los datos
+    this.servicioDatos.getEscuelas()
       .subscribe(respuestaJson => {
-        this.laEscuelaFiltrada = this.servicioEscuelas.getEscuelas(respuestaJson, elPartidoDeLaEscuela); //<--obtengo la capa armada
+        this.laEscuelaFiltrada = this.servicioEscuelas.getEscuelas(respuestaJson, elPartidoDeLaEscuela);
         miMapa.addLayer(this.laEscuelaFiltrada);
         miMapa.fitBounds(this.laEscuelaFiltrada.getBounds());
       });
   }
 
-  //=====================================================================================
+  //===================================================================
+  //
+  //===================================================================
   leerPartidos2019() {
-    //===================================================================================
     this.servicioDatos.getPartidos2015()
       .subscribe(
         partidosJson => {
@@ -465,12 +477,12 @@ export class MapaComponent implements OnInit {
         }
       );
   }
-
-  //=====================================================================================
+  //===================================================================
+  //subscripcion al observable del servicio 'datos.service.ts' para
+  //obtener el geojson de los partidos, que se encuentra en la carpeta 
+  // assets.
+  //===================================================================
   leerPartidos2015() {
-    //subscripcion al observable del servicio 'datos.service.ts' para leer el geojson  
-    //estático de los partidos, que se encuentra en la carpeta assets.
-    //===================================================================================
     this.servicioDatos.getPartidos2015()
       .subscribe(
         partidosJson => {
@@ -491,7 +503,7 @@ export class MapaComponent implements OnInit {
             cargarCapaEnControlLayer = false;
           }
 
-          this.miPcia2015 = L.geoJson(partidosJson, {  //<------------------------------------------------------------------------
+          this.miPcia2015 = L.geoJson(partidosJson, {  //<-----
 
             style: function (feature) {
               for (let i = 0; i < municipiosLosDatos.length; i++) {
@@ -670,9 +682,10 @@ export class MapaComponent implements OnInit {
       );
   };
 
-  //=====================================================================================
+  //===================================================================
+  // 
+  //===================================================================
   verCoordenadas(e) {
-    //===================================================================================
     const popupCoordenadas = L.popup();
     popupCoordenadas
       .setLatLng(e.latlng)
@@ -680,21 +693,23 @@ export class MapaComponent implements OnInit {
       .openOn(miMapa);
   }
 
-  //=====================================================================================
+  //===================================================================
+  //
+  //===================================================================
   centrarMapa(e) {
-    //===================================================================================
     miMapa.panTo(e.latlng);
   }
 
-  //=====================================================================================
+  //===================================================================
+  //
+  //===================================================================
   acercar(e) {
-    //===================================================================================
     miMapa.zoomIn();
   }
 
-  //=====================================================================================
+  //===================================================================
   alejar(e) {
-    //===================================================================================
+    //=================================================================
     miMapa.zoomOut();
   }
 
@@ -724,9 +739,10 @@ export class MapaComponent implements OnInit {
   //   miMapa.fitBounds(this.miCapa.getBounds());
   // }
 
-  //=====================================================================================
+  //===================================================================
+  //
+  //===================================================================
   ponerMarcador(objetoLatLong: LatitudLongitud) {
-    //===================================================================================  
     let lasCoords = [];
     lasCoords[0] = objetoLatLong.lat;
     lasCoords[1] = objetoLatLong.lon;
@@ -751,9 +767,10 @@ export class MapaComponent implements OnInit {
     marca.bindPopup(miPopup);
   }
 
-  //=====================================================================================
+  //===================================================================
+  //
+  //===================================================================
   hacerRecuentoPaso2019(arrayPartidos: Paso2019edit[]) {
-    //===================================================================================
     arrayPartidos.forEach(partido => {
       const elPdo: string = String(partido.paso2019espacioPrimero);
       switch (elPdo) {
@@ -765,19 +782,22 @@ export class MapaComponent implements OnInit {
     });
     //console.log(`fpv: ${this.fpv}, pro: ${this.pro}, cf: ${this.cf}, otro: ${this.otro}`);
   }
-
-  //=====================================================================================
+  
+  //===================================================================
+  //
+  //===================================================================
   encendidoInicialPaso() {
-    //===================================================================================
     miMapa.addLayer(this.miPcia2015);
     miMapa.fitBounds(this.miPcia2015.getBounds());
     //miMapa.zoomIn(1);
     this.encenderReferenciasPaso2019();
     this.apagarReferenciasGenerales2019();
   }
-  //=====================================================================================
+
+  //===================================================================
+  //  
+  //===================================================================
   encendidoInicialGenerales() {
-    //===================================================================================
     miMapa.addLayer(this.miPcia2019);
     if (!actualizando) {
       miMapa.fitBounds(this.miPcia2019.getBounds());
@@ -786,12 +806,12 @@ export class MapaComponent implements OnInit {
     this.apagarReferenciasPaso2019();
     this.encenderReferenciasGenerales2019();
   }
-
-  //=====================================================================================
+  
+  //===================================================================
+  //esta funcion es llamada desde la vista, cuando se hace click en el 
+  //boton elecciones Paso 2019
+  //===================================================================
   elecciones2019Paso() {
-    //===================================================================================
-    /* esta funcion es llamada desde la vista, cuando se hace click en el boton "elecciones
-    Paso 2019" */
     if (miMapa.hasLayer(this.miPcia2015)) {
       miMapa.removeLayer(this.miPcia2015);
       this.apagarReferenciasPaso2019();
@@ -809,9 +829,11 @@ export class MapaComponent implements OnInit {
       }
     }
   }
-  //=====================================================================================
+
+  //===================================================================
+  //
+  //===================================================================
   elecciones2019Generales() {
-    //===================================================================================
     if (miMapa.hasLayer(this.miPcia2019)) {
       miMapa.removeLayer(this.miPcia2019);
       this.apagarReferenciasGenerales2019();
@@ -830,45 +852,54 @@ export class MapaComponent implements OnInit {
     }
   }
 
-  //=====================================================================================
+  //===================================================================
+  //
+  //===================================================================
   apagarReferenciasPaso2019() {
-    //===================================================================================
     let referenciasPaso;
     referenciasPaso = document.getElementsByClassName("footer");
     for (let i = 0; i < referenciasPaso.length; i++) {
       referenciasPaso[i].style.display = "none";
     }
   }
-  //=====================================================================================
+
+  //===================================================================
+  //
+  //===================================================================
   apagarReferenciasGenerales2019() {
-    //===================================================================================
     let referenciasGenerales;
     referenciasGenerales = document.getElementsByClassName("footerGenerales");
     for (let i = 0; i < referenciasGenerales.length; i++) {
       referenciasGenerales[i].style.display = "none";
     }
   }
-  //=====================================================================================
+
+  //===================================================================
+  //
+  //===================================================================
   encenderReferenciasPaso2019() {
-    //===================================================================================
     let referenciasPaso;
     referenciasPaso = document.getElementsByClassName("footer");
     for (let i = 0; i < referenciasPaso.length; i++) {
       referenciasPaso[i].style.display = "block";
     }
   }
-  //=====================================================================================
+
+  //===================================================================
+  //
+  //===================================================================
   encenderReferenciasGenerales2019() {
-    //===================================================================================
     let referenciasGenerales;
     referenciasGenerales = document.getElementsByClassName("footerGenerales");
     for (let i = 0; i < referenciasGenerales.length; i++) {
       referenciasGenerales[i].style.display = "block";
     }
   }
-  //=====================================================================================
+
+  //===================================================================
+  //
+  //===================================================================
   elecciones2019PasoResumenPcia() {
-    //===================================================================================
     /* esta funcion es llamada desde la vista, cuando se hace click en el boton*/
     if (this.resumenPaso2019) {
       this.resumenPaso2019 = false;
@@ -877,21 +908,22 @@ export class MapaComponent implements OnInit {
     }
   }
 
-  //=====================================================================================
+  //===================================================================
+  //esta funcion se llama luego de hacer el submit del formulario
+  //===================================================================
   actualizar() {
-    //===================================================================================
-    /*esta funcion se llama luego de hacer el submit del formulario */
     sessionStorage.clear();
     actualizando = true;
     this.leerDatos();
   }
 
-  //=====================================================================================
+  //===================================================================
+  //cargar los datos del formulario: esto hay que hacerlo porque cuando 
+  //se hace click en el botón Guardar del formulario y se dispara la 
+  //funcion submit, vienen solo los datos modificados, el resto de los 
+  //campos vienen vacios (?)
+  //===================================================================
   submit() {
-    //===================================================================================
-    /*cargar los datos del formulario: esto hay que hacerlo porque cuando se hace click
-    en en botón Guardar del formulario y se dispara la funcion submit, vienen solo los 
-    datos modificados, el resto de los campos vienen vacios (?)*/
     this.modeloPaso2019 = {
       id: $('#idOculto').val(),
       idMuni: $('#elmuniid').val(),
@@ -955,17 +987,18 @@ export class MapaComponent implements OnInit {
     }
     this.actualizar();
   }
-
-  //=====================================================================================
+  
+  //===================================================================
+  //Se obtienen los datos de una base de datos Firebase y se cargan en 
+  //un array "arrayMunicipiosLeidos" que implementa el tipo de datos de
+  //la interface Paso2019Edit.
+  //Despues se guardan los datos en sessionStorage para que puedan ser 
+  //levantados desde  alli cuando se hace click en el mapa.
+  //Por último se llama a la función "leerPartidos2015" para generar una 
+  //nueva capa en memoria desde un geoJson estático guardado en la 
+  //carpeta assets
+  //===================================================================
   leerDatos() {
-    /* Se obtienen los datos de una base de datos Firebase y se cargan en un array que 
-    se llama "arrayMunicipiosLeidos" el cual implementa el tipo de datos de la 
-    interface Paso2019Edit.
-    Despues se guardan los datos en sessionStorage para que puedan ser levantados desde
-    alli cuando se hace click en el mapa.
-    Por último se llama a la función "leerPartidos2015" para generar una nueva capa en 
-    memoria desde un geoJson estático guardado en la carpeta assets*/
-    //===================================================================================
     this.servicioMunicipios.getMunicipiosPaso().subscribe(respuesta => {
       this.arrayMunicipiosLeidos = [];
       respuesta.docs.forEach(documento => {
@@ -1036,9 +1069,10 @@ export class MapaComponent implements OnInit {
     });
   }
 
-  //=====================================================================================
+  //===================================================================
+  //
+  //===================================================================
   inicializarModelo(): void {
-    //===================================================================================
     this.modeloPaso2019 = {
       id: '',
       idMuni: '',
@@ -1057,29 +1091,21 @@ export class MapaComponent implements OnInit {
       paso2019porcVotosPositivos: 0.00
     };
   }
-
-  /* escucharCambios() {
-    this.servicioMunicipios.getMunicipios().subscribe(muni => {
-      console.log('Cambiaron los datos:', muni);
-    });
-  } */
-
-  //=====================================================================================
+  //===================================================================
+  //
+  //===================================================================
   armarTodo() {
-    //===================================================================================
-    /* escucharCambios() es una subscripcion a un observable que se dispara en el servicio elecciones
-    cuando cambia algún valor en la base de datos */
-    //this.escucharCambios();
-
     this.inicializarModelo();
-    /* espacios es una propiedad de tipo array para usar en la vista para llenar el select que muestra
-    los distintos espacios politicos. EspaciosPoliticos es un enum*/
     for (let item in EspaciosPoliticos) {
       if (isNaN(Number(item))) {
         this.espacios.push({ text: item, value: EspaciosPoliticos[item] });
       }
     }
+    /* espacios es una propiedad de tipo array para usar en la vista 
+    para llenar el select que muestra
+    los distintos espacios politicos. EspaciosPoliticos es un enum*/
 
+    //-----------------------------------------------------------------
     const osm1 = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
         '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -1087,31 +1113,38 @@ export class MapaComponent implements OnInit {
       id: 'mapbox.streets'
     });
 
+    //-----------------------------------------------------------------
     const openmap = L.tileLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}", {
       attribution: 'terms and feedback'
     });
 
+    //-----------------------------------------------------------------
     const osm2 = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 20 });
 
+    //-----------------------------------------------------------------
     const googleMaps = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
       maxZoom: 20,
       subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
       detectRetina: true
     });
 
+    //-----------------------------------------------------------------
     const googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', {
       maxZoom: 20,
       subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
       detectRetina: true
     });
 
+    //-----------------------------------------------------------------
     //let urlBing2 ="http://ecn.t3.tiles.virtualearth.net/tiles/a{q}.jpeg?g=0&amp;dir=dir_n&username=''";         
     //let urlBing ="http://ecn.t3.tiles.virtualearth.net/tiles/a{q}.jpeg?g=1";
     //const bing = L.tileLayer(urlBing2);
 
+    //-----------------------------------------------------------------
     const esriSat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
       { maxZoom: 22 });
 
+    //-----------------------------------------------------------------
     const esriTransportes = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}');
 
     miMapa = L.map('map', {
@@ -1177,13 +1210,11 @@ export class MapaComponent implements OnInit {
       //"FFCC marcadores": layerFFCCFerroviariokMarcadores
       //"Centros educativos Pcia. Bs.As.": layerJsonEdu
     };
-
-    controlLayers = L.control.layers(baseMaps, overlayMaps, {position: 'topleft'}).addTo(miMapa);
-    
+    controlLayers = L.control.layers(baseMaps, overlayMaps, { position: 'topleft' }).addTo(miMapa);
     sessionStorage.clear();
     this.leerDatos();
-    //console.log(`SessionStorage despues de leer los datos: ${sessionStorage.getItem('municipios')}`);
 
+    //-----------------------------------------------------------------
     /*let marcador = L.marker([ -34.921136, -57.954712 ], {
       icon: L.icon({
         iconSize: [ 40, 31 ],

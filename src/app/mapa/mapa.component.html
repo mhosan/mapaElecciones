@@ -1,14 +1,10 @@
 <div id="map" class="container-fluid">
 
     <!-- barra de navegacion ---------------------------------------------------- -->
-    <app-bnavega (seleccionMenuNavBar)="administrarNavBarMenu($event)"></app-bnavega>
-    <!-- <div class="container"> -->
-        <!-- <div class="row"> -->
-            <!-- <div class="col-12 usuario"> -->
-                <app-usuario></app-usuario>
-            <!-- </div> -->
-        <!-- </div> -->
-    <!-- </div> -->
+    <div class="mt-1">
+        <app-bnavega (seleccionMenuNavBar)="administrarNavBarMenu($event)"></app-bnavega>
+    </div>
+    <app-usuario></app-usuario>
     <!-- geolocalizadores ------------------------------------------------------- -->
     <div class="card collapse" id="fila" style="position: relative; z-index: 450; width: 15rem;">
         <div class="card-header text-center mt-2" style="padding: 0;">

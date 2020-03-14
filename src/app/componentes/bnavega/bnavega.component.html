@@ -8,14 +8,6 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <!-- <li class="nav-item active">
-        <button class="dropdown-item mt-1" data-toggle="collapse" data-target="#fila">
-          Geolocalizar
-        </button>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li> -->
         <!-- Ojo, estos iconos de fontawesome SI andan: <i class="fa fa-search"></i>  <i class="fa fa-eye"></i> <i class="fa fa-eye-slash"></i> <i class="fa fa-tags"></i> -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -23,10 +15,6 @@
             Menú
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <button class="dropdown-item mt-1" data-toggle="collapse" data-target="#fila">
-              <img src="assets/iconos/geoloca.png" alt="" width="20px;" class="mr-2">
-              Geolocalizar
-            </button>
             <button class="dropdown-item" type="button" (click)="menuSeleccionado('paso2019')">
               <img src="assets/iconos/elecciones.png" alt="" width="20px;" class="mr-2">
               Elecc. Paso 2019
@@ -43,33 +31,76 @@
               <img src="assets/iconos/circuitoElectoral.png" alt="" width="20px;" class="mr-2">
               Circ. electorales (todos)
             </button>
-            <button class="dropdown-item" type="button" data-toggle="collapse" data-target="#buscaCircuito"
-              (click)="buscarPartido();">
+            <button class="dropdown-item" type="button" (click)="menuSeleccionado('leerPartidos')">
               <img src="assets/iconos/circuitoElectoral.png" alt="" width="20px;" class="mr-2">
-              Circ. electorales (buscar)
-            </button>
-            <!-- <button class="dropdown-item" type="button" (click)="menuSeleccionado('leerPartidos')">
               Part.Pcia. Bs. As. (todos)
-            </button>
-            <button class="dropdown-item" type="button" data-toggle="collapse" data-target="#buscaPartido"
-              (click)="buscarPartido();">
-              Part.Pcia. Bs. As. (buscar)
-            </button> -->
-            <button class="dropdown-item" type="button" data-toggle="collapse" data-target="#capaWFS">
-              <img src="assets/iconos/capaWFS.png" alt="" width="20px;" class="mr-2">
-              <span class="io io-account-login" title="account login" aria-hidden="true">&nbsp;Capa WFS</span>
             </button>
           </div>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#" (click)="menuSeleccionado('renabap')" title="Relevamiento Nacional de barrios populares">Renabap</a>
+          <a class="nav-link" href="#" (click)="menuSeleccionado('renabap')"
+            title="Relevamiento Nacional de barrios populares">Renabap</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" (click)="buscarPartido();" data-toggle="collapse" data-target="#buscaPartido">Partidos Pcia.Bs.As.</a>
+          <a class="nav-link" href="#" (click)="buscarPartido();" data-toggle="collapse"
+            data-target="#buscaPartido">Partidos Pcia.Bs.As.</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" (click)="buscarPartido();" data-toggle="collapse" data-target="#buscaEscuela">Escuelas Pcia.Bs.As.</a>
+          <a class="nav-link" href="#" (click)="buscarPartido();" data-toggle="collapse" data-target="#buscaEscuela">
+            <div class="row">
+              <div class="col offset-4 ">
+                <img src="assets/iconos/escuela4.png" alt="" width="18px;" class="mr-2">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                Escuelas Pcia.Bs.As.
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" (click)="buscarPartido();" data-toggle="collapse" data-target="#buscaCircuito">
+            <div class="row">
+              <div class="col offset-4 ">
+                <img src="assets/iconos/circuitoElectoral.png" alt="" width="18px;" class="mr-2">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                Circ. Elect. Pcia.Bs.As.
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-toggle="collapse" data-target="#fila">
+            <div class="row">
+              <div class="col offset-3">
+                <img src="assets/iconos/geoloca0.png" alt="" width="15px;" class="mr-2">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                Geolocalizar
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-toggle="collapse" data-target="#capaWFS">
+            <div class="row">
+              <div class="col offset-3">
+                <img src="assets/iconos/capaWFS.png" alt="" width="15px;" class="mr-2">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                Capas WFS
+              </div>
+            </div>
+          </a>
         </li>
       </ul>
       <!-- <form class="form-inline my-2 my-lg-0">
@@ -108,7 +139,7 @@
     </button>
     <h5 class="card-title">Buscar partidos</h5>
     <div class="form-group">
-      
+
       <label for="selectPartido">Desplegar para seleccionar</label>
       <select class="form-control" id="selectPartido" [(ngModel)]="partidoSeleccionado"
         (change)="menuSeleccionado('unPartidoPartido', partidoSeleccionado)">

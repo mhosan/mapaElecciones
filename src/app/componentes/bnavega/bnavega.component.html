@@ -8,11 +8,21 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <!-- Ojo, estos iconos de fontawesome SI andan: <i class="fa fa-search"></i>  <i class="fa fa-eye"></i> <i class="fa fa-eye-slash"></i> <i class="fa fa-tags"></i> -->
+        <!-- Ojo, estos iconos de fontawesome SI andan: <i class="fa fa-search"></i>
+            <i class="fa fa-eye"></i> <i class="fa fa-eye-slash"></i> <i class="fa fa-tags"></i> -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Menú
+            <div class="row">
+              <div class="col offset-1 ">
+                <img src="assets/iconos/menu2.png" alt="" width="18px;" class="mr-2">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                Menú
+              </div>
+            </div>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <button class="dropdown-item" type="button" (click)="menuSeleccionado('paso2019')">
@@ -40,11 +50,32 @@
 
         <li class="nav-item">
           <a class="nav-link" href="#" (click)="menuSeleccionado('renabap')"
-            title="Relevamiento Nacional de barrios populares">Renabap</a>
+            title="Relevamiento Nacional de barrios populares">
+            <div class="row">
+              <div class="col offset-4 ">
+                <img src="assets/iconos/estadisticas1.png" alt="" width="18px;" class="mr-2">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                Renabap
+              </div>
+            </div>
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" (click)="buscarPartido();" data-toggle="collapse"
-            data-target="#buscaPartido">Partidos Pcia.Bs.As.</a>
+          <a class="nav-link" href="#" (click)="buscarPartido();" data-toggle="collapse" data-target="#buscaPartido">
+            <div class="row">
+              <div class="col offset-4 ">
+                <img src="assets/iconos/partidos3.png" alt="" width="18px;" class="mr-2">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                Partidos Pcia.Bs.As.
+              </div>
+            </div>
+          </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#" (click)="buscarPartido();" data-toggle="collapse" data-target="#buscaEscuela">

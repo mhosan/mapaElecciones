@@ -14,5 +14,10 @@
         position: relative;
         z-index: 500;
         width: 20rem;
+        /* height: 20rem; */
+    }
+    .tarjeta {
+        width: 17rem;
+        height: 18rem;
     }
 }

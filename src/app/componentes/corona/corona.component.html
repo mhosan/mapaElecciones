@@ -1,5 +1,5 @@
 <div class="card-deck bg-light container text-center corona ml-3 mt-2" id="corona" >
-    <div class="card mt-2 mb-2">
+    <div class="card mt-2 mb-2 tarjeta" >
         <div class="card-body">
             <h5 class="card-title">Coronavirus. Casos totales.</h5>
             <p class="text-center h6">Casos totales:{{totalGeneral}}</p>
@@ -16,17 +16,13 @@
             </p>
         </div>
     </div>
-    <div class="card mt-2 mb-2">
+    <div class="card mt-2 mb-2 tarjeta" >
         <div class="card-body">
             <h5 class="card-title">Coronavirus. Argentina.</h5>
-            <p class="text-center h6">Casos totales:{{total}}</p>
-            <p class="text-center h6">Casos de hoy:{{totalHoy}}</p>
-            <p class="text-center h6">Fallecidos en total: {{fallecidos}}</p>
-            <p class="text-center h6">Fallecidos hoy: {{fallecidosHoy}}</p>
-            <p class="text-center h6">Recuperados: {{recuperados}}</p>
-            <p class="text-center h6">Activos: {{activos}}</p>
-            <p class="text-center h6">Críticos: {{criticos}}</p>
-            <p class="text-center h6">Casos por millon: {{casosPorMillon}}</p>
+            <p class="text-center h6">Casos totales:{{total}} / hoy:{{totalHoy}} </p>
+            <p class="text-center h6">Fallecidos totales: {{fallecidos}} / hoy: {{fallecidosHoy}}</p>
+            <p class="text-center h6">Recuperados: {{recuperados}} - Activos:{{activos}}</p>
+            <p class="text-center h6">Críticos: {{criticos}} - Casos x millon:{{casosPorMillon}}</p>
         </div>
         <div class="card-footer">
             <button class="btn btn-info btn-sm mt-2 " (click)="mostrarDatosArgentina();">
@@ -39,7 +35,7 @@
             </p>
         </div>
     </div>
-    <button type="button" class="close mr-3" data-toggle="collapse" data-target="#corona">
+    <button type="button" class="close mr-3 cerrar" data-toggle="collapse" data-target="#corona">
         <span>×</span>
     </button>
 </div>

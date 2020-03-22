@@ -1,14 +1,16 @@
 <div id="map" class="container-fluid">
 
     <!-- barra de navegacion ---------------------------------------------------- -->
-    <div class="mt-1">
+    <div class="mt-2">
         <app-bnavega (seleccionMenuNavBar)="administrarNavBarMenu($event)"></app-bnavega>
     </div>
-    <app-usuario></app-usuario>
+
+    <!-- <app-usuario></app-usuario> -->
+
     <!-- geolocalizadores ------------------------------------------------------- -->
-    <div class="card collapse" id="fila" style="position: relative; z-index: 450; width: 15rem;">
+    <div class="card collapse" id="fila" style="position: relative; z-index: 450; width: 20rem;">
         <div class="card-header text-center mt-2" style="padding: 0;">
-            <button type="button" class="close mr-3 mt-2" data-toggle="collapse" data-target="#fila">
+            <button type="button" class="close mr-3" data-toggle="collapse" data-target="#fila">
                 <span>×</span>
             </button>
             <h6>Geolocalizar</h6>

@@ -1,9 +1,10 @@
 <div class="container">
   <div class="row ">
 
-    <div class="col d-flex justify-content-end">
+    <div class="col d-flex justify-content-start">
       <div class="dropdown">
-        <button class="btn btn-success btn-sm dropdown-toggle " type="button" id="navbarDropdown" data-toggle="dropdown" >
+        <button class="btn btn-success btn-sm dropdown-toggle " type="button" id="navbarDropdown"
+          data-toggle="dropdown">
           <i class="fa fa-undo"></i><span class="badge badge-pill badge-success">{{contador}}</span>
         </button>
         <div class="dropdown-menu mt-1" aria-labelledby="navbarDropdown">
@@ -13,17 +14,15 @@
       </div>
     </div>
 
-    <div class="col d-flex justify-content-start ">
+    <div class="col d-flex justify-content-end ">
       <input class="form-control form-control-sm" #direbuscar type="text" placeholder="LocationIq"
         [(ngModel)]="valorTexto" aria-label="Search" (keydown)="keyDownFunction($event)"
-        style="font-size:small; border-color: #00b300; left: 1px; margin: 0px;" data-toggle="tooltip"
+        style="font-size:small; border-color: #00b300; width: 11rem;" data-toggle="tooltip"
         data-placement="top" title={{infoBuscar}} />
     </div>
 
   </div>
 </div>
-<!-- <button class="btn btn-sm btn-outline-success ml-2 my-sm-0" type="submit" (click)="buscaLugar(direbuscar.value)"
-    data-toggle="tooltip" data-placement="top" title={{infoBuscar}}>Buscar</button> -->
 <div class="row">
   <ul class="list-group">
     <button type="button" class="list-group-item list-group-item-action" (click)="atajar($event)"

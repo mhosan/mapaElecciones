@@ -1,6 +1,7 @@
 <div class="container">
   <nav class="navbar navbar-expand-lg navbar-light bg-light laNavBar">
     <a class="navbar-brand" href="#">Argengis</a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -11,18 +12,14 @@
         <!-- Ojo, estos iconos de fontawesome SI andan: <i class="fa fa-search"></i>
             <i class="fa fa-eye"></i> <i class="fa fa-eye-slash"></i> <i class="fa fa-tags"></i> -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          <a class="nav-link dropdown-toggle mt-3" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            <div class="row">
+            Menú
+            <!-- <div class="row">
               <div class="col offset-1 ">
                 <img src="assets/iconos/menu2.png" alt="" width="18px;" class="mr-2">
               </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                Menú
-              </div>
-            </div>
+            </div> -->
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <button class="dropdown-item" type="button" (click)="menuSeleccionado('paso2019')">
@@ -132,6 +129,11 @@
               </div>
             </div>
           </a>
+        </li>
+        <li class="nav-item">
+          <div class="mt-2 ml-3">
+            <app-usuario></app-usuario>
+          </div>
         </li>
       </ul>
       <!-- <form class="form-inline my-2 my-lg-0">

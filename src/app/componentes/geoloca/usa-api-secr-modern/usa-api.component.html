@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
 
-    <div class="col d-flex justify-content-end">
+    <div class="col d-flex justify-content-start">
       <div class="dropdown">
         <button class="btn btn-info btn-sm dropdown-toggle mb-1" type="button" id="navbarDropdown" data-toggle="dropdown">
           <i class="fa fa-undo"></i><span class="badge badge-pill badge-info">{{contador}}</span>
@@ -16,7 +16,7 @@
     <div class="col">
       <input class="form-control form-control-sm mb-1" #direbuscar type="text" placeholder="S.Modern."
         [(ngModel)]="valorTexto" aria-label="Search" (keydown)="keyDownFunction($event)"
-        style="font-size:small; max-height: 2rem; border-color: #0dc6df; left: 1px;"
+        style="font-size:small; max-height: 2rem; border-color: #0dc6df; width: 11rem;"
         data-toggle="tooltip" data-placement="top" title={{infoBuscar}} />
     </div>
 

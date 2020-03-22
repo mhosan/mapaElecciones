@@ -1,0 +1,42 @@
+<div class="card-deck container text-center corona ml-3 mt-2" style="width: 40rem">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Coronavirus. Casos totales.</h5>
+            <p class="text-center h6">Casos totales:{{totalGeneral}}</p>
+            <p class="text-center h6">Fallecidos: {{fallecidosGeneral}}</p>
+            <p class="text-center h6">Recuperados: {{recuperadosGeneral}}</p>
+        </div>
+        <div class="card-footer d-flex justify-content-center align-items-center">
+            <!-- <button class="btn btn-info btn-sm mt-2" (click)="mostrarDatos();">
+                Actualizar
+            </button> -->
+            <p class="text-md-center text-muted">
+                Fuente de los datos: https://github.com/javieraviles/covidAPI
+                y https://www.worldometers.info/
+            </p> 
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Coronavirus. Argentina.</h5>
+            <p class="text-center h6">Casos totales:{{total}}</p>
+            <p class="text-center h6">Casos de hoy:{{totalHoy}}</p>
+            <p class="text-center h6">Fallecidos en total: {{fallecidos}}</p>
+            <p class="text-center h6">Fallecidos hoy: {{fallecidosHoy}}</p>
+            <p class="text-center h6">Recuperados: {{recuperados}}</p>
+            <p class="text-center h6">Activos: {{activos}}</p>
+            <p class="text-center h6">Críticos: {{criticos}}</p>
+            <p class="text-center h6">Casos por millon: {{casosPorMillon}}</p>
+        </div>
+        <div class="card-footer d-flex justify-content-center align-items-center">
+            <!-- <button class="btn btn-info btn-sm mt-2 " (click)="mostrarDatosArgentina();">
+                Actualizar
+            </button> -->
+            <br>
+            <p class="text-md-center text-muted">
+                Fuente de los datos: https://github.com/javieraviles/covidAPI
+                y https://www.worldometers.info/
+            </p> 
+        </div>
+    </div>
+</div>

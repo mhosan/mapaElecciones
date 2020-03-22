@@ -1,5 +1,8 @@
 <div class="card-deck bg-light container text-center corona ml-3 mt-2" id="corona" >
     <div class="card mt-2 mb-2 tarjeta" >
+        <div class="d-flex justify-content-center mt-2">
+            <img src="assets/iconos/reload2.png" (click)="mostrarDatos(true);" alt="" width="15px;" class="mr-2">
+        </div>
         <div class="card-body">
             <h5 class="card-title">Coronavirus. Casos totales.</h5>
             <p class="text-center h6">Casos totales:{{totalGeneral}}</p>
@@ -7,16 +10,15 @@
             <p class="text-center h6">Recuperados: {{recuperadosGeneral}}</p>
         </div>
         <div class="card-footer">
-            <button class="btn btn-info btn-sm mt-2" (click)="mostrarDatos();">
-                Actualizar
-            </button>
             <p class="text-md-center text-muted">
                 Fuente de los datos: https://github.com/javieraviles/covidAPI
-                y https://www.worldometers.info/
             </p>
         </div>
     </div>
     <div class="card mt-2 mb-2 tarjeta" >
+        <div class="d-flex justify-content-center mt-2">
+            <img src="assets/iconos/reload2.png" (click)="mostrarDatosArgentina(true);" alt="" width="15px;" class="mr-2">
+        </div>
         <div class="card-body">
             <h5 class="card-title">Coronavirus. Argentina.</h5>
             <p class="text-center h6">Casos totales:{{total}} / hoy:{{totalHoy}} </p>
@@ -25,13 +27,8 @@
             <p class="text-center h6">Críticos: {{criticos}} - Casos x millon:{{casosPorMillon}}</p>
         </div>
         <div class="card-footer">
-            <button class="btn btn-info btn-sm mt-2 " (click)="mostrarDatosArgentina();">
-                Actualizar
-            </button>
-            <br>
             <p class="text-md-center text-muted">
                 Fuente de los datos: https://github.com/javieraviles/covidAPI
-                y https://www.worldometers.info/
             </p>
         </div>
     </div>

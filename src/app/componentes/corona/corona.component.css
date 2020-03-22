@@ -1,4 +1,6 @@
-
+img:hover {
+    cursor: pointer;
+}
 /*-----------grande ------------------*/
 @media (min-width: 576px) {
     .corona {
@@ -13,11 +15,11 @@
     .corona {
         position: relative;
         z-index: 500;
-        width: 20rem;
+        width: 18rem;
         /* height: 20rem; */
     }
     .tarjeta {
-        width: 17rem;
+        width: 16rem;
         height: 18rem;
     }
 }

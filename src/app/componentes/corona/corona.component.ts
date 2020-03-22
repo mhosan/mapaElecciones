@@ -21,10 +21,10 @@ export class CoronaComponent implements OnInit {
   constructor(private servicioDatos: BuscaDatosService) { }
 
   ngOnInit(): void {
-    this.mostrarDatos();
-    this.mostrarDatosArgentina();
+    this.mostrarDatos(false);
+    this.mostrarDatosArgentina(false);
   }
-  mostrarDatos() {
+  mostrarDatos(alerta: boolean) {
     this.servicioDatos.getDatosCoronaTotales()
       .subscribe(respuesta => {
         //console.log('Casos: ', respuesta.cases, ' Fallecimientos: ', respuesta.deaths, ' Recuperados: ', respuesta.recovered);
@@ -32,9 +32,13 @@ export class CoronaComponent implements OnInit {
         this.fallecidosGeneral = respuesta.deaths;
         this.recuperadosGeneral = respuesta.recovered;
       });
+    if (alerta) {
+      alert('Actualizando');
+    }
+
     return false;
   }
-  mostrarDatosArgentina() {
+  mostrarDatosArgentina(alerta: boolean) {
     this.servicioDatos.getDatosCoronaPaises()
       .subscribe(respuesta => {
         //console.log(respuesta);
@@ -52,6 +56,9 @@ export class CoronaComponent implements OnInit {
           }
         })
       });
+    if (alerta) {
+      alert('Actualizando');
+    }
     return false;
   }
 }

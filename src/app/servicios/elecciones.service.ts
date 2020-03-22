@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class EleccionesService {
+  
   municipiosCollection: AngularFirestoreCollection<Paso2019edit>;
   municipios: Observable<Paso2019edit[]>
   municipioDoc: AngularFirestoreDocument<Paso2019edit>;

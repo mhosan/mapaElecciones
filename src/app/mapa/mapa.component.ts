@@ -945,7 +945,9 @@ export class MapaComponent implements OnInit {
     this.edicion = JSON.parse(sessionStorage.getItem('edicion'));
 
     if (this.edicion) {
+      //---------------------------------------------------------------
       //tamo editando...
+      //---------------------------------------------------------------
       if (this.eleccionesGenerales) {
         this.servicioMunicipios.editMunicipiosGenerales(this.modeloPaso2019.id, this.modeloPaso2019)
           .then(() => {
@@ -963,7 +965,9 @@ export class MapaComponent implements OnInit {
       }
     } else {
       //tamo en un alta...
+      //---------------------------------------------------------------
       if (this.eleccionesGenerales) {
+      //---------------------------------------------------------------
         this.servicioMunicipios.saveMunicipioGenerales(this.modeloPaso2019)
           .then(response => {
             console.log('la respuesta:', response);
@@ -987,6 +991,7 @@ export class MapaComponent implements OnInit {
     }
     this.actualizar();
   }
+  
   
   //===================================================================
   //Se obtienen los datos de una base de datos Firebase y se cargan en 

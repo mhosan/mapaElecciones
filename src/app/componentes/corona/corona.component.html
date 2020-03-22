@@ -1,38 +1,54 @@
-<div class="card-deck bg-light container text-center corona ml-3 mt-2" id="corona" >
-    <div class="card mt-2 mb-2 tarjeta" >
+<div class="card-deck bg-light container text-center corona ml-3 mt-2" id="corona">
+    <div class="card mt-2 mb-2 tarjeta">
         <div class="d-flex justify-content-center mt-2">
             <img src="assets/iconos/reload2.png" (click)="mostrarDatos(true);" alt="" width="15px;" class="mr-2">
         </div>
         <div class="card-body">
             <h5 class="card-title">Coronavirus. Casos totales.</h5>
-            <p class="text-center h6">Casos totales:{{totalGeneral}}</p>
-            <p class="text-center h6">Fallecidos: {{fallecidosGeneral}}</p>
-            <p class="text-center h6">Recuperados: {{recuperadosGeneral}}</p>
+            <p class="text-center h6">Casos totales:{{objetoCorona.casosTot}}</p>
+            <p class="text-center h6">Fallecidos: {{objetoCorona.fallecidosTot}}</p>
+            <p class="text-center h6">Recuperados: {{objetoCorona.recuperados}}</p>
         </div>
         <div class="card-footer">
             <p class="text-md-center text-muted">
                 Fuente de los datos: https://github.com/javieraviles/covidAPI
+                Fecha: {{objetoCorona.fecha | date: 'dd/MM/yyyy - H:mm:ss'}}
             </p>
         </div>
     </div>
-    <div class="card mt-2 mb-2 tarjeta" >
+    <div class="card mt-2 mb-2 tarjeta">
         <div class="d-flex justify-content-center mt-2">
-            <img src="assets/iconos/reload2.png" (click)="mostrarDatosArgentina(true);" alt="" width="15px;" class="mr-2">
+            <img src="assets/iconos/reload2.png" (click)="mostrarDatosArgentina(true);" alt="" width="15px;"
+                class="mr-2">
         </div>
         <div class="card-body">
             <h5 class="card-title">Coronavirus. Argentina.</h5>
-            <p class="text-center h6">Casos totales:{{total}} / hoy:{{totalHoy}} </p>
-            <p class="text-center h6">Fallecidos totales: {{fallecidos}} / hoy: {{fallecidosHoy}}</p>
-            <p class="text-center h6">Recuperados: {{recuperados}} - Activos:{{activos}}</p>
-            <p class="text-center h6">Críticos: {{criticos}} - Casos x millon:{{casosPorMillon}}</p>
+            <p class="text-center h6">Casos totales:{{objetoCoronaArgentina.casosTot}} /
+                hoy:{{objetoCoronaArgentina.casosHoy}} </p>
+            <p class="text-center h6">Fallecidos totales: {{objetoCoronaArgentina.fallecidosTot}} / hoy:
+                {{objetoCoronaArgentina.fallecidosHoy}}</p>
+            <p class="text-center h6">Recuperados: {{objetoCoronaArgentina.recuperados}} -
+                Activos:{{objetoCoronaArgentina.activos}}</p>
+            <p class="text-center h6">Críticos: {{objetoCoronaArgentina.criticos}} - Casos x
+                millon:{{objetoCoronaArgentina.casosPorMillon}}</p>
         </div>
         <div class="card-footer">
             <p class="text-md-center text-muted">
                 Fuente de los datos: https://github.com/javieraviles/covidAPI
+                Fecha: {{objetoCoronaArgentina.fecha | date: 'dd/MM/yyyy - H:mm:ss'}}
             </p>
         </div>
     </div>
-    <button type="button" class="close mr-3 cerrar" data-toggle="collapse" data-target="#corona">
-        <span>×</span>
-    </button>
+    <div class="card mt-2 mb-2 tarjeta">
+        <div class="card-body">
+            <button type="button" class="close mr-3 cerrar" data-toggle="collapse" data-target="#corona">
+                <span>×</span>
+            </button>
+            <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-info disabled" (click)="guardarDatos()">
+                    <span>Guardar todo</span>
+                </button>
+            </div>
+        </div>
+    </div>
 </div>

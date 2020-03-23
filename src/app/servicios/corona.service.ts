@@ -23,4 +23,6 @@ export class CoronaService {
     return this.afs.collection(this.coleccionCorona).add(datosCorona);
   }
 
+  
+
 }

@@ -76,4 +76,11 @@ export class CoronaComponent implements OnInit {
       .catch(err => console.error('Hubo un error en el save de los datos globales:', err));
     return false
   }
+  // prueba(){
+  //   this.servicioDatos.getDatosPrueba()
+  //   .subscribe(respuesta => {
+  //     console.log(respuesta);
+  //   });
+  // return false;
+  // }
 }

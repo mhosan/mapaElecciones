@@ -23,4 +23,11 @@ export class BuscaDatosService {
     return elJsonCorona;
   }
 
+  getDatosPrueba(): Observable<any> {
+    let elJson: any;
+    let laUrl = 'https://thevirustracker.com/argentina-coronavirus-information-ar';
+    elJson = this.http.get<any>(laUrl);
+    return elJson;
+  }
+
 }

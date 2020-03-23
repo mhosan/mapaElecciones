@@ -8,6 +8,12 @@ img:hover {
         z-index: 500;
         width: 55rem;
     }
+    .grafico{
+        position: absolute;
+        z-index: 500;
+        top: 10px;
+        left: 10px;
+    }
 }
 
 /*---------chico --------------------*/

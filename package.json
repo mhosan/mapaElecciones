@@ -26,6 +26,7 @@
     "awesome": "0.0.7",
     "bootstrap": "^4.4.1",
     "c3": "^0.7.8",
+    "chart.js": "^2.9.3",
     "classlist.js": "^1.1.20150312",
     "core-js": "^2.5.4",
     "firebase": "^6.6.2",

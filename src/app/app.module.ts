@@ -23,6 +23,7 @@ import { BuscaDatosService } from './servicios/busca-datos.service';
 import { environment } from './../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { GraficosComponent } from './componentes/graficos/graficos.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     UsaApiLocationIqComponent,
     BnavegaComponent,
     UsuarioComponent,
-    CoronaComponent
+    CoronaComponent,
+    GraficosComponent
   ],
   imports: [
     BrowserModule,

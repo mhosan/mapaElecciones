@@ -40,12 +40,20 @@
 
     <div class="card mt-2 mb-2 tarjeta">
         <div class="card-body">
-            <button type="button" class="close mr-3 cerrar" data-toggle="collapse" data-target="#corona">
-                <span>×</span>
-            </button>
+            <div class="d-flex justify-content-end">
+                <button type="button" class="close mr-3 cerrar" data-toggle="collapse" data-target="#corona">
+                    <span>×</span>
+                </button>
+            </div>
             <div class="d-flex justify-content-center">
-                <button type="button" class="btn btn-info disabled" (click)="guardarDatos()">
+                <button type="button" class="btn btn-info btn-sm disabled" (click)="guardarDatos()">
                     <span>Guardar todo</span>
+                </button>
+            </div>
+            <br>
+            <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-info btn-sm" data-toggle="collapse" data-target="#graficos">
+                    <span>Gráficos</span>
                 </button>
             </div>
         </div>
@@ -57,4 +65,13 @@
         </div>
     </div>
 
+   
+</div>
+<div class="collapse card mt-2 mb-2 grafico" id="graficos">
+    <div class="card-body">
+        <button type="button" class="close mr-3 cerrar" data-toggle="collapse" data-target="#graficos">
+            <span>×</span>
+        </button>
+        <app-graficos></app-graficos>
+    </div>
 </div>

@@ -14,6 +14,13 @@ img:hover {
         top: 10px;
         left: 10px;
     }
+    .datos{
+        position: absolute;
+        z-index: 500;
+        top: 10px;
+        left: 10px;
+        width: 40rem;
+    }
 }
 
 /*---------chico --------------------*/

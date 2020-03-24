@@ -6,6 +6,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BuscaDatosService {
+/*=================================================================== 
+  Esta clase busca datos desde la web, en alguna API, pero solo
+  hace eso: buscar datos.
+=====================================================================*/
 
   constructor(private http: HttpClient) { }
 
@@ -25,7 +29,7 @@ export class BuscaDatosService {
 
   getDatosPrueba(): Observable<any> {
     let elJson: any;
-    let laUrl = 'https://thevirustracker.com/argentina-coronavirus-information-ar';
+    let laUrl = 'https://thevirustracker.com/free-api?countryTotal=AR';
     elJson = this.http.get<any>(laUrl);
     return elJson;
   }

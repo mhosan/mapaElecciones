@@ -11,7 +11,8 @@ import { Corona } from '../../modelos/corona';
 export class CoronaComponent implements OnInit {
   public objetoCorona: Corona = {};
   public objetoCoronaArgentina: Corona = {};
-  
+  public arrayDatosCorona: Corona[] = [];
+
   constructor(private servicioDatos: BuscaDatosService, private servicioCorona: CoronaService) { }
 
   ngOnInit(): void {
@@ -36,6 +37,11 @@ export class CoronaComponent implements OnInit {
 
     return false;
   }
+
+  /*===================================================================
+  Trae los datos de todos los paises. Aqui se filtra para dejar solo
+  los datos de Argentina.
+  =====================================================================*/
   mostrarDatosArgentina(alerta: boolean) {
     this.servicioDatos.getDatosCoronaPaises()
       .subscribe(respuesta => {
@@ -60,15 +66,17 @@ export class CoronaComponent implements OnInit {
     }
     return false;
   }
+  
+
   guardarDatos() {
     this.objetoCorona.pais = "global";
-    this.objetoCoronaArgentina.pais ="Argentina";
+    this.objetoCoronaArgentina.pais = "Argentina";
     this.servicioCorona.saveDatosCorona(this.objetoCorona)
       .then(response => {
         console.log("Los datos se guardaron ok!.");
         console.log("Ahora guardando los datos locales...")
         this.servicioCorona.saveDatosCorona(this.objetoCoronaArgentina)
-          .then(response =>{
+          .then(response => {
             console.log("Los datos locales se guardaron ok.");
           })
           .catch(err => console.error('Hubo un error en el save de los datos locales:', err));
@@ -76,11 +84,36 @@ export class CoronaComponent implements OnInit {
       .catch(err => console.error('Hubo un error en el save de los datos globales:', err));
     return false
   }
-  // prueba(){
-  //   this.servicioDatos.getDatosPrueba()
-  //   .subscribe(respuesta => {
-  //     console.log(respuesta);
-  //   });
-  // return false;
-  // }
+  
+  buscarDatos() {
+    let datosCoronaLeido: Corona;
+    this.servicioCorona.getCoronaTodos('Argentina')
+      .subscribe(response => {
+        response.docs.forEach(value =>{
+          const data = value.data();
+          datosCoronaLeido ={
+            pais : data.pais,
+            casosTot : data.casosTot,
+            casosHoy : data.casosHoy,
+            fallecidosTot : data.fallecidosTot,
+            fallecidosHoy : data.fallecidosHoy,
+            activos : data.activos,
+            recuperados : data.recuperados,
+            fecha : data.fecha,
+            criticos : data.criticos,
+            casosPorMillon : data.casosPorMillon,
+          };
+          this.arrayDatosCorona.push(datosCoronaLeido);
+        });
+      });
+    console.log(this.arrayDatosCorona);
+    return false
+  }
+  prueba(){
+    this.servicioDatos.getDatosPrueba()
+    .subscribe(respuesta => {
+      console.log(respuesta);
+    });
+  return false;
+  }
 }

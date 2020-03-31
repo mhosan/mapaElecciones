@@ -43,23 +43,26 @@ export class CoronaComponent implements OnInit {
   los datos de Argentina.
   =====================================================================*/
   mostrarDatosArgentina(alerta: boolean) {
-    this.servicioDatos.getDatosCoronaPaises()
+    this.servicioDatos.getDatosCoronaPaises('Argentina')
       .subscribe(respuesta => {
-        //console.log(respuesta);
-        respuesta.forEach(element => {
-          if (element.country == "Argentina") {
-            //console.log(element);
-            this.objetoCoronaArgentina.fallecidosTot = element.deaths;
-            this.objetoCoronaArgentina.fallecidosHoy = element.todayDeaths;
-            this.objetoCoronaArgentina.recuperados = element.recovered;
-            this.objetoCoronaArgentina.casosTot = element.cases;
-            this.objetoCoronaArgentina.casosHoy = element.todayCases;
-            this.objetoCoronaArgentina.activos = element.active;
-            this.objetoCoronaArgentina.criticos = element.critical;
-            this.objetoCoronaArgentina.casosPorMillon = element.casesPerOneMillion;
+        console.log(`respuesta desde el servicio: ${respuesta}`);
+            // console.log(respuesta.deaths);
+            // console.log(respuesta.todayDeaths);
+            // console.log(respuesta.recovered);
+            // console.log(respuesta.cases);
+            // console.log(respuesta.todayCases);
+            // console.log(respuesta.active);
+            // console.log(respuesta.critical);
+            // console.log(respuesta.casesPerOneMillion);
+            this.objetoCoronaArgentina.fallecidosTot = respuesta.deaths;
+            this.objetoCoronaArgentina.fallecidosHoy = respuesta.todayDeaths;
+            this.objetoCoronaArgentina.recuperados = respuesta.recovered;
+            this.objetoCoronaArgentina.casosTot = respuesta.cases;
+            this.objetoCoronaArgentina.casosHoy = respuesta.todayCases;
+            this.objetoCoronaArgentina.activos = respuesta.active;
+            this.objetoCoronaArgentina.criticos = respuesta.critical;
+            this.objetoCoronaArgentina.casosPorMillon = respuesta.casesPerOneMillion;
             this.objetoCoronaArgentina.fecha = new Date();
-          }
-        })
       });
     if (alerta) {
       //alert('Actualizando');

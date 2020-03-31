@@ -1,15 +1,34 @@
-<div class="card mt-2 mb-2 grafico">
+<div class="card grafico">
     <div class="card-body">
-        <h5 class="card-title">Coronavirus. Gráficos</h5>
+        <h5 class="card-title">Coronavirus.</h5>
     </div>
-    <div>
-        <canvas id="canvas">
-            {{chart}}
-        </canvas>
+    <div class="row">
+        <div class="col">
+            <canvas id="canvasGlobal"></canvas>
+        </div>
+        <div class="col">
+            <canvas id="canvasArgentina"></canvas>
+        </div>
+        <div class="col">
+            <canvas id="canvasBrasil"></canvas>
+        </div>
     </div>
-    <div class="card-footer">
-        <p class="text-md-center text-muted">
-            Gráficos 
-        </p>
-    </div>
-</div>
+    <!-- <div class="card-footer">
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-info btn-sm" (click)="graficoArgentina();">
+                    Casos en Argentina
+                </button>
+            </div>
+            <div class="col">
+                <button class="btn btn-info btn-sm" (click)="graficoBrasil();">
+                    Casos en Brasil
+                </button>
+            </div>
+            <div class="col">
+                <button class="btn btn-info btn-sm" (click)="graficoGlobal();">
+                    Casos en el mundo
+                </button>
+            </div>
+        </div>
+    </div> -->

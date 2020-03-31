@@ -11,8 +11,9 @@ img:hover {
     .grafico{
         position: absolute;
         z-index: 500;
-        top: 10px;
+        top: -30px;
         left: 10px;
+        background-color: lightgray;
     }
     .datos{
         position: absolute;

@@ -20,9 +20,10 @@ export class BuscaDatosService {
     return elJsonCorona;
   }
 
-  getDatosCoronaPaises(): Observable<any> {
+  getDatosCoronaPaises(paisBuscar:string): Observable<any> {
     let elJsonCorona: any;
-    let laUrl = 'https://coronavirus-19-api.herokuapp.com/countries';
+    let laUrl = `https://coronavirus-19-api.herokuapp.com/countries/${paisBuscar}`;
+    console.log(`la url quedó: ${laUrl}`);
     elJsonCorona = this.http.get<any>(laUrl);
     return elJsonCorona;
   }

@@ -1,3 +1,6 @@
+.modal-backdrop {
+    z-index: -1;
+}
 img:hover {
     cursor: pointer;
 }

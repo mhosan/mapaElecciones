@@ -13,7 +13,7 @@ img:hover {
         z-index: 500;
         top: -30px;
         left: 10px;
-        background-color: lightgray;
+        /* background-color: lightgray; */
     }
     .datos{
         position: absolute;

@@ -9,59 +9,75 @@ import { getCurrencySymbol } from '@angular/common';
   styleUrls: ['./graficos.component.css']
 })
 export class GraficosComponent implements OnInit {
-  public datosGlobalesChart = [];       //guardar los datos leidos de la api rest
-  public datosPaisArgentinaChart = [];           //guardar los datos leidos de la api rest
-  public datosPaisBrasilChart = [];
-  public chartGlobal: any = [];       //el grafico global
-  public chartArgentina: any = [];    //el grafico de Argentina
-  public chartBrasil: any = [];       //el grafico de Brasil
+  public datosGlobalesChart = [];       //guardar los datos globales leidos de la api rest
+  public datosPaisArgentinaChart = [];  //guardar los datos de Argentina leidos de la api rest
+  public datosPaisBrasilChart = [];     //guardar los datos de Brasil leidos de la api rest
+  public datosPaisChileChart = [];      //guardar los datos de Chile leidos de la api rest
+  public datosPaisBoliviaChart = [];    //guardar los datos de Bolivia leidos de la api rest
+  public datosPaisUruguayChart = [];    //guardar los datos de Uruguay leidos de la api rest
+  public datosPaisEcuadorChart = [];    //guardar los datos de Ecuador leidos de la api rest
+  public datosPaisColombiaChart = [];   //guardar los datos de Colombia leidos de la api rest
+
+  public chartGlobal: any = [];         //el grafico global
+  public chartPorPaises: any = [];      //el grafico por paises
 
   constructor(private servicioDatos: BuscaDatosService) { }
 
   ngOnInit(): void {
-    //this.apagarTodosLosCanvas();
     this.leerDatosGlobales();
-    this.leerDatosLocales('Argentina');
-    this.leerDatosLocales('Brazil');
+    this.leerDatosLocales();
   }
-
-  // apagarTodosLosCanvas(){
-  //   var global = document.getElementById('canvasGlobal');
-  //   global.style.display == "none"
-  //   var argentina = document.getElementById('canvasArgentina');
-  //   argentina.style.display == "none"
-  //   var brasil = document.getElementById('canvasBrasil');
-  //   brasil.style.display == "none"
-  // }
-
 
   /*===================================================================
   leerDatosLocales trae datos del dia de la fecha de un pais, leyendo
   una api rest (https://github.com/javieraviles/covidAPI)
   =====================================================================*/
-  leerDatosLocales(paisBuscar: string) {
-    this.servicioDatos.getDatosCoronaPaises(paisBuscar)
+  leerDatosLocales() {
+    this.servicioDatos.getDatosCoronaPaisesTodos()
       .subscribe(respuesta => {
-        if (paisBuscar == 'Argentina') {
-          this.datosPaisArgentinaChart = [];
-          this.datosPaisArgentinaChart.push(respuesta.cases);
-          this.datosPaisArgentinaChart.push(respuesta.deaths);
-          this.datosPaisArgentinaChart.push(respuesta.recovered);
-          this.graficoArgentina();
-          return;
+        respuesta.forEach(element => {
+          if (element.country == 'Argentina') {
+            this.datosPaisArgentinaChart = [];
+            this.datosPaisArgentinaChart.push(element.cases);
+            this.datosPaisArgentinaChart.push(element.deaths);
+            this.datosPaisArgentinaChart.push(element.recovered);
+            console.log(this.datosPaisArgentinaChart);
+          } else if (element.country == 'Brazil') {
+            this.datosPaisBrasilChart = [];
+            this.datosPaisBrasilChart.push(element.cases);
+            this.datosPaisBrasilChart.push(element.deaths);
+            this.datosPaisBrasilChart.push(element.recovered);
+          } else if (element.country == 'Chile') {
+            this.datosPaisChileChart = [];
+            this.datosPaisChileChart.push(element.cases);
+            this.datosPaisChileChart.push(element.deaths);
+            this.datosPaisChileChart.push(element.recovered);
+          } else if (element.country == 'Bolivia') {
+            this.datosPaisBoliviaChart = [];
+            this.datosPaisBoliviaChart.push(element.cases);
+            this.datosPaisBoliviaChart.push(element.deaths);
+            this.datosPaisBoliviaChart.push(element.recovered);
+          } else if (element.country == 'Uruguay') {
+            this.datosPaisUruguayChart = [];
+            this.datosPaisUruguayChart.push(element.cases);
+            this.datosPaisUruguayChart.push(element.deaths);
+            this.datosPaisUruguayChart.push(element.recovered);
+          } else if (element.country == 'Ecuador') {
+            this.datosPaisEcuadorChart = [];
+            this.datosPaisEcuadorChart.push(element.cases);
+            this.datosPaisEcuadorChart.push(element.deaths);
+            this.datosPaisEcuadorChart.push(element.recovered);
+          } else if (element.country == 'Colombia') {
+            this.datosPaisColombiaChart = [];
+            this.datosPaisColombiaChart.push(element.cases);
+            this.datosPaisColombiaChart.push(element.deaths);
+            this.datosPaisColombiaChart.push(element.recovered);
+          }
+          this.graficoPorPaises();
         }
-        if (paisBuscar == 'Brazil') {
-          this.datosPaisBrasilChart = [];
-          this.datosPaisBrasilChart.push(respuesta.cases);
-          this.datosPaisBrasilChart.push(respuesta.deaths);
-          this.datosPaisBrasilChart.push(respuesta.recovered);
-          this.graficoBrasil();
-          return;
-        }
+        )
       });
   }
-
-
   /*===================================================================
   leerDatosGlobales trae datos totales a nivel mundial, del dia de la 
   fecha, leyendo una api rest (https://github.com/javieraviles/covidAPI)
@@ -77,44 +93,9 @@ export class GraficosComponent implements OnInit {
       });
   }
 
-  graficoBrasil() {
-    this.chartBrasil = new Chart('canvasBrasil', {
-      type: 'bar',
-      data: {
-        labels: ['Casos', 'Fallecimientos', 'Recuperados'],
-        datasets: [
-          {
-            label: 'Casos de Brasil',
-            data: this.datosPaisBrasilChart,
-            backgroundColor: [
-              'rgba(54, 10, 210, 0.2)',
-              'rgba(54, 10, 210, 0.2)',
-              'rgba(54, 10, 210, 0.2)'
 
-            ],
-            borderColor: [
-              'rgba(54, 10, 210, 1)',
-              'rgba(54, 10, 210, 1)',
-              'rgba(54, 10, 210, 1)'
-            ],
-            borderWidth: 1
-          }
-        ]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      }
-    });
-  }
-
-  graficoArgentina() {
-    this.chartArgentina = new Chart('canvasArgentina', {
+  graficoPorPaises() {
+    this.chartPorPaises = new Chart('canvasArgentina', {
       type: 'bar',
       data: {
         labels: ['Casos', 'Fallecimientos', 'Recuperados'],
@@ -133,8 +114,98 @@ export class GraficosComponent implements OnInit {
               'rgba(54, 200, 10, 1)'
             ],
             borderWidth: 1
+          },
+          {
+            label: 'Casos de Brasil',
+            data: this.datosPaisBrasilChart,
+            backgroundColor: [
+              'rgba(54, 10, 210, 0.2)',
+              'rgba(54, 10, 210, 0.2)',
+              'rgba(54, 10, 210, 0.2)'
+            ],
+            borderColor: [
+              'rgba(54, 10, 210, 1)',
+              'rgba(54, 10, 210, 1)',
+              'rgba(54, 10, 210, 1)'
+            ],
+            borderWidth: 1
+          },
+          {
+            label: 'Casos de Chile',
+            data: this.datosPaisChileChart,
+            backgroundColor: [
+              'rgba(200, 10, 110, 0.2)',
+              'rgba(200, 10, 110, 0.2)',
+              'rgba(200, 10, 110, 0.2)'
+            ],
+            borderColor: [
+              'rgba(200, 10, 110, 1)',
+              'rgba(200, 10, 110, 1)',
+              'rgba(200, 10, 110, 1)'
+            ],
+            borderWidth: 1
+          },
+          {
+            label: 'Casos de Bolivia',
+            data: this.datosPaisBoliviaChart,
+            backgroundColor: [
+              'rgba(100, 15, 110, 0.2)',
+              'rgba(100, 15, 110, 0.2)',
+              'rgba(100, 15, 110, 0.2)'
+            ],
+            borderColor: [
+              'rgba(100, 15, 110, 1)',
+              'rgba(100, 15, 110, 1)',
+              'rgba(100, 15, 110, 1)'
+            ],
+            borderWidth: 1
+          },
+          {
+            label: 'Casos de Uruguay',
+            data: this.datosPaisUruguayChart,
+            backgroundColor: [
+              'rgba(100, 100, 100, 0.2)',
+              'rgba(100, 100, 100, 0.2)',
+              'rgba(100, 100, 100, 0.2)'
+            ],
+            borderColor: [
+              'rgba(100, 100, 100, 1)',
+              'rgba(100, 100, 100, 1)',
+              'rgba(100, 100, 100, 1)'
+            ],
+            borderWidth: 1
+          },
+          {
+            label: 'Casos de Ecuador',
+            data: this.datosPaisEcuadorChart,
+            backgroundColor: [
+              'rgba(100, 1, 50, 0.2)',
+              'rgba(100, 1, 50, 0.2)',
+              'rgba(100, 1, 50, 0.2)'
+            ],
+            borderColor: [
+              'rgba(100, 1, 50, 1)',
+              'rgba(100, 1, 50, 1)',
+              'rgba(100, 1, 50, 1)'
+            ],
+            borderWidth: 1
+          },
+          {
+            label: 'Casos de Colombia',
+            data: this.datosPaisColombiaChart,
+            backgroundColor: [
+              'rgba(1, 100, 50, 0.2)',
+              'rgba(1, 100, 50, 0.2)',
+              'rgba(1, 100, 50, 0.2)'
+            ],
+            borderColor: [
+              'rgba(1, 100, 50, 1)',
+              'rgba(1, 100, 50, 1)',
+              'rgba(1, 100, 50, 1)'
+            ],
+            borderWidth: 1
           }
-        ]
+        ],
       },
       options: {
         scales: {
@@ -147,6 +218,7 @@ export class GraficosComponent implements OnInit {
       }
     });
   }
+
 
   graficoGlobal() {
     this.chartGlobal = new Chart('canvasGlobal', {

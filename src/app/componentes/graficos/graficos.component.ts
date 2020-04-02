@@ -101,7 +101,7 @@ export class GraficosComponent implements OnInit {
         labels: ['Casos', 'Fallecimientos', 'Recuperados'],
         datasets: [
           {
-            label: 'Casos de Argentina',
+            label: 'Argentina',
             data: this.datosPaisArgentinaChart,
             backgroundColor: [
               'rgba(54, 200, 10, 0.2)',
@@ -116,7 +116,7 @@ export class GraficosComponent implements OnInit {
             borderWidth: 1
           },
           {
-            label: 'Casos de Brasil',
+            label: 'Brasil',
             data: this.datosPaisBrasilChart,
             backgroundColor: [
               'rgba(54, 10, 210, 0.2)',
@@ -131,7 +131,7 @@ export class GraficosComponent implements OnInit {
             borderWidth: 1
           },
           {
-            label: 'Casos de Chile',
+            label: 'Chile',
             data: this.datosPaisChileChart,
             backgroundColor: [
               'rgba(200, 10, 110, 0.2)',
@@ -146,7 +146,7 @@ export class GraficosComponent implements OnInit {
             borderWidth: 1
           },
           {
-            label: 'Casos de Bolivia',
+            label: 'Bolivia',
             data: this.datosPaisBoliviaChart,
             backgroundColor: [
               'rgba(100, 15, 110, 0.2)',
@@ -161,7 +161,7 @@ export class GraficosComponent implements OnInit {
             borderWidth: 1
           },
           {
-            label: 'Casos de Uruguay',
+            label: 'Uruguay',
             data: this.datosPaisUruguayChart,
             backgroundColor: [
               'rgba(100, 100, 100, 0.2)',
@@ -176,7 +176,7 @@ export class GraficosComponent implements OnInit {
             borderWidth: 1
           },
           {
-            label: 'Casos de Ecuador',
+            label: 'Ecuador',
             data: this.datosPaisEcuadorChart,
             backgroundColor: [
               'rgba(100, 1, 50, 0.2)',
@@ -191,7 +191,7 @@ export class GraficosComponent implements OnInit {
             borderWidth: 1
           },
           {
-            label: 'Casos de Colombia',
+            label: 'Colombia',
             data: this.datosPaisColombiaChart,
             backgroundColor: [
               'rgba(1, 100, 50, 0.2)',
@@ -227,7 +227,7 @@ export class GraficosComponent implements OnInit {
         labels: ['Casos', 'Fallecimientos', 'Recuperados'],
         datasets: [
           {
-            label: 'Casos totales a nivel mundial',
+            label: 'Total general',
             data: this.datosGlobalesChart,
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',

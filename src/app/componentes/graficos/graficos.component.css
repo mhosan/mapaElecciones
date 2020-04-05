@@ -1,8 +1,8 @@
 .grafico {
-    width: 80rem;
+    width: 60rem;
     /* overflow: auto; */
     /* background-color: linen; */
-    max-height: 25rem;
+    max-height: 35rem;
     overflow-y: auto;
     
 }

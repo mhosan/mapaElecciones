@@ -230,6 +230,7 @@ export class MapaComponent implements OnInit {
     }
     this.servicioDatos.getWfsIgn()
       .subscribe(respuestaJson => {
+        console.log('El ign respondió: ', respuestaJson);
         this.layerWFS = this.servicioWfsIgn.getWfs(respuestaJson, 'Partido');
         miMapa.addLayer(this.layerWFS);
         miMapa.fitBounds(this.layerWFS.getBounds());

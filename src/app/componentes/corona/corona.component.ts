@@ -45,7 +45,7 @@ export class CoronaComponent implements OnInit {
   mostrarDatosArgentina(alerta: boolean) {
     this.servicioDatos.getDatosCoronaPaises('Argentina')
       .subscribe(respuesta => {
-        console.log(`respuesta desde el servicio: ${respuesta}`);
+        //console.log(`respuesta desde el servicio: ${respuesta}`);
             // console.log(respuesta.deaths);
             // console.log(respuesta.todayDeaths);
             // console.log(respuesta.recovered);

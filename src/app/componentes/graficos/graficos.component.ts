@@ -17,7 +17,14 @@ export class GraficosComponent implements OnInit {
   public datosPaisUruguayChart = [];    //guardar los datos de Uruguay leidos de la api rest
   public datosPaisEcuadorChart = [];    //guardar los datos de Ecuador leidos de la api rest
   public datosPaisColombiaChart = [];   //guardar los datos de Colombia leidos de la api rest
-
+  public datosSeriesTiempoFechas = [];
+  public datosSeriesTiempoCasosArgentina = [];
+  public datosSeriesTiempoCasosBrasil = [];
+  public datosSeriesTiempoCasosChile = [];
+  public datosSeriesTiempoCasosEcuador = [];
+  public datosSeriesTiempoCasosUruguay = [];
+  public datosSeriesTiempoCasosParaguay = [];
+  public datosSeriesTiempoCasosBolivia = [];
   public chartGlobal: any = [];         //el grafico global
   public chartPorPaises: any = [];      //el grafico por paises
 
@@ -26,11 +33,18 @@ export class GraficosComponent implements OnInit {
   ngOnInit(): void {
     this.leerDatosGlobales();
     this.leerDatosLocales();
+    this.leerSeriesDeTiempo();
   }
+
 
   /*===================================================================
   leerDatosLocales trae datos del dia de la fecha de un pais, leyendo
-  una api rest (https://github.com/javieraviles/covidAPI)
+  una api rest (https://github.com/javieraviles/covidAPI). 
+  Luego carga los datos de un pais determinado en un array para ese 
+  pais, que contiene la cantidad de casos, los fallecimientos y los 
+  recuperados.
+  Finalizada la lectura de datos (asincronica) se dispara el armado del
+  grafico 'this.graficoPorPaises()'
   =====================================================================*/
   leerDatosLocales() {
     this.servicioDatos.getDatosCoronaPaisesTodos()
@@ -41,7 +55,7 @@ export class GraficosComponent implements OnInit {
             this.datosPaisArgentinaChart.push(element.cases);
             this.datosPaisArgentinaChart.push(element.deaths);
             this.datosPaisArgentinaChart.push(element.recovered);
-            console.log(this.datosPaisArgentinaChart);
+            //console.log(this.datosPaisArgentinaChart);
           } else if (element.country == 'Brazil') {
             this.datosPaisBrasilChart = [];
             this.datosPaisBrasilChart.push(element.cases);
@@ -78,9 +92,14 @@ export class GraficosComponent implements OnInit {
         )
       });
   }
+
   /*===================================================================
-  leerDatosGlobales trae datos totales a nivel mundial, del dia de la 
-  fecha, leyendo una api rest (https://github.com/javieraviles/covidAPI)
+  leerDatosGlobales trae datos del dia de la fecha globales, leyendo
+  una api rest (https://github.com/javieraviles/covidAPI). 
+  Luego carga los datos en un array que contiene la cantidad de casos, 
+  los fallecimientos y los recuperados.
+  Finalizada la lectura de datos (asincronica) se dispara el armado del
+  grafico 'this.graficoGlobal()'
   =====================================================================*/
   leerDatosGlobales() {
     this.servicioDatos.getDatosCoronaTotales()
@@ -92,6 +111,144 @@ export class GraficosComponent implements OnInit {
         this.graficoGlobal();
       });
   }
+
+
+  /*===================================================================
+  leerSeriesDeTiempo trae series de tiempo de todos los paises, leyendo
+  la api rest: https://pomber.github.io/covid19/timeseries.json 
+  
+  =====================================================================*/
+  leerSeriesDeTiempo() {
+    let diaInicio = "2020-3-11";
+    let fechaCero = new Date(diaInicio);
+    this.servicioDatos.getDatosSeriesTiempo()
+      .subscribe(respuesta => {
+        respuesta["Argentina"].forEach(element => {
+          let laFecha = new Date(element.date);
+          let laFechaFormateada = laFecha.toLocaleDateString();
+          if (laFecha > fechaCero) {
+            this.datosSeriesTiempoFechas.push(laFechaFormateada);
+            this.datosSeriesTiempoCasosArgentina.push(element.confirmed)
+          }
+        });
+        respuesta["Brazil"].forEach(element => {
+          let laFecha = new Date(element.date);
+          if (laFecha > fechaCero) {
+            this.datosSeriesTiempoCasosBrasil.push(element.confirmed)
+          }
+        });
+        respuesta["Chile"].forEach(element => {
+          let laFecha = new Date(element.date);
+          if (laFecha > fechaCero) {
+            this.datosSeriesTiempoCasosChile.push(element.confirmed)
+          }
+        });
+        respuesta["Ecuador"].forEach(element => {
+          let laFecha = new Date(element.date);
+          if (laFecha > fechaCero) {
+            this.datosSeriesTiempoCasosEcuador.push(element.confirmed)
+          }
+        });
+        respuesta["Uruguay"].forEach(element => {
+          let laFecha = new Date(element.date);
+          if (laFecha > fechaCero) {
+            this.datosSeriesTiempoCasosUruguay.push(element.confirmed)
+          }
+        });
+        respuesta["Paraguay"].forEach(element => {
+          let laFecha = new Date(element.date);
+          if (laFecha > fechaCero) {
+            this.datosSeriesTiempoCasosParaguay.push(element.confirmed)
+          }
+        });
+        respuesta["Bolivia"].forEach(element => {
+          let laFecha = new Date(element.date);
+          if (laFecha > fechaCero) {
+            this.datosSeriesTiempoCasosBolivia.push(element.confirmed)
+          }
+        });
+        this.graficoSeriesTiempo();
+      });
+  }
+
+  graficoSeriesTiempo() {
+    this.chartGlobal = new Chart('canvasSerieTiempo', {
+      type: 'line',
+      data: {
+        labels: this.datosSeriesTiempoFechas,
+        datasets: [
+          {
+            label: 'Argentina',
+            data: this.datosSeriesTiempoCasosArgentina,
+            backgroundColor: 'transparent',
+            borderColor: 'black',
+            borderWidth: 0.9,
+            fill: false
+          },
+          {
+            label: 'Brasil',
+            data: this.datosSeriesTiempoCasosBrasil,
+            backgroundColor: 'transparent',
+            borderColor: 'red',
+            borderWidth: 0.9,
+            fill: false
+          },
+          {
+            label: 'Chile',
+            data: this.datosSeriesTiempoCasosChile,
+            backgroundColor: 'transparent',
+            borderColor: 'green',
+            borderWidth: 0.9,
+            fill: false
+          },
+          {
+            label: 'Ecuador',
+            data: this.datosSeriesTiempoCasosEcuador,
+            backgroundColor: 'transparent',
+            borderColor: 'blue',
+            borderWidth: 0.9,
+            fill: false
+          },
+          {
+            label: 'Uruguay',
+            data: this.datosSeriesTiempoCasosUruguay,
+            backgroundColor: 'transparent',
+            borderColor: 'cyan',
+            borderWidth: 0.9,
+            fill: false
+          },
+          {
+            label: 'Paraguay',
+            data: this.datosSeriesTiempoCasosParaguay,
+            backgroundColor: 'transparent',
+            borderColor: 'magenta',
+            borderWidth: 0.9,
+            fill: false
+          },
+          {
+            label: 'Bolivia',
+            data: this.datosSeriesTiempoCasosBolivia,
+            backgroundColor: 'transparent',
+            borderColor: 'Brown',
+            borderWidth: 0.9,
+            fill: false
+          }
+        ]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+  }
+
+
+
 
 
   graficoPorPaises() {

@@ -70,7 +70,6 @@ export class CoronaComponent implements OnInit {
     return false;
   }
   
-
   guardarDatos() {
     this.objetoCorona.pais = "global";
     this.objetoCoronaArgentina.pais = "Argentina";

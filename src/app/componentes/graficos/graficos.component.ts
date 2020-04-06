@@ -36,7 +36,6 @@ export class GraficosComponent implements OnInit {
     this.leerSeriesDeTiempo();
   }
 
-
   /*===================================================================
   leerDatosLocales trae datos del dia de la fecha de un pais, leyendo
   una api rest (https://github.com/javieraviles/covidAPI). 

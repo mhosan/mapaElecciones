@@ -180,10 +180,13 @@ export class GraficosComponent implements OnInit {
           {
             label: 'Argentina',
             data: this.datosSeriesTiempoCasosArgentina,
-            backgroundColor: 'transparent',
-            borderColor: 'black',
-            borderWidth: 0.9,
-            fill: false
+            backgroundColor: 'rgba(54, 200, 10, 0.8)',
+            borderColor: 'rgba(54, 200, 10, 1.0)',
+            borderWidth: 1.2,
+            fill: false,
+            pointRadius: 4,
+						pointHoverRadius: 8
+            //borderDash: [5, 5],
           },
           {
             label: 'Brasil',
@@ -236,14 +239,36 @@ export class GraficosComponent implements OnInit {
         ]
       },
       options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      }
+				responsive: true,
+				title: {
+					display: true,
+					text: 'Valores desde 12 de marzo de 2020'
+				},
+				tooltips: {
+					mode: 'index',
+					intersect: false,
+				},
+				hover: {
+					mode: 'nearest',
+					intersect: true
+				},
+				scales: {
+					xAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Fechas'
+						}
+					}],
+					yAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Cantidad de casos confirmados'
+						}
+					}]
+				}
+			}
     });
   }
 

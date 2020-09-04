@@ -13,7 +13,19 @@ export class BuscaDatosService {
   constructor(private http: HttpClient) { }
 
 /*--------------------------------------------------------------------- 
+  Metodo que trae datos totales a nivel mundial, del dia de la fecha.
+  Esta api NO esta restringida en Arba.
+-----------------------------------------------------------------------*/
+getCoronaTotales(): Observable<any> {
+  let elJsonCorona: any;
+  let laUrl = 'https://corona-api.com/timeline';
+  elJsonCorona = this.http.get<any>(laUrl);
+  return elJsonCorona;
+}
+
+/*--------------------------------------------------------------------- 
   Metodo que trae datos totales a nivel mundial, del dia de la fecha
+  Esta api está restringida en Arba.
 -----------------------------------------------------------------------*/
 getDatosCoronaTotales(): Observable<any> {
     let elJsonCorona: any;

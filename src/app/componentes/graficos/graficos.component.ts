@@ -94,7 +94,8 @@ export class GraficosComponent implements OnInit {
 
   /*===================================================================
   leerDatosGlobales trae datos del dia de la fecha globales, leyendo
-  una api rest (https://github.com/javieraviles/covidAPI). 
+  una api rest (https://github.com/javieraviles/covidAPI, la url 
+  utilizada es https://coronavirus-19-api.herokuapp.com/all). 
   Luego carga los datos en un array que contiene la cantidad de casos, 
   los fallecimientos y los recuperados.
   Finalizada la lectura de datos (asincronica) se dispara el armado del
@@ -111,11 +112,9 @@ export class GraficosComponent implements OnInit {
       });
   }
 
-
   /*===================================================================
   leerSeriesDeTiempo trae series de tiempo de todos los paises, leyendo
   la api rest: https://pomber.github.io/covid19/timeseries.json 
-  
   =====================================================================*/
   leerSeriesDeTiempo() {
     let diaInicio = "2020-3-11";
@@ -271,10 +270,6 @@ export class GraficosComponent implements OnInit {
     });
   }
 
-
-
-
-
   graficoPorPaises() {
     this.chartPorPaises = new Chart('canvasArgentina', {
       type: 'bar',
@@ -399,7 +394,6 @@ export class GraficosComponent implements OnInit {
       }
     });
   }
-
 
   graficoGlobal() {
     this.chartGlobal = new Chart('canvasGlobal', {

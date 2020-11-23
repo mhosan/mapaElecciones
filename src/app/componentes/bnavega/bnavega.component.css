@@ -4,6 +4,13 @@
     .laNavBar{
         position:relative; 
         z-index:450;
+        background-color: white;
+        height: 3rem;
+        border-radius: 5px;
+        margin-top: 0.70rem;
+        border-style: solid;
+        border-width: 2px;
+        border-color: rgb(200,198,197);
     }
 }
 
@@ -13,5 +20,9 @@
         position:relative; 
         z-index:450;
         margin-left: 30px;
+        background-color: lightgray;
+        border-style: solid;
+        border-width: 2px;
+        border-color: rgb(200,198,197);
     }
 }

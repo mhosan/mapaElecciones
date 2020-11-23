@@ -14,6 +14,7 @@ export class GraficosComponent implements OnInit {
   public datosPaisBrasilChart = [];     //guardar los datos de Brasil leidos de la api rest
   public datosPaisChileChart = [];      //guardar los datos de Chile leidos de la api rest
   public datosPaisBoliviaChart = [];    //guardar los datos de Bolivia leidos de la api rest
+  public datosPaisVenezuelaChart = [];    
   public datosPaisUruguayChart = [];    //guardar los datos de Uruguay leidos de la api rest
   public datosPaisEcuadorChart = [];    //guardar los datos de Ecuador leidos de la api rest
   public datosPaisColombiaChart = [];   //guardar los datos de Colombia leidos de la api rest
@@ -25,6 +26,7 @@ export class GraficosComponent implements OnInit {
   public datosSeriesTiempoCasosUruguay = [];
   public datosSeriesTiempoCasosParaguay = [];
   public datosSeriesTiempoCasosBolivia = [];
+  public datosSeriesTiempoCasosVenezuela = [];
   public chartGlobal: any = [];         //el grafico global
   public chartPorPaises: any = [];      //el grafico por paises
 
@@ -70,6 +72,11 @@ export class GraficosComponent implements OnInit {
             this.datosPaisBoliviaChart.push(element.cases);
             this.datosPaisBoliviaChart.push(element.deaths);
             this.datosPaisBoliviaChart.push(element.recovered);
+          } else if (element.country == 'Venezuela') {
+            this.datosPaisVenezuelaChart = [];
+            this.datosPaisVenezuelaChart.push(element.cases);
+            this.datosPaisVenezuelaChart.push(element.deaths);
+            this.datosPaisVenezuelaChart.push(element.recovered);
           } else if (element.country == 'Uruguay') {
             this.datosPaisUruguayChart = [];
             this.datosPaisUruguayChart.push(element.cases);
@@ -159,6 +166,12 @@ export class GraficosComponent implements OnInit {
             this.datosSeriesTiempoCasosParaguay.push(element.confirmed)
           }
         });
+        respuesta["Venezuela"].forEach(element => {
+          let laFecha = new Date(element.date);
+          if (laFecha > fechaCero) {
+            this.datosSeriesTiempoCasosVenezuela.push(element.confirmed)
+          }
+        });
         respuesta["Bolivia"].forEach(element => {
           let laFecha = new Date(element.date);
           if (laFecha > fechaCero) {
@@ -223,6 +236,14 @@ export class GraficosComponent implements OnInit {
             data: this.datosSeriesTiempoCasosParaguay,
             backgroundColor: 'transparent',
             borderColor: 'magenta',
+            borderWidth: 0.9,
+            fill: false
+          },
+          {
+            label: 'Venezuela',
+            data: this.datosSeriesTiempoCasosVenezuela,
+            backgroundColor: 'transparent',
+            borderColor: 'blue',
             borderWidth: 0.9,
             fill: false
           },
@@ -318,6 +339,21 @@ export class GraficosComponent implements OnInit {
               'rgba(200, 10, 110, 1)',
               'rgba(200, 10, 110, 1)',
               'rgba(200, 10, 110, 1)'
+            ],
+            borderWidth: 1
+          },
+          {
+            label: 'Venezuela',
+            data: this.datosPaisVenezuelaChart,
+            backgroundColor: [
+              'rgba(100, 15, 110, 0.2)',
+              'rgba(100, 15, 110, 0.2)',
+              'rgba(100, 15, 110, 0.2)'
+            ],
+            borderColor: [
+              'rgba(100, 15, 110, 1)',
+              'rgba(100, 15, 110, 1)',
+              'rgba(100, 15, 110, 1)'
             ],
             borderWidth: 1
           },

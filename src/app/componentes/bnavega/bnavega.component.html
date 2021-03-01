@@ -12,16 +12,19 @@
         <!-- Ojo, estos iconos de fontawesome SI andan: <i class="fa fa-search"></i>
             <i class="fa fa-eye"></i> <i class="fa fa-eye-slash"></i> <i class="fa fa-tags"></i> -->
         <li class="nav-item dropdown">
+
           <a class="nav-link  mt-3" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            <!-- Menú -->
-            <!-- <div class="row"> -->
-              <!-- <div class="col offset-1 "> -->
-                <img src="assets/iconos/menu_down.png" alt="" width="18px;" class="mr-2 mb-3">
-              <!-- </div> -->
-            <!-- </div> -->
+
+            <!-- Menú ------------------------------------------------------------------- -->
+            <div class="row ml-2">
+              Elecciones
+            </div>
+            <div class="row offset-1">
+              <img src="assets/iconos/menu_down.png" alt="" width="18px;" class="ml-4 mb-1">
+            </div>
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <button class="dropdown-item" type="button" (click)="menuSeleccionado('paso2019')">
               <img src="assets/iconos/elecciones.png" alt="" width="20px;" class="mr-2">
               Elecc. Paso 2019 (test)
@@ -43,19 +46,19 @@
               Part.Pcia. Bs. As. (todos)
             </button>
           </div>
+          <!-- Menú ------------------------------------------------------------------- -->
         </li>
 
         <li class="nav-item ml-4">
-          <a class="nav-link" href="#" (click)="menuSeleccionado('renabap')" title="Relevamiento Nacional de barrios populares - 2018">
-            <div class="row">
-              <div class="col offset-4 ">
-                <img src="assets/iconos/estadisticas1.png" alt="" width="18px;" class="mr-2 mt-3">
-              </div>
-            </div>
-            <!-- <div class="row">
+          <a class="nav-link" href="#" (click)="menuSeleccionado('renabap')"
+            title="Relevamiento Nacional de barrios populares - 2018">
+            <div class="row mt-3">
               <div class="col">
                 Renabap
               </div>
+            </div>
+            <!-- <div class="row">
+                <img src="assets/iconos/estadisticas1.png" alt="" width="13px;" class="ml-4">
             </div> -->
           </a>
         </li>
@@ -63,14 +66,14 @@
         <li class="nav-item ml-4">
           <a class="nav-link" href="#" (click)="buscarPartido();" data-toggle="collapse" data-target="#buscaPartido"
             title="Partidos de la Provincia de Buenos Aires">
-            <div class="row">
-              <div class="col offset-4 ">
-                <img src="assets/iconos/partidos3.png" alt="" width="18px;" class="mr-2 mt-3">
+            <div class="row mt-3">
+              <div class="col">
+                Partidos Pcia.Bs.As.
               </div>
             </div>
             <!-- <div class="row">
-              <div class="col">
-                Partidos Pcia.Bs.As.
+              <div class="col offset-4 ">
+                <img src="assets/iconos/partidos3.png" alt="" width="18px;" class="mr-2 mt-3">
               </div>
             </div> -->
           </a>
@@ -78,15 +81,15 @@
 
         <li class="nav-item ml-4">
           <a class="nav-link" href="#" (click)="buscarPartido();" data-toggle="collapse" data-target="#buscaEscuela"
-          title="Escuelas de la Provincia de Buenos Aires">
-            <div class="row">
-              <div class="col offset-4 ">
-                <img src="assets/iconos/escuela4.png" alt="" width="18px;" class="mr-2 mt-3">
+            title="Escuelas de la Provincia de Buenos Aires">
+            <div class="row mt-3">
+              <div class="col">
+                Escuelas Pcia.Bs.As.
               </div>
             </div>
             <!-- <div class="row">
-              <div class="col">
-                Escuelas Pcia.Bs.As.
+              <div class="col offset-4 ">
+                <img src="assets/iconos/escuela4.png" alt="" width="18px;" class="mr-2 mt-3">
               </div>
             </div> -->
           </a>
@@ -94,15 +97,15 @@
 
         <li class="nav-item ml-4">
           <a class="nav-link" href="#" (click)="buscarPartido();" data-toggle="collapse" data-target="#buscaCircuito"
-          title="Circuitos electorales de la Provincia de Buenos Aires">
-            <div class="row">
-              <div class="col offset-4 ">
-                <img src="assets/iconos/circuitoElectoral.png" alt="" width="18px;" class="mr-2 mt-3">
+            title="Circuitos electorales de la Provincia de Buenos Aires">
+            <div class="row mt-3">
+              <div class="col">
+                Circ. Elect. Pcia.Bs.As.
               </div>
             </div>
             <!-- <div class="row">
-              <div class="col">
-                Circ. Elect. Pcia.Bs.As.
+              <div class="col offset-4 ">
+                <img src="assets/iconos/circuitoElectoral.png" alt="" width="18px;" class="mr-2 mt-3">
               </div>
             </div> -->
           </a>
@@ -165,6 +168,7 @@
     </div>
   </nav> <!-- =================================barra de navegación================================-->
 </div>
+
 
 
 <!-- =================================Circuito electoral==========================================-->

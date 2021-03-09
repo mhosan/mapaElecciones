@@ -1179,7 +1179,7 @@ export class MapaComponent implements OnInit {
       zoom: 8,
       zoomControl: false,
       maxZoom: 20
-    }).addLayer(osm2);
+    }).addLayer(googleHybrid);
     miMapa.createPane('circuitos');
     miMapa.getPane('circuitos').style.zIndex = 370;
     miMapa.createPane('colegios');

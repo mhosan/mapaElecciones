@@ -1,7 +1,7 @@
 app.module.ts
 app.component
 
-    componente: barra-navegacion    componente: mapa            interface: buscador.interface.ts    servicio: buscador.service.ts
+    componente: barra-navegacion    componente: mapa            interface: buscador.interface.ts    servicios: buscador.service.ts
     acepta input por teclado y      escucha evento emitido      Estructura los datos que utiliza    Cosume el servicio buscador
     dispara por cada input el       por barra-navegacion        la aplicacion                       con el criterio de busqueda
     servicio buscador.service.ts,   y toma el wkt. Lo pasa                                          ingresado en la barra-navegacion

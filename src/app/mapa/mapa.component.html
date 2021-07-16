@@ -4,10 +4,11 @@
     <div class="mt-2">
         <app-bnavega (seleccionMenuNavBar)="administrarNavBarMenu($event)"></app-bnavega>
     </div>
+    <!-- ---------------------------------------------------------- -->
 
     <!-- <app-usuario></app-usuario> -->
 
-    <!-- geolocalizadores ------------------------------------------------------- -->
+    <!-- geolocalizadores ----------------------------------------- -->
     <div class="card collapse" id="fila" style="position: relative; z-index: 450; width: 20rem;">
         <div class="card-header text-center mt-2" style="padding: 0;">
             <button type="button" class="close mr-3" data-toggle="collapse" data-target="#fila">
@@ -18,19 +19,22 @@
         <div class="card-body">
             <div class="row ">
                 <div>
+                    <!-- componente gelolocaliz. de la Secr. Modern.-->
                     <app-usa-api (eventoMarcador)="ponerMarcador($event)"></app-usa-api>
                 </div>
             </div>
             <div class="row ">
                 <div>
+                    <!-- componente gelolocaliz. Location Iq------- -->
                     <app-usa-api-location-iq (eventoMarcador)="ponerMarcador($event)"></app-usa-api-location-iq>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- coronavirus ------------------------------------------------------- -->
+    <!-- coronavirus ---------------------------------------------- -->
     <div class="collapse" id="corona" style="position: relative; z-index: 450; width: 20rem;">
+        <!-- componente covid-19----------------------------------- -->
         <app-corona></app-corona>
     </div>
 
@@ -61,51 +65,7 @@
         </div>
     </div>
 
-    <!-- Este es el cuadrito de resumen de las paso. También se utiliza como referencia de los grafismos del mapa-->
-    <div class="row">
-
-        <div class="col-8 col-md-3 ml-5" [hidden]="!resumenPaso2019">
-            <div class="card text-center mx-1" style="z-index: 999;">
-                <div class="card-body">
-                    <table class="table table-striped table-borderless table-sm">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col" class="pb-1">
-                                    <h6>Espacio político</h6>
-                                </th>
-                                <th scope="col" class="pb-1">
-                                    <h6>Municipios</h6>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="text-left" style="background-color: rgba(0,102,255,0.5)">Frente de todos</td>
-                                <td class="text-right">{{fpv}}</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left" style="background-color: rgba(255,255,102,0.5)">Juntos por el
-                                    cambio</td>
-                                <td class="text-right">{{pro}}</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left" style="background-color: rgba(51,204,51,0.5)">Consenso Federal
-                                </td>
-                                <td class="text-right">{{cf}}</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left" style="background-color: rgba(161, 159, 159, 0.5)">Otros</td>
-                                <td class="text-right">{{otro}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Este es el cuadrito de resumen de las paso. También se utiliza como referencia de los grafismos del mapa-->
-
-
+    <!-- Este es el cuadrito de resumen de las paso.--------------- -->
     <div class="collapse row mx-4 my-4" id="resumenPaso">
 
         <div class="col-xs-3 col-md-4">
@@ -198,6 +158,7 @@
             </div>
         </div>
     </div>
+    <!-- Este es el cuadrito de resumen de las paso.--------------- -->
 
     <!-- --------------------------FORMULARIO ---------------------------------------->
     <div id="formularioPaso" class="modal fade">

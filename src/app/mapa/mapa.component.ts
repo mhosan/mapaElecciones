@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LatitudLongitud } from '../modelos/latlon.interface';
 import { Paso2019edit } from '../modelos/paso2019edit';
 import { DatosService } from '../servicios/datos.service';
@@ -11,6 +11,7 @@ import { CapaCircuitosService } from '../servicios/capas/capa-circuitos.service'
 import { CapaWfsIgnService } from '../servicios/capas/capa-wfs-ign.service';
 import { RenabapService } from '../servicios/capas/capa-renabap.service';
 import { EspaciosPoliticos } from '../modelos/espacios-politicos.enum';
+//import { ModalDirective } from 'ngx-bootstrap';
 //import { NgForm } from '@angular/forms';
 //import * as c3 from 'c3';
 
@@ -34,6 +35,7 @@ let partidosBA;
 /*=========================================================================================*/
 export class MapaComponent implements OnInit {
   /*=======================================================================================*/
+  @ViewChild('formularioPaso', { static: false }) //formularioPaso: ModalDirective;
   public edicion: boolean = false;
   public fpv = 0;
   public pro = 0;
@@ -293,6 +295,7 @@ export class MapaComponent implements OnInit {
   //
   //===================================================================
   leerPartidos2019() {
+    
     this.servicioDatos.getPartidos2015()
       .subscribe(
         partidosJson => {
@@ -434,6 +437,7 @@ export class MapaComponent implements OnInit {
                     }
                   }
                   $("#formularioPaso").modal('show');
+                  
                 });
               });
 
@@ -969,7 +973,8 @@ export class MapaComponent implements OnInit {
       //---------------------------------------------------------------
       if (this.eleccionesGenerales) {
       //---------------------------------------------------------------
-        this.servicioMunicipios.saveMunicipioGenerales(this.modeloPaso2019)
+        
+      this.servicioMunicipios.saveMunicipioGenerales(this.modeloPaso2019)
           .then(response => {
             console.log('la respuesta:', response);
             $("#formularioPaso").modal('hide');

@@ -11,7 +11,7 @@ declare let $: any;
 })
 
 export class DatosService {
-  private terminadoInterno = new Subject<void>();         //<--- los Subject son observables que pueden emitir eventos.
+  private terminadoInterno = new Subject<void>();         //<--- los Subject son OBSERVABLES que pueden emitir eventos.
   //El evento lo quiero emitir a nivel interno, por eso el subject
   //es privado. Luego hay que exponer un observable publico con el 
   //flujo del primer subject para subscribirse desde el componente.

@@ -11,7 +11,7 @@ import { CapaCircuitosService } from '../servicios/capas/capa-circuitos.service'
 import { CapaWfsIgnService } from '../servicios/capas/capa-wfs-ign.service';
 import { RenabapService } from '../servicios/capas/capa-renabap.service';
 import { EspaciosPoliticos } from '../modelos/espacios-politicos.enum';
-//import { ModalDirective } from 'ngx-bootstrap';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 //import { NgForm } from '@angular/forms';
 //import * as c3 from 'c3';
 
@@ -35,7 +35,7 @@ let partidosBA;
 /*=========================================================================================*/
 export class MapaComponent implements OnInit {
   /*=======================================================================================*/
-  @ViewChild('formularioPaso', { static: false }) //formularioPaso: ModalDirective;
+  @ViewChild('formularioPaso', { static: false }) formularioPaso: ModalDirective;
   public edicion: boolean = false;
   public fpv = 0;
   public pro = 0;

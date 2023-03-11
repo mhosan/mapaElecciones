@@ -109,8 +109,8 @@ export class GraficosComponent implements OnInit {
   grafico 'this.graficoGlobal()'
   =====================================================================*/
   leerDatosGlobales() {
-    this.servicioDatos.getDatosCoronaTotales()
-      .subscribe(respuesta => {
+    this.servicioDatos.getCoronaTotales()
+    .subscribe(respuesta => {
         //console.log('Casos: ', respuesta.cases, ' Fallecimientos: ', respuesta.deaths, ' Recuperados: ', respuesta.recovered);
         this.datosGlobalesChart.push(respuesta.cases);
         this.datosGlobalesChart.push(respuesta.deaths);

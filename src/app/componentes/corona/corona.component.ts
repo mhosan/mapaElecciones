@@ -20,7 +20,7 @@ export class CoronaComponent implements OnInit {
     this.mostrarDatosArgentina(false);
   }
   mostrarDatos(alerta: boolean) {
-    this.servicioDatos.getDatosCoronaTotales()
+    this.servicioDatos.getCoronaTotales()
       .subscribe(respuesta => {
         //console.log('Casos: ', respuesta.cases, ' Fallecimientos: ', respuesta.deaths, ' Recuperados: ', respuesta.recovered);
         this.objetoCorona.casosTot = respuesta.cases;
@@ -111,11 +111,11 @@ export class CoronaComponent implements OnInit {
     console.log(this.arrayDatosCorona);
     return false
   }
-  prueba(){
+  /* prueba(){
     this.servicioDatos.getDatosPrueba()
     .subscribe(respuesta => {
       console.log(respuesta);
     });
   return false;
-  }
+  } */
 }

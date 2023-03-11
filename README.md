@@ -12,5 +12,5 @@ Los datos que se muestran sobre cada Municipio están en una base de datos Cloud
 
 ## Maquetado
 
-Se utilizó Bootstrap 4.2.1
+Se utilizó Bootstrap 4.2.1 para hacer el maquetado.
 

@@ -1117,12 +1117,12 @@ export class MapaComponent implements OnInit {
     los distintos espacios politicos. EspaciosPoliticos es un enum*/
 
     //-----------------------------------------------------------------
-    const osm1 = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+    /* const osm1 = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
         '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
         'Imagery © <a href="http://mapbox.com">Mapbox</a>',
       id: 'mapbox.streets'
-    });
+    }); */
 
     //-----------------------------------------------------------------
     const openmap = L.tileLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}", {
@@ -1202,7 +1202,6 @@ export class MapaComponent implements OnInit {
       "Google Fisico": googleTerrain,
       "Google Satelital": googleSatelite, */
       "Open Street Map": osm2,
-      "Mapbox": osm1,
       "Google callejero ": googleMaps,
       "Google hibrido": googleHybrid,
       //"Bing": bing,

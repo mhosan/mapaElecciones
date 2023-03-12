@@ -1,13 +1,13 @@
-<div class="card-deck bg-light container text-center corona ml-3 mt-2" id="corona">
+<div class="card-deck bg-light text-center corona mt-2" id="corona">
     <div class="card mt-2 mb-2 tarjeta">
         <div class="d-flex justify-content-center mt-2">
             <img src="assets/iconos/reload2.png" (click)="mostrarDatos(true);" alt="" width="15px;" class="mr-2">
         </div>
         <div class="card-body">
             <h5 class="card-title">Coronavirus a nivel mundial.</h5>
-            <p class="text-center h6">Casos totales:{{objetoCorona.casosTot}}</p>
-            <p class="text-center h6">Fallecidos: {{objetoCorona.fallecidosTot}}</p>
-            <p class="text-center h6">Recuperados: {{objetoCorona.recuperados}}</p>
+            <p class="text-center h6">Casos totales: {{objetoCorona.casosTot | number }}</p>
+            <p class="text-center h6">Fallecidos: {{objetoCorona.fallecidosTot | number }}</p>
+            <p class="text-center h6">Recuperados: {{objetoCorona.recuperados | number }}</p>
         </div>
         <div class="card-footer">
             <p class="text-md-center text-muted">
@@ -22,14 +22,17 @@
         </div>
         <div class="card-body">
             <h5 class="card-title">Coronavirus. Argentina.</h5>
-            <p class="text-center h6">Casos totales:{{objetoCoronaArgentina.casosTot}} /
-                hoy:{{objetoCoronaArgentina.casosHoy}} </p>
-            <p class="text-center h6">Fallecidos totales: {{objetoCoronaArgentina.fallecidosTot}} / hoy:
-                {{objetoCoronaArgentina.fallecidosHoy}}</p>
-            <p class="text-center h6">Recuperados: {{objetoCoronaArgentina.recuperados}} -
-                Activos:{{objetoCoronaArgentina.activos}}</p>
-            <p class="text-center h6">Críticos: {{objetoCoronaArgentina.criticos}} - Casos x
-                millon:{{objetoCoronaArgentina.casosPorMillon}}</p>
+            <p class="text-center h6">Casos totales:{{ objetoCoronaArgentina.casosTot | number }}</p>
+            <!-- /
+                hoy:{{objetoCoronaArgentina.casosHoy}} </p> -->
+            <p class="text-center h6">Fallecidos totales: {{objetoCoronaArgentina.fallecidosTot | number }}</p>
+            <!--  / hoy:
+                {{objetoCoronaArgentina.fallecidosHoy}}</p> -->
+            <p class="text-center h6">Recuperados: {{objetoCoronaArgentina.recuperados | number }}</p>
+            <!--  -
+                Activos:{{objetoCoronaArgentina.activos}}</p> -->
+            <p class="text-center h6">Críticos: {{objetoCoronaArgentina.criticos | number }} - Casos x
+                millon:{{objetoCoronaArgentina.casosPorMillon | number }}</p>
         </div>
         <div class="card-footer">
             <p class="text-md-center text-muted">
@@ -63,13 +66,13 @@
                     <span>Datos</span>
                 </button>
             </div> -->
-            
+
             <!-- <div class="d-flex justify-content-center">
                 <button type="button" class="btn btn-info btn-sm" (click)="prueba();">
                     <span>Datos de prueba</span>
                 </button>
             </div> -->
- 
+
         </div>
         <div class="card-footer">
             <p class="text-md-center text-muted">
@@ -81,15 +84,18 @@
 </div>
 
 
+
+
 <div class="collapse card mt-2 mb-2 datos" id="datos">
     <div class="card-body">
         <button type="button" class="close mr-3 cerrar" data-toggle="collapse" data-target="#datos">
             <span>×</span>
         </button>
-        <div style="height: 20rem; overflow: auto;"> 
+        <div style="height: 20rem; overflow: auto;">
             <ul class="list-group" *ngFor="let item of arrayDatosCorona">
                 <li class="list-group-item">
-                    <span class="font-weight-bold">Fecha: </span>{{item.fecha.seconds * 1000 | date: 'dd/MM/yyyy - H:mm:ss'}}, 
+                    <span class="font-weight-bold">Fecha: </span>{{item.fecha.seconds * 1000 | date: 'dd/MM/yyyy -
+                    H:mm:ss'}},
                     <span class="font-weight-bold">Pais: </span>{{item.pais}},
                     <br>
                     <span class="font-weight-bold">Casos totales: </span>{{item.casosTot}},

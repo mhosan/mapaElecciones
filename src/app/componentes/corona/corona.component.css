@@ -6,7 +6,8 @@ img:hover {
     .corona {
         position: relative;
         z-index: 500;
-        width: 55rem;
+        margin-right: 15vh;
+        margin-left: 15vh;
     }
     .grafico{
         position: absolute;
@@ -25,15 +26,14 @@ img:hover {
 }
 
 /*---------chico --------------------*/
-@media (max-width: 575.98px) {
+/* @media (max-width: 575.98px) {
     .corona {
         position: relative;
         z-index: 500;
         width: 18rem;
-        /* height: 20rem; */
     }
     .tarjeta {
         width: 16rem;
         height: 18rem;
     }
-}
+} */

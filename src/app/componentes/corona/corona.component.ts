@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BuscaDatosService } from './../../servicios/busca-datos.service';
 import { CoronaService } from './../../servicios/corona.service';
 import { Corona } from '../../modelos/corona';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-corona',

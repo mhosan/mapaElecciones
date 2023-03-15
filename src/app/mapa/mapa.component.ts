@@ -188,7 +188,7 @@ export class MapaComponent implements OnInit {
   }
 
   //===================================================================
-  // traer todos los partidos
+  // traer todos los partidos 
   //===================================================================
   leerPartidos() {
     if (miMapa.hasLayer(this.laCapaDeLosPartidos)) {

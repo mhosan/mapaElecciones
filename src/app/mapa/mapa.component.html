@@ -9,15 +9,15 @@
     <!-- <app-usuario></app-usuario> -->
 
     <!-- geolocalizadores ----------------------------------------- -->
-    <div class="card collapse" id="fila" style="position: relative; z-index: 450; width: 20rem;">
+    <div class="card collapse mt-1" id="fila" style="z-index: 450; width: 20rem;">
         <div class="card-header text-center mt-2" style="padding: 0;">
             <button type="button" class="close mr-3" data-toggle="collapse" data-target="#fila">
                 <span>×</span>
             </button>
-            <h6>Geolocalizar 11/3/23</h6>
+            <h6>Geolocalizar</h6>
         </div>
         <div class="card-body">
-            <div class="row ">
+            <div class="row" >
                 <div>
                     <!-- componente gelolocaliz. de la Secr. Modern.-->
                     <app-usa-api (eventoMarcador)="ponerMarcador($event)"></app-usa-api>

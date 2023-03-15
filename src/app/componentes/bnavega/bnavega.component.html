@@ -37,14 +37,6 @@
               <img src="assets/iconos/elecciones.png" alt="" width="20px;" class="mr-2">
               Elecc.Grales.2019 (test)
             </button>
-            <button class="dropdown-item" type="button" (click)="menuSeleccionado('circuitos')">
-              <img src="assets/iconos/circuitoElectoral.png" alt="" width="20px;" class="mr-2">
-              Circ. electorales (todos)
-            </button>
-            <button class="dropdown-item" type="button" (click)="menuSeleccionado('leerPartidos')">
-              <img src="assets/iconos/circuitoElectoral.png" alt="" width="20px;" class="mr-2">
-              Part.Pcia. Bs. As. (todos)
-            </button>
             <button class="dropdown-item" type="button" (click)="menuSeleccionado('renabap')">
               <img src="assets/iconos/circuitoElectoral.png" alt="" width="20px;" class="mr-2">
               Renabap
@@ -161,58 +153,70 @@
 
 
 
-  <!-- =================================Circuito electoral==========================================-->
-  <div class="row">
-    <div class="card collapse h-100 ml-3 mt-1" style="z-index:2000; width: 18rem;" id="buscaCircuito">
-      <div class="card-body">
-        <button type="button" class="close" data-toggle="collapse" data-target="#buscaCircuito">
-          <span>×</span>
-        </button>
-        <h5 class="card-title">Buscar circuito electoral</h5>
-        <div class="form-group">
-          <label for="selectCircuito">Desplegar para selecc.</label>
+<!-- =================================Circuito electoral==========================================-->
+<div class="row">
+  <div class="card collapse h-100 ml-3 mt-1" style="z-index:2000; width: 20rem;" id="buscaCircuito">
+    <div class="card-body">
+      <button type="button" class="close" data-toggle="collapse" data-target="#buscaCircuito">
+        <span>×</span>
+      </button>
+      <h5 class="card-title">Buscar circuito electoral</h5>
+      <div class="form-group">
+        <div class="row">
           <select class="form-control" id="selectCircuito" [(ngModel)]="partidoSeleccionadoParaCircuito"
             (change)="menuSeleccionado('unPartido', partidoSeleccionadoParaCircuito)">
             <option>Seleccionar un partido</option>
             <option *ngFor="let item of listadoPartidos; let i = index;">{{item}}</option>
           </select>
         </div>
+        <div class="row justify-content-md-center">
+          <button class="btn btn-sm btn-outline-secondary mt-2" (click)="menuSeleccionado('circuitos')">
+            Todos los circuitos elect.
+          </button>
+        </div>
       </div>
     </div>
   </div>
+</div>
 
 
-  <!-- =================================Partidos====================================================-->
-  <div class="row">
-    <div class="card collapse h-100 ml-3 mt-1" style="z-index:2000; width: 18rem;" id="buscaPartido">
-      <div class="card-body">
-        <button type="button" class="close" data-toggle="collapse" data-target="#buscaPartido">
-          <span>×</span>
-        </button>
-        <h5 class="card-title">Buscar partidos</h5>
-        <div class="form-group">
-          <label for="selectPartido">Desplegar para seleccionar</label>
+<!-- =================================Partidos====================================================-->
+<div class="row">
+  <div class="card collapse h-100 ml-3 mt-1" style="z-index:2000; width: 20rem;" id="buscaPartido">
+    <div class="card-body">
+      <button type="button" class="close" data-toggle="collapse" data-target="#buscaPartido">
+        <span>×</span>
+      </button>
+      <h5 class="card-title">Buscar partidos</h5>
+      <div class="form-group">
+        <div class="row">
           <select class="form-control" id="selectPartido" [(ngModel)]="partidoSeleccionado"
             (change)="menuSeleccionado('unPartidoPartido', partidoSeleccionado)">
             <option>Seleccionar un partido</option>
             <option *ngFor="let item of listadoPartidos; let i = index;">{{item}}</option>
           </select>
         </div>
+        <div class="row justify-content-md-center">
+          <button class="btn btn-sm btn-outline-secondary mt-2" (click)="menuSeleccionado('leerPartidos')">
+            Todos los partidos
+          </button>
+        </div>
       </div>
     </div>
   </div>
+</div>
 
 
-  <!-- =================================Escuelas ===================================================-->
-  <div class="row">
-    <div class="card collapse h-100 ml-3 mt-1" style="z-index:2000; width: 18rem;" id="buscaEscuela">
-      <div class="card-body">
-        <button type="button" class="close" data-toggle="collapse" data-target="#buscaEscuela">
-          <span>×</span>
-        </button>
-        <h5 class="card-title">Buscar escuelas por partido</h5>
-        <div class="form-group">
-          <label for="selectEscuela">Desplegar para selecc.</label>
+<!-- =================================Escuelas ===================================================-->
+<div class="row">
+  <div class="card collapse h-100 ml-3 mt-1" style="z-index:2000; width: 20rem;" id="buscaEscuela">
+    <div class="card-body">
+      <button type="button" class="close" data-toggle="collapse" data-target="#buscaEscuela">
+        <span>×</span>
+      </button>
+      <h5 class="card-title">Buscar escuelas por partido</h5>
+      <div class="form-group">
+        <div class="row">
           <select class="form-control" id="selectEscuela" [(ngModel)]="partidoSeleccionadoParaEscuela"
             (change)="menuSeleccionado('unaEscuela',partidoSeleccionadoParaEscuela)">
             <option>Seleccionar un partido</option>
@@ -222,6 +226,7 @@
       </div>
     </div>
   </div>
+</div>
 
 
 
